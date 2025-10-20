@@ -174,8 +174,14 @@ export function BrokerTable({
     }
   }
 
-  // For server-side filtering, data is already sorted
+  // For server-side filtering, data is already sorted by the server
+  // Don't do any additional sorting to preserve the server's featured-first ordering
   const sortedBrands = serverSideFiltering ? filteredBrands : [...filteredBrands].sort((a, b) => {
+    // First sort by featured status, then by the selected field
+    if (a.is_featured !== b.is_featured) {
+      return b.is_featured ? 1 : -1 // Featured items first
+    }
+    
     let comparison = 0
     if (sortField === "name") {
       comparison = a.name.localeCompare(b.name)
