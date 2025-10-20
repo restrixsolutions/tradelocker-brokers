@@ -23,6 +23,10 @@ export const metadata: Metadata = {
     title: "Best TradeLocker Prop Firms (2025)",
     description: "Compare the top prop trading firms that support TradeLocker.",
     type: "website",
+    url: "https://tradelockerbrokers.com/prop-firms",
+  },
+  alternates: {
+    canonical: "https://tradelockerbrokers.com/prop-firms",
   },
 }
 

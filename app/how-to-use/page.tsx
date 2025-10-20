@@ -23,6 +23,15 @@ export const metadata: Metadata = {
     title: "How to Use TradeLocker – Complete Guide",
     description: "Learn how to use the TradeLocker platform effectively with our comprehensive guide.",
     type: "article",
+    url: "https://tradelockerbrokers.com/how-to-use",
+    article: {
+      publishedTime: "2025-01-01",
+      modifiedTime: "2025-01-19",
+      authors: ["TradeLockerBrokers.com"],
+    },
+  },
+  alternates: {
+    canonical: "https://tradelockerbrokers.com/how-to-use",
   },
 }
 

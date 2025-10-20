@@ -16,6 +16,10 @@ export const metadata: Metadata = {
     title: "Best TradeLocker Brokers (2025)",
     description: "Compare the top forex brokers that support TradeLocker.",
     type: "website",
+    url: "https://tradelockerbrokers.com/brokers",
+  },
+  alternates: {
+    canonical: "https://tradelockerbrokers.com/brokers",
   },
 }
 
