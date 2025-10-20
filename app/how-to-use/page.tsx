@@ -5,19 +5,20 @@ import { Section } from "@/components/section"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { CheckCircle2, ArrowRight, Lightbulb, AlertCircle } from "lucide-react"
-import { BreadcrumbJsonLd, ArticleJsonLd } from "@/components/json-ld"
+import { BreadcrumbJsonLd, ArticleJsonLd, FAQPageJsonLd } from "@/components/json-ld"
 import { Footer } from "@/components/footer"
 
 export const metadata: Metadata = {
   title: "How to Use TradeLocker – Complete Guide for Traders (2025)",
   description:
-    "Learn how to use the TradeLocker platform effectively. Step-by-step guide covering setup, features, and best practices for forex trading.",
+    "Learn how to use the TradeLocker platform effectively. Step-by-step guide covering setup, features, and best practices. Master TradeLocker trading today.",
   keywords: [
     "TradeLocker guide",
     "how to use TradeLocker",
     "TradeLocker tutorial",
     "forex trading platform",
     "trading guide",
+    "TradeLocker setup",
   ],
   openGraph: {
     title: "How to Use TradeLocker – Complete Guide",
@@ -36,6 +37,37 @@ export const metadata: Metadata = {
 }
 
 export default function HowToUsePage() {
+  const faqs = [
+    {
+      question: "How do I get started with TradeLocker?",
+      answer: "First, choose a broker or prop firm that supports TradeLocker. Sign up with your chosen provider and receive login credentials to access the TradeLocker platform through their portal. TradeLocker is cloud-based, so you can access it from any device with a web browser - no downloads required."
+    },
+    {
+      question: "What are the key features of TradeLocker?",
+      answer: "TradeLocker offers advanced charting with 100+ technical indicators, one-click trading, multi-asset support (forex, indices, commodities, cryptocurrencies), risk management tools including stop loss and take profit, an economic calendar, and both mobile and web access."
+    },
+    {
+      question: "How do I place a trade on TradeLocker?",
+      answer: "Select your instrument from the market watch, analyze the market using charts and indicators, set your position size based on risk management rules (typically 1-2% per trade), place stop loss and take profit levels, then click Buy or Sell to execute the trade. Always review the order confirmation."
+    },
+    {
+      question: "What risk management rules should I follow?",
+      answer: "Never risk more than 1-2% per trade to survive losing streaks, always use stop losses to protect capital, maintain a risk-reward ratio of at least 1:2 where potential profit is twice the potential loss, avoid overtrading by waiting for high-probability setups, and keep a trading journal to track patterns."
+    },
+    {
+      question: "Does TradeLocker support automated trading?",
+      answer: "Yes, TradeLocker supports algorithmic trading and Expert Advisors (EAs) to execute trades based on predefined rules. Some brokers also offer copy trading features through TradeLocker, allowing you to replicate trades of experienced traders automatically."
+    },
+    {
+      question: "Can I use TradeLocker on mobile devices?",
+      answer: "Yes, TradeLocker is accessible on both mobile and desktop devices. It features a responsive web interface and dedicated mobile apps, allowing you to trade from anywhere with an internet connection."
+    },
+    {
+      question: "What is the best way to learn TradeLocker?",
+      answer: "Start with a demo account to practice with virtual money until you're comfortable with the platform. Focus on mastering 2-3 currency pairs or assets before expanding. Trade during high liquidity hours (London and New York sessions), stay informed about economic events, and review your trades regularly to identify what works."
+    }
+  ]
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <BreadcrumbJsonLd
@@ -50,6 +82,7 @@ export default function HowToUsePage() {
         datePublished="2025-01-01"
         dateModified="2025-01-19"
       />
+      <FAQPageJsonLd faqs={faqs} />
       <HeaderNav />
 
       <Section className="pt-32">

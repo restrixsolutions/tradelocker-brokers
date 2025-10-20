@@ -12,7 +12,7 @@ export default function robots(): MetadataRoute.Robots {
           '/_next/',
           '/static/',
           '/*.json$',
-          '/*?*', // URLs with query parameters (for now)
+          // Allow filter URLs to be indexed (removed /*?* restriction)
         ],
       },
     ],

@@ -52,11 +52,21 @@ export default async function HomePage() {
         <Container>
           <div className="max-w-3xl mb-12">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-balance">
-              TradeLocker Brokers
+              TradeLocker Brokers & Prop Firms
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground text-pretty">
-              Compare the best forex brokers that support the TradeLocker platform. Filter by execution type, spreads,
-              and features to find your perfect match.
+            <p className="text-lg md:text-xl text-muted-foreground text-pretty mb-4">
+              Your complete directory of verified brokers and prop firms using the TradeLocker platform. Compare spreads, execution speed, profit splits, and funding options to find your perfect trading partner.
+            </p>
+            <p className="text-base text-muted-foreground">
+              Explore our{" "}
+              <Link href="/brokers" className="text-accent hover:underline font-medium">
+                broker comparison
+              </Link>
+              {" "}for ECN accounts or{" "}
+              <Link href="/prop-firms" className="text-accent hover:underline font-medium">
+                funded trading opportunities
+              </Link>
+              . Updated for 2025.
             </p>
           </div>
 

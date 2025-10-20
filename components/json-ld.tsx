@@ -28,7 +28,7 @@ export function OrganizationJsonLd() {
     name: "TradeLockerBrokers.com",
     description: "Your trusted source for TradeLocker-compatible brokers and prop firms",
     url: "https://tradelockerbrokers.com",
-    logo: "https://tradelockerbrokers.com/logo.png",
+    logo: "https://tradelockerbrokers.com/tradelocker-logo.png",
     sameAs: [],
   }
 
@@ -91,9 +91,64 @@ export function ArticleJsonLd({
       name: "TradeLockerBrokers.com",
       logo: {
         "@type": "ImageObject",
-        url: "https://tradelockerbrokers.com/logo.png",
+        url: "https://tradelockerbrokers.com/tradelocker-logo.png",
       },
     },
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      suppressHydrationWarning
+    />
+  )
+}
+
+export function ItemListJsonLd({ 
+  items, 
+  type = 'broker' 
+}: { 
+  items: Array<{ name: string; url: string; position: number }>, 
+  type?: 'broker' | 'prop-firm' 
+}) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": `Best TradeLocker ${type === 'broker' ? 'Brokers' : 'Prop Firms'} 2025`,
+    "description": `Curated list of top ${type === 'broker' ? 'brokers' : 'prop firms'} supporting TradeLocker platform`,
+    "numberOfItems": items.length,
+    "itemListElement": items.map(item => ({
+      "@type": "ListItem",
+      "position": item.position,
+      "name": item.name,
+      "url": item.url,
+    })),
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      suppressHydrationWarning
+    />
+  )
+}
+
+export function FAQPageJsonLd({ faqs }: { 
+  faqs: Array<{ question: string; answer: string }> 
+}) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer,
+      },
+    })),
   }
 
   return (

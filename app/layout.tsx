@@ -17,11 +17,11 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL('https://tradelockerbrokers.com'),
   title: {
-    default: "Top TradeLocker Brokers & Prop Firms (2025) – Compare Spreads, Execution & Funding",
-    template: "%s | TradeLocker Brokers & Prop Firms"
+    default: "TradeLocker Brokers & Prop Firms 2025 | Compare Trading Platforms",
+    template: "%s | TradeLocker Brokers"
   },
   description:
-    "Curated list of brokers and prop firms that support the TradeLocker platform. Compare spreads, execution, funding, and more.",
+    "Discover verified brokers and prop firms using TradeLocker. Compare spreads, execution speed, funding options, and features. Your complete TradeLocker directory updated for 2025.",
   generator: "Next.js",
   applicationName: "TradeLocker Brokers & Prop Firms",
   referrer: "origin-when-cross-origin",
@@ -61,16 +61,16 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.json",
   openGraph: {
-    title: "Top TradeLocker Brokers & Prop Firms (2025)",
-    description: "Curated list of brokers and prop firms that support the TradeLocker platform. Compare spreads, execution, funding options, and more.",
+    title: "TradeLocker Brokers & Prop Firms 2025 | Compare Trading Platforms",
+    description: "Discover verified brokers and prop firms using TradeLocker. Compare spreads, execution, funding options. Your complete directory.",
     url: "https://tradelockerbrokers.com",
-    siteName: "TradeLocker Brokers & Prop Firms",
+    siteName: "TradeLocker Brokers",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "TradeLocker Brokers & Prop Firms - Compare Trading Platforms",
+        alt: "TradeLocker Brokers & Prop Firms - Compare Top Trading Platforms 2025",
       },
     ],
     locale: "en_US",
@@ -78,8 +78,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Top TradeLocker Brokers & Prop Firms (2025)",
-    description: "Curated list of brokers and prop firms that support the TradeLocker platform.",
+    title: "TradeLocker Brokers & Prop Firms 2025",
+    description: "Compare verified brokers and prop firms using TradeLocker. Find your perfect trading platform.",
     images: ["/og-image.png"],
     creator: "@tradelockerbrokers",
   },
@@ -100,8 +100,8 @@ export default function RootLayout({
         <WebsiteJsonLd />
         <OrganizationJsonLd />
         <GoogleAnalytics />
-        {/* Google Search Console Verification - Replace with your actual verification code */}
-        <meta name="google-site-verification" content="YOUR_GOOGLE_VERIFICATION_CODE" />
+        {/* Google Search Console Verification - Add your verification code when ready */}
+        {/* <meta name="google-site-verification" content="YOUR_GOOGLE_VERIFICATION_CODE" /> */}
         {/* Additional SEO Meta Tags */}
         <meta name="theme-color" content="#6366f1" />
         <link rel="manifest" href="/manifest.json" />
