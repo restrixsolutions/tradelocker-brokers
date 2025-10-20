@@ -152,9 +152,9 @@ export function BrokerDetailModal({ brand, type, isOpen, onClose }: BrokerDetail
                   </div>
                 </div>
                 <div className="p-3 md:p-4 bg-muted rounded-lg">
-                  <div className="text-xs md:text-sm text-muted-foreground mb-1">Inactivity Fee</div>
-                  <div className={`text-lg md:text-xl font-bold ${brand.inactivity_fee === "None" ? "text-green-600" : ""}`}>
-                    {brand.inactivity_fee}
+                  <div className="text-xs md:text-sm text-muted-foreground mb-1">Regulation</div>
+                  <div className={`text-lg md:text-xl font-bold ${brand.regulation === "FSCA Regulated" ? "text-green-600" : "text-muted-foreground"}`}>
+                    {brand.regulation}
                   </div>
                 </div>
               </div>

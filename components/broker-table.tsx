@@ -240,7 +240,7 @@ export function BrokerTable({
                   </button>
                   <div key="header-deposit-fee" className="w-[110px] flex-shrink-0">Deposit Fee</div>
                   <div key="header-withdrawal-fee" className="w-[120px] flex-shrink-0">Withdrawal Fee</div>
-                  <div key="header-inactivity-fee" className="w-[120px] flex-shrink-0">Inactivity Fee</div>
+                  <div key="header-regulation" className="w-[120px] flex-shrink-0">Regulation</div>
                   <div key="header-country" className="w-[160px] flex-shrink-0">Country Est.</div>
                   <button
                     key="header-year"
@@ -328,11 +328,11 @@ export function BrokerTable({
                         {brand.withdrawal_fee}
                       </div>
 
-                      {/* Inactivity Fee */}
+                      {/* Regulation */}
                       <div
-                        className={`w-[120px] flex-shrink-0 ${brand.inactivity_fee === "None" ? "text-green-600 font-medium" : ""}`}
+                        className={`w-[120px] flex-shrink-0 ${brand.regulation === "FSCA Regulated" ? "text-green-600 font-medium" : "text-muted-foreground"}`}
                       >
-                        {brand.inactivity_fee}
+                        {brand.regulation}
                       </div>
 
                       {/* Country */}

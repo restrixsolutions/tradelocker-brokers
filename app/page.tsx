@@ -33,7 +33,7 @@ export default async function HomePage() {
   const { data: brokers, error } = await supabase
     .from("brokers")
     .select(
-      "id, name, logo, description, tags, asset_types, min_deposit, deposit_fee, withdrawal_fee, inactivity_fee, country_established, country_code, year_established, affiliate_link, is_featured, youtube_url",
+      "id, name, logo, description, tags, asset_types, min_deposit, deposit_fee, withdrawal_fee, regulation, country_established, country_code, year_established, affiliate_link, is_featured, youtube_url",
     )
     .order("is_featured", { ascending: false })
     .order("name", { ascending: true })

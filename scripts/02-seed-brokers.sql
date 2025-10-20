@@ -1,5 +1,5 @@
 -- Insert brokers data
-INSERT INTO brokers (name, logo, description, tags, affiliate_link, min_deposit, deposit_fee, withdrawal_fee, inactivity_fee, country_established, country_code, year_established, asset_types, is_featured)
+INSERT INTO brokers (name, logo, description, tags, affiliate_link, min_deposit, deposit_fee, withdrawal_fee, inactivity_fee, regulation, country_established, country_code, year_established, asset_types, is_featured)
 VALUES 
   (
     'GatesFX',
@@ -11,6 +11,7 @@ VALUES
     'None',
     'None',
     'None',
+    'FSCA Regulated',
     'South Africa',
     'za',
     2015,
@@ -27,6 +28,7 @@ VALUES
     'None',
     'None',
     'None',
+    'Unregulated',
     'St. Lucia',
     'lc',
     2021,

@@ -9,6 +9,7 @@ export interface Broker {
   deposit_fee: string
   withdrawal_fee: string
   inactivity_fee: string
+  regulation: string
   country_established: string
   country_code: string
   year_established: number
