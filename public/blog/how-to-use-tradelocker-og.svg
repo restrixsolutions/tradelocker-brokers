@@ -1,0 +1,72 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1e293b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#334155;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+  
+  <!-- Decorative circles -->
+  <circle cx="950" cy="150" r="250" fill="#1e293b" opacity="0.3"/>
+  <circle cx="250" cy="480" r="180" fill="#1e293b" opacity="0.3"/>
+  
+  <!-- Top accent line -->
+  <rect x="0" y="0" width="1200" height="8" fill="url(#accentGradient)"/>
+  
+  <!-- Category Badge -->
+  <rect x="60" y="60" width="180" height="40" rx="20" fill="url(#accentGradient)" opacity="0.8"/>
+  <text x="150" y="87" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    PLATFORM GUIDES
+  </text>
+  
+  <!-- Main heading -->
+  <text x="60" y="220" font-family="Arial, sans-serif" font-size="56" font-weight="bold" fill="#ffffff">
+    How to Use
+  </text>
+  <text x="60" y="290" font-family="Arial, sans-serif" font-size="56" font-weight="bold" fill="#ffffff">
+    TradeLocker
+  </text>
+  
+  <!-- Subheading -->
+  <text x="60" y="360" font-family="Arial, sans-serif" font-size="28" fill="#94a3b8">
+    Beginner Setup &amp; Quick Guide (2025)
+  </text>
+  
+  <!-- Features -->
+  <g transform="translate(60, 420)">
+    <circle cx="0" cy="0" r="6" fill="#10b981"/>
+    <text x="20" y="5" font-family="Arial, sans-serif" font-size="20" fill="#cbd5e1">Step-by-Step Setup</text>
+  </g>
+  <g transform="translate(60, 460)">
+    <circle cx="0" cy="0" r="6" fill="#3b82f6"/>
+    <text x="20" y="5" font-family="Arial, sans-serif" font-size="20" fill="#cbd5e1">Desktop &amp; Mobile</text>
+  </g>
+  <g transform="translate(60, 500)">
+    <circle cx="0" cy="0" r="6" fill="#06b6d4"/>
+    <text x="20" y="5" font-family="Arial, sans-serif" font-size="20" fill="#cbd5e1">Best Practices</text>
+  </g>
+  
+  <!-- Bottom info -->
+  <text x="60" y="560" font-family="Arial, sans-serif" font-size="22" fill="#94a3b8">
+    5 min read  •  Perfect for Beginners
+  </text>
+  
+  <!-- URL -->
+  <text x="60" y="595" font-family="Arial, sans-serif" font-size="24" font-weight="600" fill="#10b981">
+    tradelockerbrokers.com/blog
+  </text>
+  
+  <!-- Bottom accent line -->
+  <rect x="0" y="622" width="1200" height="8" fill="url(#accentGradient)"/>
+</svg>
+

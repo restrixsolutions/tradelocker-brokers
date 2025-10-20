@@ -22,6 +22,7 @@ export function HeaderNav() {
   const navLinks = [
     { href: "/brokers", label: "Brokers" },
     { href: "/prop-firms", label: "Prop Firms" },
+    { href: "/blog", label: "Blog" },
     { href: "/how-to-use", label: "How To Use TradeLocker" },
   ]
 

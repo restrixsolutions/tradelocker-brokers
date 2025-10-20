@@ -159,3 +159,62 @@ export function FAQPageJsonLd({ faqs }: {
     />
   )
 }
+
+export function BlogPostingJsonLd({
+  title,
+  description,
+  publishDate,
+  lastUpdated,
+  author = "TradeLockerBrokers.com",
+  image,
+  url,
+  category,
+  tags,
+}: {
+  title: string
+  description: string
+  publishDate: string
+  lastUpdated?: string
+  author?: string
+  image?: string
+  url: string
+  category?: string
+  tags?: string[]
+}) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": title,
+    "description": description,
+    "image": image || "https://tradelockerbrokers.com/og-image.png",
+    "datePublished": publishDate,
+    "dateModified": lastUpdated || publishDate,
+    "author": {
+      "@type": "Organization",
+      "name": author,
+      "url": "https://tradelockerbrokers.com",
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "TradeLockerBrokers.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://tradelockerbrokers.com/tradelocker-logo.png",
+      },
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": url,
+    },
+    ...(category && { "articleSection": category }),
+    ...(tags && tags.length > 0 && { "keywords": tags.join(", ") }),
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      suppressHydrationWarning
+    />
+  )
+}
