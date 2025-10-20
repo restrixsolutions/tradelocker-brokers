@@ -11,6 +11,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Upload, Copy, Check } from "lucide-react"
 
+// Force dynamic rendering to prevent build errors when env vars are missing
+export const dynamic = "force-dynamic"
+
 export default function UploadLogoPage() {
   const [file, setFile] = useState<File | null>(null)
   const [uploading, setUploading] = useState(false)
