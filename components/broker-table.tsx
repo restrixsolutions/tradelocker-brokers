@@ -291,7 +291,8 @@ export function BrokerTable({
                       {/* Asset Types */}
                       <div className="w-[140px] flex-shrink-0 flex gap-2">
                         {brand.asset_types.map((asset, assetIndex) => {
-                          const Icon = assetIcons[asset]
+                          const Icon = assetIcons[asset as keyof typeof assetIcons]
+                          if (!Icon) return null
                           return (
                             <div
                               key={`${brand.id}-${asset}-${assetIndex}`}
