@@ -117,11 +117,13 @@ export function BrokerDetailModal({ brand, type, isOpen, onClose }: BrokerDetail
             <h3 className="font-semibold mb-3">Asset Types</h3>
             <div className="flex gap-3">
               {brand.asset_types.map((asset) => {
-                const Icon = assetIcons[asset]
+                const Icon = assetIcons[asset as keyof typeof assetIcons]
+                const label = assetLabels[asset as keyof typeof assetLabels] || asset
+                if (!Icon) return null
                 return (
                   <div key={asset} className="flex items-center gap-2 px-3 py-2 bg-muted rounded-lg">
                     <Icon className="w-5 h-5 text-primary" />
-                    <span className="text-sm font-medium">{assetLabels[asset]}</span>
+                    <span className="text-sm font-medium">{label}</span>
                   </div>
                 )
               })}
