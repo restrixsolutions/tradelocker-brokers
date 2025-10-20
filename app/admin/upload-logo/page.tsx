@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
-import { createBrowserClient } from "@supabase/ssr"
+import { getSupabaseBrowserClient } from "@/lib/supabase/client"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -18,10 +18,7 @@ export default function UploadLogoPage() {
   const [copied, setCopied] = useState(false)
   const [error, setError] = useState<string>("")
 
-  const supabase = createBrowserClient(
-    process.env.SUPABASE_SUPABASE_NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL!,
-    process.env.SUPABASE_NEXT_PUBLIC_SUPABASE_ANON_KEY_ANON_KEY || process.env.SUPABASE_ANON_KEY!,
-  )
+  const supabase = getSupabaseBrowserClient()
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {

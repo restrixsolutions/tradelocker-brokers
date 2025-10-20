@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useCallback } from "react"
+import { useRouter, useSearchParams, usePathname } from "next/navigation"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ExternalLink, Info, Bitcoin, TrendingUp, BarChart3, Wheat, ChevronUp, ChevronDown } from "lucide-react"
@@ -14,6 +15,15 @@ type SortDirection = "asc" | "desc"
 interface BrokerTableProps {
   brands: (Broker | PropFirm)[]
   type: "broker" | "prop-firm"
+  filterOptions?: {
+    assetTypes: string[]
+    countries: string[]
+    tags: string[]
+    challengeTypes?: string[]
+    payoutFrequencies?: string[]
+  }
+  initialFilters?: any
+  serverSideFiltering?: boolean
 }
 
 const assetIcons = {
@@ -33,26 +43,86 @@ const countryFlagCodes: Record<string, string> = {
   Australia: "au",
 }
 
-export function BrokerTable({ brands, type }: BrokerTableProps) {
-  const [sortField, setSortField] = useState<SortField>("name")
-  const [sortDirection, setSortDirection] = useState<SortDirection>("asc")
+export function BrokerTable({ 
+  brands, 
+  type, 
+  filterOptions, 
+  initialFilters, 
+  serverSideFiltering = false 
+}: BrokerTableProps) {
+  const router = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+  
+  const [sortField, setSortField] = useState<SortField>(
+    (initialFilters?.sortField as SortField) || "name"
+  )
+  const [sortDirection, setSortDirection] = useState<SortDirection>(
+    (initialFilters?.sortDirection as SortDirection) || "asc"
+  )
   const [selectedBrand, setSelectedBrand] = useState<Broker | PropFirm | null>(null)
 
   const [filters, setFilters] = useState<FilterOptions>({
-    assetTypes: [],
-    minDepositRanges: [],
-    countries: [],
-    tags: [],
-    noDepositFee: false,
-    noWithdrawalFee: false,
-    noInactivityFee: false,
+    assetTypes: initialFilters?.assetTypes || [],
+    minDepositRanges: initialFilters?.minDepositRanges || [],
+    countries: initialFilters?.countries || [],
+    tags: initialFilters?.tags || [],
+    noDepositFee: initialFilters?.noDepositFee || false,
+    noWithdrawalFee: initialFilters?.noWithdrawalFee || false,
+    noInactivityFee: initialFilters?.noInactivityFee || false,
   })
 
-  const availableAssetTypes = Array.from(new Set(brands.flatMap((b) => b.asset_types))).sort()
-  const availableCountries = Array.from(new Set(brands.map((b) => b.country_established))).sort()
-  const availableTags = Array.from(new Set(brands.flatMap((b) => b.tags))).sort()
+  // Use server-provided filter options or calculate from brands
+  const availableAssetTypes = filterOptions?.assetTypes || Array.from(new Set(brands.flatMap((b) => b.asset_types))).sort()
+  const availableCountries = filterOptions?.countries || Array.from(new Set(brands.map((b) => b.country_established))).sort()
+  const availableTags = filterOptions?.tags || Array.from(new Set(brands.flatMap((b) => b.tags))).sort()
 
-  const filteredBrands = brands.filter((brand) => {
+  // Update URL params when filters change (for server-side filtering)
+  const updateURLParams = useCallback((newFilters: FilterOptions, newSortField?: SortField, newSortDirection?: SortDirection) => {
+    if (!serverSideFiltering) return
+
+    const params = new URLSearchParams(searchParams.toString())
+    
+    // Handle array params
+    const arrayParams = ['assetTypes', 'minDepositRanges', 'countries', 'tags'] as const
+    arrayParams.forEach(param => {
+      params.delete(param)
+      const value = newFilters[param]
+      if (value && value.length > 0) {
+        params.set(param, value.join(','))
+      }
+    })
+    
+    // Handle boolean params
+    const boolParams = ['noDepositFee', 'noWithdrawalFee', 'noInactivityFee'] as const
+    boolParams.forEach(param => {
+      params.delete(param)
+      if (newFilters[param]) {
+        params.set(param, 'true')
+      }
+    })
+    
+    // Handle sorting
+    if (newSortField) {
+      params.set('sortField', newSortField)
+    }
+    if (newSortDirection) {
+      params.set('sortDirection', newSortDirection)
+    }
+    
+    router.push(`${pathname}?${params.toString()}`, { scroll: false })
+  }, [serverSideFiltering, searchParams, pathname, router])
+
+  // Handle filter changes
+  const handleFilterChange = (newFilters: FilterOptions) => {
+    setFilters(newFilters)
+    if (serverSideFiltering) {
+      updateURLParams(newFilters, sortField, sortDirection)
+    }
+  }
+
+  // For server-side filtering, brands are already filtered
+  const filteredBrands = serverSideFiltering ? brands : brands.filter((brand) => {
     // Asset type filter
     if (filters.assetTypes.length > 0) {
       const hasMatchingAsset = filters.assetTypes.some((assetType) => brand.asset_types.includes(assetType))
@@ -91,15 +161,21 @@ export function BrokerTable({ brands, type }: BrokerTableProps) {
   })
 
   const handleSort = (field: SortField) => {
+    let newSortDirection: SortDirection = "asc"
     if (sortField === field) {
-      setSortDirection(sortDirection === "asc" ? "desc" : "asc")
-    } else {
-      setSortField(field)
-      setSortDirection("asc")
+      newSortDirection = sortDirection === "asc" ? "desc" : "asc"
+    }
+    
+    setSortField(field)
+    setSortDirection(newSortDirection)
+    
+    if (serverSideFiltering) {
+      updateURLParams(filters, field, newSortDirection)
     }
   }
 
-  const sortedBrands = [...filteredBrands].sort((a, b) => {
+  // For server-side filtering, data is already sorted
+  const sortedBrands = serverSideFiltering ? filteredBrands : [...filteredBrands].sort((a, b) => {
     let comparison = 0
     if (sortField === "name") {
       comparison = a.name.localeCompare(b.name)
@@ -125,12 +201,12 @@ export function BrokerTable({ brands, type }: BrokerTableProps) {
       <aside className="lg:w-64 flex-shrink-0">
         <FilterSidebar
           filters={filters}
-          onFilterChange={setFilters}
+          onFilterChange={handleFilterChange}
           availableAssetTypes={availableAssetTypes}
           availableCountries={availableCountries}
           availableTags={availableTags}
-          resultsCount={filteredBrands.length}
-          totalCount={brands.length}
+          resultsCount={serverSideFiltering ? brands.length : filteredBrands.length}
+          totalCount={serverSideFiltering ? brands.length : brands.length}
         />
       </aside>
 

@@ -4,8 +4,7 @@ import { Container } from "@/components/container"
 import { Section } from "@/components/section"
 import { BrokerTable } from "@/components/broker-table"
 import { BreadcrumbJsonLd } from "@/components/json-ld"
-import { getSupabaseServerClient } from "@/lib/supabase/server"
-import type { PropFirm } from "@/lib/types"
+import { getFilteredPropFirms, getFilterOptions, type PropFirmFilterParams } from "@/app/actions"
 import { Footer } from "@/components/footer"
 
 export const metadata: Metadata = {
@@ -27,33 +26,63 @@ export const metadata: Metadata = {
   },
 }
 
-export default async function PropFirmsPage() {
-  const supabase = await getSupabaseServerClient()
+interface PageProps {
+  searchParams?: {
+    assetTypes?: string | string[]
+    countries?: string | string[]
+    tags?: string | string[]
+    challengeTypes?: string | string[]
+    profitSplitMin?: string
+    maxFundingMin?: string
+    payoutFrequencies?: string | string[]
+    sortField?: string
+    sortDirection?: string
+  }
+}
 
-  const { data: propFirms, error } = await supabase
-    .from("prop_firms")
-    .select(`
-      id, name, logo, description, tags, asset_types,
-      country_established, country_code, year_established,
-      affiliate_link, is_featured, youtube_url,
-      max_funding_amount, profit_split, profit_split_scaled,
-      challenge_type, challenge_fee, refundable_fee,
-      phase_1_profit_target, phase_2_profit_target,
-      max_daily_loss, max_total_drawdown, drawdown_type,
-      payout_frequency, min_payout_amount, scaling_plan,
-      min_trading_days, max_trading_days,
-      news_trading_allowed, weekend_holding_allowed, ea_allowed,
-      consistency_rule, copy_trading_allowed, swap_free, leverage
-    `)
-    .order("is_featured", { ascending: false })
-    .order("profit_split", { ascending: false })
-    .order("name", { ascending: true })
-
-  if (error) {
-    // Handle error silently
+export default async function PropFirmsPage({ searchParams }: PageProps) {
+  // Parse search params
+  const filterParams: PropFirmFilterParams = {
+    assetTypes: searchParams?.assetTypes 
+      ? Array.isArray(searchParams.assetTypes) 
+        ? searchParams.assetTypes 
+        : searchParams.assetTypes.split(',')
+      : undefined,
+    countries: searchParams?.countries
+      ? Array.isArray(searchParams.countries)
+        ? searchParams.countries
+        : searchParams.countries.split(',')
+      : undefined,
+    tags: searchParams?.tags
+      ? Array.isArray(searchParams.tags)
+        ? searchParams.tags
+        : searchParams.tags.split(',')
+      : undefined,
+    challengeTypes: searchParams?.challengeTypes
+      ? Array.isArray(searchParams.challengeTypes)
+        ? searchParams.challengeTypes
+        : searchParams.challengeTypes.split(',')
+      : undefined,
+    profitSplitMin: searchParams?.profitSplitMin 
+      ? parseInt(searchParams.profitSplitMin)
+      : undefined,
+    maxFundingMin: searchParams?.maxFundingMin
+      ? parseInt(searchParams.maxFundingMin)
+      : undefined,
+    payoutFrequencies: searchParams?.payoutFrequencies
+      ? Array.isArray(searchParams.payoutFrequencies)
+        ? searchParams.payoutFrequencies
+        : searchParams.payoutFrequencies.split(',')
+      : undefined,
+    sortField: searchParams?.sortField as any,
+    sortDirection: searchParams?.sortDirection as any,
   }
 
-  const propFirmsData: PropFirm[] = propFirms || []
+  // Fetch filtered data and filter options in parallel
+  const [propFirmsData, filterOptions] = await Promise.all([
+    getFilteredPropFirms(filterParams),
+    getFilterOptions('prop-firm')
+  ])
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
@@ -77,7 +106,13 @@ export default async function PropFirmsPage() {
             </p>
           </div>
 
-          <BrokerTable brands={propFirmsData} type="prop-firm" />
+          <BrokerTable 
+            brands={propFirmsData} 
+            type="prop-firm" 
+            filterOptions={filterOptions}
+            initialFilters={filterParams}
+            serverSideFiltering
+          />
         </Container>
       </Section>
 

@@ -64,16 +64,19 @@ export function BrokerDetailModal({ brand, type, isOpen, onClose }: BrokerDetail
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <div className="flex items-center gap-4 mb-4">
-            <div className="w-20 h-20 rounded-lg overflow-hidden bg-background border border-border flex items-center justify-center">
-              <Image
-                src={brand.logo || "/placeholder.svg"}
-                alt={brand.name}
-                width={80}
-                height={80}
-                className="object-contain p-2"
-              />
+            {/* Logo - exactly like table */}
+            <div className="w-[80px] flex-shrink-0 relative">
+              <div className="w-16 h-16 rounded-lg overflow-hidden bg-background border border-border flex items-center justify-center">
+                <Image
+                  src={brand.logo || "/placeholder.svg"}
+                  alt={brand.name}
+                  width={64}
+                  height={64}
+                  className="object-contain p-2"
+                />
+              </div>
             </div>
-            <div>
+            <div className="flex-1">
               <DialogTitle className="text-2xl mb-2">{brand.name}</DialogTitle>
               <p className="text-muted-foreground">{brand.description}</p>
             </div>

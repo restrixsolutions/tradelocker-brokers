@@ -4,8 +4,7 @@ import { Container } from "@/components/container"
 import { Section } from "@/components/section"
 import { BrokerTable } from "@/components/broker-table"
 import { BreadcrumbJsonLd } from "@/components/json-ld"
-import { getSupabaseServerClient } from "@/lib/supabase/server"
-import type { Broker } from "@/lib/types"
+import { getFilteredBrokers, getFilterOptions, type BrokerFilterParams } from "@/app/actions"
 import { Footer } from "@/components/footer"
 
 export const metadata: Metadata = {
@@ -20,22 +19,55 @@ export const metadata: Metadata = {
   },
 }
 
-export default async function BrokersPage() {
-  const supabase = await getSupabaseServerClient()
+interface PageProps {
+  searchParams?: {
+    assetTypes?: string | string[]
+    minDepositRanges?: string | string[]
+    countries?: string | string[]
+    tags?: string | string[]
+    noDepositFee?: string
+    noWithdrawalFee?: string
+    noInactivityFee?: string
+    sortField?: string
+    sortDirection?: string
+  }
+}
 
-  const { data: brokers, error } = await supabase
-    .from("brokers")
-    .select(
-      "id, name, logo, description, tags, asset_types, min_deposit, deposit_fee, withdrawal_fee, inactivity_fee, country_established, country_code, year_established, affiliate_link, is_featured, youtube_url",
-    )
-    .order("is_featured", { ascending: false })
-    .order("name", { ascending: true })
-
-  if (error) {
-    // Handle error silently
+export default async function BrokersPage({ searchParams }: PageProps) {
+  // Parse search params
+  const filterParams: BrokerFilterParams = {
+    assetTypes: searchParams?.assetTypes 
+      ? Array.isArray(searchParams.assetTypes) 
+        ? searchParams.assetTypes 
+        : searchParams.assetTypes.split(',')
+      : undefined,
+    minDepositRanges: searchParams?.minDepositRanges
+      ? Array.isArray(searchParams.minDepositRanges)
+        ? searchParams.minDepositRanges
+        : searchParams.minDepositRanges.split(',')
+      : undefined,
+    countries: searchParams?.countries
+      ? Array.isArray(searchParams.countries)
+        ? searchParams.countries
+        : searchParams.countries.split(',')
+      : undefined,
+    tags: searchParams?.tags
+      ? Array.isArray(searchParams.tags)
+        ? searchParams.tags
+        : searchParams.tags.split(',')
+      : undefined,
+    noDepositFee: searchParams?.noDepositFee === 'true',
+    noWithdrawalFee: searchParams?.noWithdrawalFee === 'true',
+    noInactivityFee: searchParams?.noInactivityFee === 'true',
+    sortField: searchParams?.sortField as any,
+    sortDirection: searchParams?.sortDirection as any,
   }
 
-  const brokersData: Broker[] = brokers || []
+  // Fetch filtered data and filter options in parallel
+  const [brokersData, filterOptions] = await Promise.all([
+    getFilteredBrokers(filterParams),
+    getFilterOptions('broker')
+  ])
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
@@ -59,7 +91,13 @@ export default async function BrokersPage() {
             </p>
           </div>
 
-          <BrokerTable brands={brokersData} type="broker" />
+          <BrokerTable 
+            brands={brokersData} 
+            type="broker" 
+            filterOptions={filterOptions}
+            initialFilters={filterParams}
+            serverSideFiltering
+          />
         </Container>
       </Section>
 
