@@ -3,9 +3,14 @@ import type { Metadata } from "next"
 import { Poppins } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { WebsiteJsonLd, OrganizationJsonLd } from "@/components/json-ld"
-import { PHProvider, PostHogPageView } from "./providers"
+import dynamic from "next/dynamic"
 import { Suspense } from "react"
 import "./globals.css"
+
+const PostHogProviderWrapper = dynamic(
+  () => import('./posthog-provider').then(mod => mod.PostHogProviderWrapper),
+  { ssr: false }
+)
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -106,12 +111,11 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body className={`${poppins.variable} font-sans antialiased`}>
-        <PHProvider>
-          <Suspense fallback={null}>
-            <PostHogPageView />
-          </Suspense>
-          {children}
-        </PHProvider>
+        <Suspense fallback={null}>
+          <PostHogProviderWrapper>
+            {children}
+          </PostHogProviderWrapper>
+        </Suspense>
         <Analytics />
       </body>
     </html>

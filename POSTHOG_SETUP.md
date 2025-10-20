@@ -5,10 +5,10 @@ PostHog has been successfully integrated into your TradeLocker Brokers site. Her
 ## ✅ What's Been Done
 
 1. **Installed PostHog** - Added `posthog-js` package to your project
-2. **Created PostHog Provider** - Set up client-side provider in `app/providers.tsx`
-3. **Integrated with Layout** - Added PostHog tracking to your root layout
-4. **Page View Tracking** - Automatic pageview tracking for all pages
-5. **Instrumentation File** - Created `instrumentation-client.js` for lightweight integration
+2. **Created PostHog Provider** - Set up client-side provider in `app/posthog-provider.tsx`
+3. **Integrated with Layout** - Added PostHog tracking to your root layout with dynamic imports
+4. **Page View Tracking** - Automatic pageview tracking for all pages with route changes
+5. **SSR-Safe Implementation** - Used dynamic imports to prevent server-side initialization errors
 
 ## 🔧 Required Manual Step
 
