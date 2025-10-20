@@ -4,6 +4,7 @@ import { Poppins } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { WebsiteJsonLd, OrganizationJsonLd } from "@/components/json-ld"
 import PostHogWrapper from "./posthog-wrapper"
+import GoogleAnalytics from "@/components/google-analytics"
 import "./globals.css"
 
 const poppins = Poppins({
@@ -98,6 +99,7 @@ export default function RootLayout({
       <head>
         <WebsiteJsonLd />
         <OrganizationJsonLd />
+        <GoogleAnalytics />
         {/* Google Search Console Verification - Replace with your actual verification code */}
         <meta name="google-site-verification" content="YOUR_GOOGLE_VERIFICATION_CODE" />
         {/* Additional SEO Meta Tags */}
