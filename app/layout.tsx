@@ -3,6 +3,8 @@ import type { Metadata } from "next"
 import { Poppins } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { WebsiteJsonLd, OrganizationJsonLd } from "@/components/json-ld"
+import { PHProvider, PostHogPageView } from "./providers"
+import { Suspense } from "react"
 import "./globals.css"
 
 const poppins = Poppins({
@@ -104,7 +106,12 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body className={`${poppins.variable} font-sans antialiased`}>
-        {children}
+        <PHProvider>
+          <Suspense fallback={null}>
+            <PostHogPageView />
+          </Suspense>
+          {children}
+        </PHProvider>
         <Analytics />
       </body>
     </html>
