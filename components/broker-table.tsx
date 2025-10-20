@@ -262,7 +262,7 @@ export function BrokerTable({
                   <div key="header-country" className="w-[160px] flex-shrink-0">Country Est.</div>
                 </>
               )}
-              <div key="header-actions" className="w-[220px] flex-shrink-0 text-right pr-2 sticky right-0 bg-muted/30 shadow-[-8px_0_12px_-4px_rgba(0,0,0,0.1)]"></div>
+              <div key="header-actions" className="w-[220px] flex-shrink-0 text-right pr-2 sticky right-0"></div>
             </div>
 
             <div className="space-y-2 mt-2">
@@ -404,7 +404,7 @@ export function BrokerTable({
                   )}
 
                   {/* Actions */}
-                  <div className="w-[220px] flex-shrink-0 flex gap-2 items-center justify-end sticky right-0 bg-card/95 backdrop-blur-md pl-4 shadow-[-8px_0_16px_-4px_rgba(0,0,0,0.25)] border-l border-border/50">
+                  <div className="w-[220px] flex-shrink-0 flex gap-2 items-center justify-end sticky right-0 pl-4">
                     <Button
                       variant="outline"
                       size="sm"
