@@ -28,6 +28,18 @@ const nextConfig = {
   experimental: {
     mdxRs: false,
   },
+  webpack: (config, { isServer }) => {
+    // Fix for PostHog trying to import Node.js modules on client side
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        path: false,
+        child_process: false,
+      }
+    }
+    return config
+  },
 }
 
 const withMDX = createMDX({
