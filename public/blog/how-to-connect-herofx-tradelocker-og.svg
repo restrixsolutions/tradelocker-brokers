@@ -1,0 +1,90 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0a0a0a"/>
+  
+  <!-- Gradient overlay -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16213e;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+  
+  <!-- Trading chart pattern background -->
+  <g opacity="0.1">
+    <path d="M0,400 Q200,350 400,380 T800,360 T1200,340" stroke="#00d4aa" stroke-width="2" fill="none"/>
+    <path d="M0,450 Q200,400 400,430 T800,410 T1200,390" stroke="#00d4aa" stroke-width="2" fill="none"/>
+    <path d="M0,500 Q200,450 400,480 T800,460 T1200,440" stroke="#00d4aa" stroke-width="2" fill="none"/>
+  </g>
+  
+  <!-- Main content area -->
+  <rect x="60" y="60" width="1080" height="510" fill="rgba(255,255,255,0.05)" rx="20" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  
+  <!-- HeroFX Logo Area -->
+  <rect x="100" y="100" width="80" height="80" fill="#ff6b35" rx="15"/>
+  <text x="140" y="150" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="28" font-weight="bold">HFX</text>
+  
+  <!-- TradeLocker Logo Area -->
+  <rect x="200" y="100" width="80" height="80" fill="#00d4aa" rx="15"/>
+  <text x="240" y="150" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="28" font-weight="bold">TL</text>
+  
+  <!-- Connection Arrow -->
+  <path d="M190,140 L200,140" stroke="#00d4aa" stroke-width="4" fill="none" marker-end="url(#arrowhead)"/>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#00d4aa"/>
+    </marker>
+  </defs>
+  
+  <!-- Main Title -->
+  <text x="300" y="140" fill="white" font-family="Arial, sans-serif" font-size="42" font-weight="bold">How to Connect HeroFX</text>
+  <text x="300" y="180" fill="white" font-family="Arial, sans-serif" font-size="42" font-weight="bold">to TradeLocker</text>
+  
+  <!-- Subtitle -->
+  <text x="300" y="220" fill="#a0a0a0" font-family="Arial, sans-serif" font-size="20">Complete Setup Guide (2025)</text>
+  
+  <!-- Key Features -->
+  <g transform="translate(300, 250)">
+    <circle cx="10" cy="10" r="4" fill="#00d4aa"/>
+    <text x="25" y="16" fill="white" font-family="Arial, sans-serif" font-size="16">Step-by-step connection process</text>
+    
+    <circle cx="10" cy="35" r="4" fill="#00d4aa"/>
+    <text x="25" y="41" fill="white" font-family="Arial, sans-serif" font-size="16">Account verification guide</text>
+    
+    <circle cx="10" cy="60" r="4" fill="#00d4aa"/>
+    <text x="25" y="66" fill="white" font-family="Arial, sans-serif" font-size="16">Troubleshooting common issues</text>
+    
+    <circle cx="10" cy="85" r="4" fill="#00d4aa"/>
+    <text x="25" y="91" fill="white" font-family="Arial, sans-serif" font-size="16">Mobile & desktop setup</text>
+  </g>
+  
+  <!-- Connection illustration -->
+  <g transform="translate(800, 120)">
+    <!-- HeroFX Dashboard -->
+    <rect x="0" y="0" width="150" height="100" fill="#1a1a1a" rx="8" stroke="#ff6b35" stroke-width="2"/>
+    <rect x="10" y="10" width="130" height="80" fill="#0a0a0a" rx="4"/>
+    <text x="75" y="30" text-anchor="middle" fill="#ff6b35" font-family="Arial, sans-serif" font-size="12" font-weight="bold">HeroFX</text>
+    <text x="75" y="50" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10">Dashboard</text>
+    
+    <!-- Connection Arrow -->
+    <path d="M160,50 L200,50" stroke="#00d4aa" stroke-width="3" fill="none"/>
+    
+    <!-- TradeLocker Platform -->
+    <rect x="210" y="0" width="150" height="100" fill="#1a1a1a" rx="8" stroke="#00d4aa" stroke-width="2"/>
+    <rect x="220" y="10" width="130" height="80" fill="#0a0a0a" rx="4"/>
+    <text x="285" y="30" text-anchor="middle" fill="#00d4aa" font-family="Arial, sans-serif" font-size="12" font-weight="bold">TradeLocker</text>
+    <text x="285" y="50" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10">Platform</text>
+  </g>
+  
+  <!-- Website URL -->
+  <text x="100" y="520" fill="#666" font-family="Arial, sans-serif" font-size="20">tradelockerbrokers.com</text>
+  
+  <!-- Decorative elements -->
+  <g opacity="0.3">
+    <circle cx="1000" cy="150" r="3" fill="#ff6b35"/>
+    <circle cx="1050" cy="200" r="2" fill="#00d4aa"/>
+    <circle cx="950" cy="250" r="4" fill="#ff6b35"/>
+    <circle cx="1100" cy="300" r="2" fill="#00d4aa"/>
+  </g>
+</svg>
