@@ -11,6 +11,7 @@ import { FilterSidebar, type FilterOptions } from "./filter-sidebar"
 
 type SortField = "name" | "minDeposit" | "yearEstablished"
 type SortDirection = "asc" | "desc"
+type SortFieldOrNull = SortField | null
 
 interface BrokerTableProps {
   brands: (Broker | PropFirm)[]
@@ -54,8 +55,8 @@ export function BrokerTable({
   const pathname = usePathname()
   const searchParams = useSearchParams()
   
-  const [sortField, setSortField] = useState<SortField>(
-    (initialFilters?.sortField as SortField) || "name"
+  const [sortField, setSortField] = useState<SortField | null>(
+    (initialFilters?.sortField as SortField) || null
   )
   const [sortDirection, setSortDirection] = useState<SortDirection>(
     (initialFilters?.sortDirection as SortDirection) || "asc"
@@ -78,7 +79,7 @@ export function BrokerTable({
   const availableTags = filterOptions?.tags || Array.from(new Set(brands.flatMap((b) => b.tags))).sort()
 
   // Update URL params when filters change (for server-side filtering)
-  const updateURLParams = useCallback((newFilters: FilterOptions, newSortField?: SortField, newSortDirection?: SortDirection) => {
+  const updateURLParams = useCallback((newFilters: FilterOptions, newSortField?: SortField | null, newSortDirection?: SortDirection) => {
     if (!serverSideFiltering) return
 
     const params = new URLSearchParams(searchParams.toString())
@@ -105,6 +106,8 @@ export function BrokerTable({
     // Handle sorting
     if (newSortField) {
       params.set('sortField', newSortField)
+    } else {
+      params.delete('sortField')
     }
     if (newSortDirection) {
       params.set('sortDirection', newSortDirection)
@@ -177,10 +180,13 @@ export function BrokerTable({
   // For server-side filtering, data is already sorted by the server
   // Don't do any additional sorting to preserve the server's featured-first ordering
   const sortedBrands = serverSideFiltering ? filteredBrands : [...filteredBrands].sort((a, b) => {
-    // First sort by featured status, then by the selected field
+    // First sort by featured status
     if (a.is_featured !== b.is_featured) {
       return b.is_featured ? 1 : -1 // Featured items first
     }
+    
+    // If no sort field, maintain current order (will be randomized on page load)
+    if (!sortField) return 0
     
     let comparison = 0
     if (sortField === "name") {

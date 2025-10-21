@@ -79,18 +79,46 @@ export async function getFilteredBrokers(params: BrokerFilterParams = {}): Promi
   // Note: Removed inactivity fee filter as we replaced it with regulation
   
   // Apply sorting
-  const sortField = params.sortField || 'name'
+  const sortField = params.sortField
   const sortDirection = params.sortDirection || 'asc'
   
+  // Always order featured first
+  query = query.order('is_featured', { ascending: false })
+  
+  // If no sort field specified, randomize the order (but featured stays on top)
+  if (!sortField) {
+    // Note: We can't use random() directly in Supabase JS client ordering
+    // So we'll fetch all data and randomize non-featured items in JavaScript
+    const { data, error } = await query
+    
+    if (error) {
+      console.error('Error fetching filtered brokers:', error)
+      return []
+    }
+    
+    if (!data) return []
+    
+    // Separate featured and non-featured brokers
+    const featured = data.filter(b => b.is_featured)
+    const nonFeatured = data.filter(b => !b.is_featured)
+    
+    // Shuffle non-featured brokers using Fisher-Yates algorithm
+    for (let i = nonFeatured.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [nonFeatured[i], nonFeatured[j]] = [nonFeatured[j], nonFeatured[i]]
+    }
+    
+    // Return featured first, then randomized non-featured
+    return [...featured, ...nonFeatured]
+  }
+  
+  // Apply specific sorting
   if (sortField === 'name') {
-    query = query.order('is_featured', { ascending: false })
-      .order('name', { ascending: sortDirection === 'asc' })
+    query = query.order('name', { ascending: sortDirection === 'asc' })
   } else if (sortField === 'minDeposit') {
-    query = query.order('is_featured', { ascending: false })
-      .order('min_deposit', { ascending: sortDirection === 'asc' })
+    query = query.order('min_deposit', { ascending: sortDirection === 'asc' })
   } else if (sortField === 'yearEstablished') {
-    query = query.order('is_featured', { ascending: false })
-      .order('year_established', { ascending: sortDirection === 'asc' })
+    query = query.order('year_established', { ascending: sortDirection === 'asc' })
   }
   
   const { data, error } = await query
@@ -152,19 +180,42 @@ export async function getFilteredPropFirms(params: PropFirmFilterParams = {}): P
   }
   
   // Apply sorting
-  const sortField = params.sortField || 'name'
+  const sortField = params.sortField
   const sortDirection = params.sortDirection || 'asc'
   
+  // Always order featured first
   query = query.order('is_featured', { ascending: false })
   
+  // If no sort field specified, randomize the order (but featured stays on top)
+  if (!sortField) {
+    const { data, error } = await query
+    
+    if (error) {
+      console.error('Error fetching filtered prop firms:', error)
+      return []
+    }
+    
+    if (!data) return []
+    
+    // Separate featured and non-featured prop firms
+    const featured = data.filter(p => p.is_featured)
+    const nonFeatured = data.filter(p => !p.is_featured)
+    
+    // Shuffle non-featured prop firms using Fisher-Yates algorithm
+    for (let i = nonFeatured.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [nonFeatured[i], nonFeatured[j]] = [nonFeatured[j], nonFeatured[i]]
+    }
+    
+    // Return featured first, then randomized non-featured
+    return [...featured, ...nonFeatured]
+  }
+  
+  // Apply specific sorting
   if (sortField === 'name') {
     query = query.order('name', { ascending: sortDirection === 'asc' })
   } else if (sortField === 'yearEstablished') {
     query = query.order('year_established', { ascending: sortDirection === 'asc' })
-  } else {
-    // Default sort by profit split (descending) then name
-    query = query.order('profit_split', { ascending: false })
-      .order('name', { ascending: true })
   }
   
   const { data, error } = await query
