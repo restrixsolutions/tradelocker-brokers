@@ -174,8 +174,8 @@ export default async function HomePage() {
       {/* FAQ Section */}
       <Section className="mb-16">
         <Container>
-          <h2 className="text-3xl md:text-4xl font-bold mb-8">Frequently Asked Questions</h2>
-          <div className="space-y-6 max-w-4xl">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
+          <div className="space-y-6 max-w-4xl mx-auto">
             <Card>
               <CardContent className="pt-6">
                 <h3 className="text-lg font-semibold mb-2">What are TradeLocker brokers?</h3>
