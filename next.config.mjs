@@ -31,6 +31,12 @@ const nextConfig = {
   webpack: (config, { isServer }) => {
     // Fix for PostHog trying to import Node.js modules on client side
     if (!isServer) {
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        'node:fs': false,
+        'node:path': false,
+        'node:child_process': false,
+      }
       config.resolve.fallback = {
         ...config.resolve.fallback,
         fs: false,
