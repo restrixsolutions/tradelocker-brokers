@@ -10,6 +10,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import Link from "next/link"
+import { FAQPageJsonLd } from "@/components/json-ld"
 
 export const metadata: Metadata = {
   title: "TradeLocker Brokers (2025) – Compare Best Forex Brokers Using TradeLocker",
@@ -28,6 +29,33 @@ export const metadata: Metadata = {
 }
 
 export default async function HomePage() {
+  const homepageFAQs = [
+    {
+      question: "What are TradeLocker brokers?",
+      answer: "TradeLocker brokers are forex and CFD brokers that offer the TradeLocker platform as their trading interface. TradeLocker is a modern, browser-based trading platform known for fast execution, advanced charting, and mobile compatibility. These brokers integrate TradeLocker to provide traders with a superior trading experience compared to older platforms like MT4 or MT5."
+    },
+    {
+      question: "Which TradeLocker brokers are best for beginners?",
+      answer: "The best TradeLocker brokers for beginners offer low minimum deposits (under $200), educational resources, demo accounts, and responsive customer support. Look for brokers with user-friendly interfaces, clear fee structures, and good regulation."
+    },
+    {
+      question: "Are TradeLocker brokers regulated?",
+      answer: "Yes, reputable TradeLocker brokers are regulated by financial authorities like FCA, ASIC, CySEC, and other recognized regulators. Always verify a broker's regulation before opening an account. Our directory only lists regulated TradeLocker brokers with proper licensing and client fund protection."
+    },
+    {
+      question: "What's the difference between TradeLocker and MT4?",
+      answer: "TradeLocker is a modern, browser-based platform with no downloads required, while MT4 requires software installation. TradeLocker offers faster execution, a more intuitive interface, better mobile experience, and modern charting tools. MT4 has more third-party indicators and EAs available."
+    },
+    {
+      question: "How do I choose the best TradeLocker broker?",
+      answer: "Consider regulation, trading costs (spreads and commissions), execution quality, minimum deposit, withdrawal speed, and customer support. Use our comparison tool to filter by these criteria. Also check if the broker integrates well with TradeLocker and offers the instruments you want to trade."
+    },
+    {
+      question: "Can I use TradeLocker for prop firm trading?",
+      answer: "Yes, many TradeLocker brokers are compatible with prop firms and funded trading accounts. The platform's clean execution and risk management tools make it popular for traders pursuing funded challenges."
+    }
+  ]
+
   const supabase = await getSupabaseServerClient()
 
   const { data: brokers, error } = await supabase
@@ -46,6 +74,7 @@ export default async function HomePage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <FAQPageJsonLd faqs={homepageFAQs} />
       <HeaderNav />
 
       <Section className="pt-32">

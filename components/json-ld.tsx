@@ -1,13 +1,22 @@
+import { SITE_URL, BRAND, SOCIAL, SCHEMA_CONFIG } from "@/lib/seo"
+
 export function WebsiteJsonLd() {
+  // Filter out empty social URLs
+  const sameAs = Object.values(SOCIAL).filter(url => url && url.length > 0)
+  
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "TradeLockerBrokers.com",
-    description: "Curated list of brokers and prop firms that support the TradeLocker platform",
-    url: "https://tradelockerbrokers.com",
+    name: SCHEMA_CONFIG.website.name,
+    alternateName: SCHEMA_CONFIG.website.alternateName,
+    description: SCHEMA_CONFIG.website.description,
+    url: SCHEMA_CONFIG.website.url,
+    inLanguage: SCHEMA_CONFIG.website.inLanguage,
+    keywords: SCHEMA_CONFIG.website.keywords.join(", "),
+    sameAs,
     potentialAction: {
       "@type": "SearchAction",
-      target: "https://tradelockerbrokers.com/search?q={search_term_string}",
+      target: `${SITE_URL}/search?q={search_term_string}`,
       "query-input": "required name=search_term_string",
     },
   }
@@ -22,14 +31,17 @@ export function WebsiteJsonLd() {
 }
 
 export function OrganizationJsonLd() {
+  // Filter out empty social URLs
+  const sameAs = Object.values(SOCIAL).filter(url => url && url.length > 0)
+  
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "TradeLockerBrokers.com",
-    description: "Your trusted source for TradeLocker-compatible brokers and prop firms",
-    url: "https://tradelockerbrokers.com",
-    logo: "https://tradelockerbrokers.com/tradelocker-logo.png",
-    sameAs: [],
+    name: SCHEMA_CONFIG.organization.name,
+    description: SCHEMA_CONFIG.organization.description,
+    url: SCHEMA_CONFIG.organization.url,
+    logo: SCHEMA_CONFIG.organization.logo,
+    sameAs,
   }
 
   return (

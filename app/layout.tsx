@@ -81,7 +81,7 @@ export const metadata: Metadata = {
     title: "TradeLocker Brokers & Prop Firms 2025",
     description: "Compare verified brokers and prop firms using TradeLocker. Find your perfect trading platform.",
     images: ["/og-image.png"],
-    creator: "@tradelockerbrokers",
+    creator: "@forexproprank",
   },
   alternates: {
     canonical: "https://tradelockerbrokers.com",
