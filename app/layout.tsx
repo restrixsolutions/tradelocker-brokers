@@ -85,6 +85,10 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://tradelockerbrokers.com",
+    types: {
+      'application/rss+xml': [{ url: '/feed.xml', title: 'TradeLocker Brokers RSS Feed' }],
+      'application/feed+json': [{ url: '/feed.json', title: 'TradeLocker Brokers JSON Feed' }],
+    },
   },
   category: "finance",
 }

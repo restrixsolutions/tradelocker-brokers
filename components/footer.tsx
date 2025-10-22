@@ -56,6 +56,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/data" className="text-muted-foreground hover:text-accent transition-colors">
+                  Data & Feeds
+                </Link>
+              </li>
+              <li>
                 <Link href="/press" className="text-muted-foreground hover:text-accent transition-colors">
                   Press Kit
                 </Link>

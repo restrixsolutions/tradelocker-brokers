@@ -11,9 +11,12 @@ export default function robots(): MetadataRoute.Robots {
           '/admin/',
           '/_next/',
           '/static/',
-          '/*.json$',
           // Allow filter URLs to be indexed (removed /*?* restriction)
         ],
+      },
+      {
+        userAgent: '*',
+        allow: ['/feed.json', '/feed.xml'],
       },
     ],
     sitemap: 'https://tradelockerbrokers.com/sitemap.xml',
