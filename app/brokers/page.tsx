@@ -8,6 +8,10 @@ import { getFilteredBrokers, getFilterOptions, type BrokerFilterParams } from "@
 import { Footer } from "@/components/footer"
 import Link from "next/link"
 
+// Force dynamic rendering to ensure randomization works on every page load
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 export const metadata: Metadata = {
   title: "Best TradeLocker Brokers 2025 – Compare Spreads, ECN & Execution",
   description:

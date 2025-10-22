@@ -3,6 +3,9 @@
 ## Summary
 Implemented randomization for the brokers and prop firms tables so that every time a user refreshes the page, the order changes—except for featured items (like GatesFX), which always stay at the top.
 
+## Latest Update (Mobile Fix)
+Added `export const dynamic = 'force-dynamic'` and `export const revalidate = 0` to both pages to ensure they are never cached. This fixes the issue where mobile devices and browsers were seeing cached versions of the page instead of getting fresh randomized results on each visit.
+
 ## Changes Made
 
 ### 1. Updated `/app/actions.ts`
@@ -36,7 +39,22 @@ Modified the component to support null sort field:
 - Updated URL parameter handling to properly remove `sortField` when not set
 - Updated client-side sorting to maintain order when no sort field is specified
 
-### 3. Database Verification
+### 3. Updated `/app/brokers/page.tsx` and `/app/prop-firms/page.tsx`
+Added Next.js dynamic rendering directives to prevent caching:
+
+```typescript
+// Force dynamic rendering to ensure randomization works on every page load
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+```
+
+This ensures:
+- Pages are never statically generated or cached
+- Each page visit triggers a new server request
+- Randomization happens fresh on every load, including on mobile devices
+- No browser or CDN caching interferes with the randomization
+
+### 4. Database Verification
 Confirmed via Supabase MCP server:
 
 - **GatesFX** is the featured broker (`is_featured: true`)
@@ -102,4 +120,7 @@ To test the implementation:
 - Fisher-Yates shuffle algorithm ensures uniform distribution
 - No client-side state persists between page loads
 - Build verified with no TypeScript or linting errors
+- **Dynamic rendering forced** with `dynamic = 'force-dynamic'` to prevent Next.js caching
+- **Revalidation disabled** with `revalidate = 0` to ensure fresh data on every request
+- Works consistently across desktop and mobile devices
 

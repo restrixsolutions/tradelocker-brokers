@@ -1,0 +1,38 @@
+# Wikidata QuickStatements for TradeLocker Brokers
+# Instructions: 
+# 1. Go to https://quickstatements.toolforge.org/
+# 2. Login with your Wikidata account
+# 3. Click "New batch"
+# 4. Copy and paste the content below (excluding these comment lines)
+# 5. Click "Import V1 commands"
+# 6. Review and execute
+
+CREATE
+LAST	Len	"TradeLocker Brokers"
+LAST	Den	"comparison website for platforms supporting the TradeLocker trading platform"
+LAST	Lde	"TradeLocker Brokers"
+LAST	Dde	"Vergleichswebsite für Plattformen, die die TradeLocker-Handelsplattform unterstützen"
+LAST	Les	"TradeLocker Brokers"
+LAST	Des	"sitio web de comparación de plataformas que admiten la plataforma de trading TradeLocker"
+LAST	Lfr	"TradeLocker Brokers"
+LAST	Dfr	"site de comparaison des plateformes prenant en charge la plateforme de trading TradeLocker"
+LAST	P31	Q35127	S854	"https://tradelockerbrokers.com"
+LAST	P856	"https://tradelockerbrokers.com"	S854	"https://tradelockerbrokers.com"
+LAST	P571	+2025-10-19T00:00:00Z/11	S854	"https://tradelockerbrokers.com/about"
+LAST	P17	Q30	S854	"https://tradelockerbrokers.com"
+LAST	P407	Q1860	S854	"https://tradelockerbrokers.com"
+LAST	P921	"TradeLocker"	S854	"https://tradelockerbrokers.com"
+LAST	P921	"forex trading"	S854	"https://tradelockerbrokers.com"
+LAST	P921	"proprietary trading"	S854	"https://tradelockerbrokers.com"
+LAST	P2003	"forexproprank"	S854	"https://twitter.com/forexproprank"
+LAST	P4264	"forexproprank"	S854	"https://www.linkedin.com/in/forexproprank"
+LAST	P4033	"forexproprank"	S854	"https://medium.com/@forexproprank"
+LAST	P275	Q20007257	S854	"https://tradelockerbrokers.com/data"
+
+# Additional statements to add after entity creation:
+# P31 (instance of): Q1616075 (comparison shopping website)
+# P31 (instance of): Q107196139 (financial data vendor)
+# P452 (industry): Q43015 (finance)
+# P452 (industry): Q11661 (information technology)
+# P159 (headquarters location): [to be determined]
+# P1454 (legal form): [to be determined based on company structure]

@@ -230,3 +230,84 @@ export function BlogPostingJsonLd({
     />
   )
 }
+
+export function AboutPageJsonLd() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About TradeLocker Brokers",
+    "description": "Learn about TradeLocker Brokers, the definitive directory for brokers and prop firms using the TradeLocker platform.",
+    "url": `${SITE_URL}/about`,
+    "mainEntity": {
+      "@type": "Organization",
+      "name": SCHEMA_CONFIG.organization.name,
+      "description": SCHEMA_CONFIG.organization.description,
+      "url": SCHEMA_CONFIG.organization.url,
+      "logo": SCHEMA_CONFIG.organization.logo,
+      "sameAs": Object.values(SOCIAL).filter(url => url && url.length > 0),
+      "foundingDate": "2025-10-19",
+      "knowsAbout": ["TradeLocker", "Brokers", "Prop Firms", "Trading Platforms", "Forex Trading", "CFD Trading"],
+      "brand": {
+        "@type": "Brand",
+        "name": BRAND,
+        "url": SITE_URL
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "email": "forexproprank@gmail.com",
+        "areaServed": "Worldwide",
+        "availableLanguage": "English"
+      }
+    }
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      suppressHydrationWarning
+    />
+  )
+}
+
+export function DatasetJsonLd({ 
+  name, 
+  description, 
+  downloadUrl,
+  dateModified = new Date().toISOString()
+}: { 
+  name: string
+  description: string
+  downloadUrl: string
+  dateModified?: string
+}) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": name,
+    "description": description,
+    "creator": {
+      "@type": "Organization",
+      "name": BRAND,
+      "url": SITE_URL
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "distribution": [{
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": downloadUrl
+    }],
+    "url": `${SITE_URL}/data`,
+    "dateModified": dateModified,
+    "datePublished": "2025-10-19"
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      suppressHydrationWarning
+    />
+  )
+}

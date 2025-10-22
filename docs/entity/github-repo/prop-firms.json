@@ -1,0 +1,17 @@
+[
+  {
+    "name": "FunderPro",
+    "supports": "TradeLocker",
+    "type": "Prop Firm",
+    "profit_split": "80-90%",
+    "max_funding": "$200,000",
+    "challenge_type": "2-Step",
+    "payout_frequency": "Bi-weekly",
+    "year_established": 2023,
+    "country": "Malta",
+    "description": "Malta-based prop firm with real daily rewards, unlimited challenge time, and scaling to $5M",
+    "features": ["Daily Rewards", "Unlimited Time", "Scaling to $5M", "EA Allowed", "News Trading"],
+    "asset_types": ["forex", "stocks", "crypto", "commodities"],
+    "url": "https://tradelockerbrokers.com/prop-firms#funderpro"
+  }
+]

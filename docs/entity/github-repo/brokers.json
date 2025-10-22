@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Athens Markets",
+    "supports": "TradeLocker",
+    "type": "Broker",
+    "execution": "STP",
+    "spread": "Raw (from 0.01 pips)",
+    "min_deposit": 50,
+    "regulation": "Unregulated",
+    "year_established": 2021,
+    "country": "Saint Lucia",
+    "description": "Offshore broker with 100% deposit bonus up to $10,000, zero-commission accounts, and 150+ trading instruments",
+    "features": ["100% Deposit Bonus", "Raw Spreads", "Zero Commission", "150+ Instruments"],
+    "asset_types": ["forex", "stocks", "crypto", "commodities", "indices"],
+    "url": "https://tradelockerbrokers.com/brokers#athens-markets"
+  },
+  {
+    "name": "Clarity FX",
+    "supports": "TradeLocker",
+    "type": "Broker",
+    "execution": "STP",
+    "spread": "Raw (from 0.0 pips)",
+    "min_deposit": 10,
+    "regulation": "Unregulated",
+    "year_established": 2024,
+    "country": "Saint Lucia",
+    "description": "Ultra-low entry broker with $10 minimum deposit, crypto-only funding, and 24/7 support",
+    "features": ["Low Minimum Deposit", "Crypto Funding", "24/7 Support", "Raw Spreads"],
+    "asset_types": ["forex", "crypto", "indices", "commodities"],
+    "url": "https://tradelockerbrokers.com/brokers#clarity-fx"
+  },
+  {
+    "name": "GatesFX",
+    "supports": "TradeLocker",
+    "type": "Broker",
+    "execution": "ECN",
+    "spread": "Raw (from 0.0 pips)",
+    "min_deposit": 25,
+    "regulation": "FSCA Regulated",
+    "year_established": 2014,
+    "country": "South Africa",
+    "description": "Technology-forward broker with 2ms execution speed, 1:1000 leverage, and 2-hour withdrawal guarantee",
+    "features": ["2ms Execution", "1:1000 Leverage", "100% Deposit Bonus", "2-Hour Withdrawals"],
+    "asset_types": ["forex", "stocks", "crypto", "commodities"],
+    "url": "https://tradelockerbrokers.com/brokers#gatesfx"
+  },
+  {
+    "name": "HeroFX",
+    "supports": "TradeLocker",
+    "type": "Broker",
+    "execution": "ECN",
+    "spread": "Ultra-Low (from -0.4 pips)",
+    "min_deposit": 5,
+    "regulation": "Unregulated",
+    "year_established": 2021,
+    "country": "Saint Lucia",
+    "description": "Offshore broker with negative spreads, Hero10X instant funding model, and rapid crypto withdrawals",
+    "features": ["Negative Spreads", "Zero Commission", "Hero10X Funding", "1:500 Leverage"],
+    "asset_types": ["forex", "stocks", "crypto", "commodities"],
+    "url": "https://tradelockerbrokers.com/brokers#herofx"
+  }
+]
