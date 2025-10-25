@@ -3,6 +3,14 @@ import { generateWithAnalytics, createEmbeddingWithAnalytics } from '@/lib/opena
 
 export async function POST(request: NextRequest) {
   try {
+    // Check if OpenAI API key is available
+    if (!process.env.OPENAI_API_KEY) {
+      return NextResponse.json(
+        { error: 'OpenAI API key not configured. Please set OPENAI_API_KEY environment variable.' },
+        { status: 503 }
+      )
+    }
+
     const body = await request.json()
     const { 
       type, 

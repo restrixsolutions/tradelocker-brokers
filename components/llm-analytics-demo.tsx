@@ -34,6 +34,8 @@ export function LLMAnalyticsDemo() {
 
     if (result.success) {
       setResponse(result.data.content)
+    } else if (result.error?.includes('API key not configured')) {
+      setResponse('⚠️ OpenAI API key not configured. Please set OPENAI_API_KEY environment variable to test this feature.')
     }
   }
 
@@ -50,6 +52,8 @@ export function LLMAnalyticsDemo() {
 
     if (result.success) {
       setResponse(`Embedding created with ${result.data.embeddings.length} vectors`)
+    } else if (result.error?.includes('API key not configured')) {
+      setResponse('⚠️ OpenAI API key not configured. Please set OPENAI_API_KEY environment variable to test this feature.')
     }
   }
 

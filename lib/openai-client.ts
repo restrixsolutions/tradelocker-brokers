@@ -1,21 +1,44 @@
 import { OpenAI } from '@posthog/ai'
 import { PostHog } from 'posthog-node'
 
-// Initialize PostHog server-side client
-const phClient = new PostHog(
-  process.env.NEXT_PUBLIC_POSTHOG_KEY!,
-  { 
-    host: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://us.i.posthog.com',
-    flushAt: 1, // Send events immediately for better testing
-    flushInterval: 1000 // Flush every second
-  }
-)
+// Lazy initialization to avoid build-time errors
+let phClient: PostHog | null = null
+let openaiClient: OpenAI | null = null
 
-// Initialize OpenAI client with PostHog integration
-export const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY!,
-  posthog: phClient,
-})
+function getPostHogClient(): PostHog {
+  if (!phClient) {
+    phClient = new PostHog(
+      process.env.NEXT_PUBLIC_POSTHOG_KEY!,
+      { 
+        host: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://us.i.posthog.com',
+        flushAt: 1, // Send events immediately for better testing
+        flushInterval: 1000 // Flush every second
+      }
+    )
+  }
+  return phClient
+}
+
+function getOpenAIClient(): OpenAI {
+  if (!openaiClient) {
+    const apiKey = process.env.OPENAI_API_KEY
+    if (!apiKey) {
+      throw new Error('Missing credentials. Please pass an `apiKey`, or set the `OPENAI_API_KEY` environment variable.')
+    }
+    openaiClient = new OpenAI({
+      apiKey,
+      posthog: getPostHogClient(),
+    })
+  }
+  return openaiClient
+}
+
+// Export the clients (will be initialized on first use)
+export const openai = {
+  get client() {
+    return getOpenAIClient()
+  }
+}
 
 // Helper function to make LLM calls with analytics
 export async function generateWithAnalytics({
@@ -36,7 +59,7 @@ export async function generateWithAnalytics({
   privacyMode?: boolean
 }) {
   try {
-    const completion = await openai.chat.completions.create({
+    const completion = await openai.client.chat.completions.create({
       model,
       messages,
       posthogDistinctId: distinctId,
@@ -80,7 +103,7 @@ export async function createEmbeddingWithAnalytics({
   privacyMode?: boolean
 }) {
   try {
-    const response = await openai.embeddings.create({
+    const response = await openai.client.embeddings.create({
       input,
       model,
       posthogDistinctId: distinctId,
@@ -107,8 +130,10 @@ export async function createEmbeddingWithAnalytics({
 
 // Graceful shutdown function
 export function shutdownPostHog() {
-  phClient.shutdown()
+  if (phClient) {
+    phClient.shutdown()
+  }
 }
 
 // Export the PostHog client for direct use if needed
-export { phClient }
+export { getPostHogClient as phClient }
