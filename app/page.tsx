@@ -3,6 +3,7 @@ import { HeaderNav } from "@/components/header-nav"
 import { Container } from "@/components/container"
 import { Section } from "@/components/section"
 import { BrokerTable } from "@/components/broker-table"
+import { GatesFXBanner } from "@/components/gatesfx-banner"
 import { getSupabaseServerClient } from "@/lib/supabase/server"
 import type { Broker } from "@/lib/types"
 import { Footer } from "@/components/footer"
@@ -72,6 +73,13 @@ export default async function HomePage() {
 
   const brokersData: Broker[] = brokers || []
 
+  // Get GatesFX data for the banner
+  const { data: gatesfxData } = await supabase
+    .from("brokers")
+    .select("name, logo, affiliate_link")
+    .eq("name", "GatesFX")
+    .single()
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <FAQPageJsonLd faqs={homepageFAQs} />
@@ -106,6 +114,8 @@ export default async function HomePage() {
               . Updated for 2025.
             </p>
           </div>
+
+          {gatesfxData && <GatesFXBanner gatesfx={gatesfxData} />}
 
           <BrokerTable brands={brokersData} type="broker" />
           
