@@ -49,7 +49,7 @@ export function GatesFXBannerVariant2() {
               asChild 
               className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-8 py-6 text-base font-semibold h-auto shadow-lg"
             >
-              <Link href="https://gatesfx.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+              <Link href="https://secure.gatesfx.com/links/go/1080" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                 Sign Up Now
                 <ArrowRight className="w-5 h-5" />
               </Link>

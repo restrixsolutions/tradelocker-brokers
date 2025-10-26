@@ -48,7 +48,7 @@ export function GatesFXBannerVariant3() {
               variant="outline"
               className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white rounded-full px-6 py-6 text-base font-medium h-auto"
             >
-              <Link href="https://gatesfx.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+              <Link href="https://secure.gatesfx.com/links/go/1080" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                 Learn More
                 <ArrowRight className="w-4 h-4" />
               </Link>

@@ -53,7 +53,7 @@ export function GatesFXBanner({ gatesfx }: GatesFXBannerProps) {
               asChild 
               className="bg-white text-purple-600 hover:bg-gray-100 rounded-full w-full md:w-auto px-4 md:px-6 py-3 md:py-4 lg:py-6 text-sm md:text-base font-semibold h-auto"
             >
-              <Link href={gatesfx.affiliate_link} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
+              <Link href="https://secure.gatesfx.com/links/go/1080" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
                 Claim Your Bonus
                 <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
               </Link>
