@@ -52,9 +52,6 @@ export function BrokerCtaBanner({
           </Button>
         </div>
       </div>
-      <p className="mt-4 text-center text-xs text-muted-foreground">
-        *This is an affiliate link. We may receive compensation if you open an account.
-      </p>
     </div>
   )
 }

@@ -147,11 +147,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </Alert>
             </div>
 
-            {/* Article Content */}
-            <div className="prose prose-lg prose-invert max-w-none mb-12">
-              {parseMarkdown(post.content)}
-            </div>
-
             {/* CTA Banner */}
             {post.ctaBrokerName && post.ctaAffiliateLink && (
               <BrokerCtaBanner
@@ -160,6 +155,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 highlight={post.ctaHighlight}
               />
             )}
+
+            {/* Article Content */}
+            <div className="prose prose-lg prose-invert max-w-none mb-12">
+              {parseMarkdown(post.content)}
+            </div>
 
             {/* Affiliate Disclosure */}
             <Card className="mb-12 bg-accent/5 border-accent/20">
