@@ -4,7 +4,7 @@ import { BrokerCtaBanner } from '@/components/broker-cta-banner'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
-    BrokerCtaBanner,
+    BrokerCtaBanner: BrokerCtaBanner as any,
     h1: ({ children }) => (
       <h1 className="text-4xl font-bold mb-8 mt-12 text-balance text-foreground">{children}</h1>
     ),
