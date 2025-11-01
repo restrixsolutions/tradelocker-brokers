@@ -13,6 +13,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 import { parseMarkdown } from "@/lib/markdown-parser"
+import { BrokerCtaBanner } from "@/components/broker-cta-banner"
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -150,6 +151,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <div className="prose prose-lg prose-invert max-w-none mb-12">
               {parseMarkdown(post.content)}
             </div>
+
+            {/* CTA Banner */}
+            {post.ctaBrokerName && post.ctaAffiliateLink && (
+              <BrokerCtaBanner
+                brokerName={post.ctaBrokerName}
+                affiliateLink={post.ctaAffiliateLink}
+                highlight={post.ctaHighlight}
+              />
+            )}
 
             {/* Affiliate Disclosure */}
             <Card className="mb-12 bg-accent/5 border-accent/20">

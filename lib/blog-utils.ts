@@ -16,6 +16,9 @@ export interface BlogPost {
   ogImage?: string
   content: string
   excerpt: string
+  ctaBrokerName?: string
+  ctaAffiliateLink?: string
+  ctaHighlight?: string
 }
 
 const blogDirectory = path.join(process.cwd(), 'content/blog')
@@ -45,6 +48,9 @@ export function getAllBlogPosts(): BlogPost[] {
           ogImage: data.ogImage,
           content,
           excerpt: data.excerpt || content.slice(0, 160) + '...',
+          ctaBrokerName: data.ctaBrokerName,
+          ctaAffiliateLink: data.ctaAffiliateLink,
+          ctaHighlight: data.ctaHighlight,
         } as BlogPost
       })
 
@@ -78,6 +84,9 @@ export function getBlogPostBySlug(slug: string): BlogPost | null {
       ogImage: data.ogImage,
       content,
       excerpt: data.excerpt || content.slice(0, 160) + '...',
+      ctaBrokerName: data.ctaBrokerName,
+      ctaAffiliateLink: data.ctaAffiliateLink,
+      ctaHighlight: data.ctaHighlight,
     }
   } catch (error) {
     return null
