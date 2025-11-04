@@ -9,7 +9,6 @@ export interface BrokerFilterParams {
   countries?: string[]
   tags?: string[]
   noDepositFee?: boolean
-  noWithdrawalFee?: boolean
   noInactivityFee?: boolean
   sortField?: "name" | "minDeposit" | "yearEstablished"
   sortDirection?: "asc" | "desc"
@@ -29,7 +28,7 @@ export async function getFilteredBrokers(params: BrokerFilterParams = {}): Promi
     .from("brokers")
     .select(`
       id, name, logo, description, tags, asset_types, 
-      min_deposit, deposit_fee, withdrawal_fee, regulation, 
+      min_deposit, deposit_fee, withdrawal_fee, leverage, regulation, 
       country_established, country_code, year_established, 
       affiliate_link, is_featured, youtube_url
     `)
@@ -72,9 +71,6 @@ export async function getFilteredBrokers(params: BrokerFilterParams = {}): Promi
     query = query.eq('deposit_fee', 'None')
   }
   
-  if (params.noWithdrawalFee) {
-    query = query.eq('withdrawal_fee', 'None')
-  }
   
   // Note: Removed inactivity fee filter as we replaced it with regulation
   

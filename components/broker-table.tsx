@@ -34,6 +34,13 @@ const assetIcons = {
   commodities: Wheat,
 }
 
+const assetConfig = {
+  forex: { label: "Forex", color: "bg-blue-100 text-blue-700 border-blue-200", icon: TrendingUp },
+  crypto: { label: "Crypto", color: "bg-amber-100 text-amber-700 border-amber-200", icon: Bitcoin },
+  stocks: { label: "Stocks", color: "bg-green-100 text-green-700 border-green-200", icon: BarChart3 },
+  commodities: { label: "Commodities", color: "bg-purple-100 text-purple-700 border-purple-200", icon: Wheat },
+}
+
 const countryFlagCodes: Record<string, string> = {
   "St. Lucia": "lc",
   "South Africa": "za",
@@ -69,7 +76,6 @@ export function BrokerTable({
     countries: initialFilters?.countries || [],
     tags: initialFilters?.tags || [],
     noDepositFee: initialFilters?.noDepositFee || false,
-    noWithdrawalFee: initialFilters?.noWithdrawalFee || false,
     noInactivityFee: initialFilters?.noInactivityFee || false,
   })
 
@@ -95,7 +101,7 @@ export function BrokerTable({
     })
     
     // Handle boolean params
-    const boolParams = ['noDepositFee', 'noWithdrawalFee', 'noInactivityFee'] as const
+    const boolParams = ['noDepositFee', 'noInactivityFee'] as const
     boolParams.forEach(param => {
       params.delete(param)
       if (newFilters[param]) {
@@ -157,7 +163,6 @@ export function BrokerTable({
 
     // Fee filters
     if (filters.noDepositFee && brand.deposit_fee !== "None") return false
-    if (filters.noWithdrawalFee && brand.withdrawal_fee !== "None") return false
     if (filters.noInactivityFee && brand.inactivity_fee !== "None") return false
 
     return true
@@ -225,7 +230,7 @@ export function BrokerTable({
       <div className="flex-1 overflow-x-hidden">
         <div className="w-full overflow-x-auto">
           <div className="min-w-[1200px]">
-            <div className="flex gap-3 px-4 py-4 bg-muted/30 rounded-t-lg border border-border font-semibold text-sm relative">
+            <div className="flex gap-3 px-6 py-5 bg-gradient-to-r from-muted/50 to-muted/30 rounded-xl border border-border/60 font-bold text-sm relative shadow-sm backdrop-blur-sm">
               <div key="header-logo" className="w-[80px] flex-shrink-0"></div>
               <button
                 key="header-name"
@@ -244,8 +249,7 @@ export function BrokerTable({
                   >
                     Min. Deposit <SortIcon field="minDeposit" />
                   </button>
-                  <div key="header-deposit-fee" className="w-[110px] flex-shrink-0">Deposit Fee</div>
-                  <div key="header-withdrawal-fee" className="w-[120px] flex-shrink-0">Withdrawal Fee</div>
+                  <div key="header-leverage" className="w-[120px] flex-shrink-0">Leverage</div>
                   <div key="header-regulation" className="w-[120px] flex-shrink-0">Regulation</div>
                   <div key="header-country" className="w-[160px] flex-shrink-0">Country Est.</div>
                   <button
@@ -271,11 +275,11 @@ export function BrokerTable({
               <div key="header-actions" className="w-[220px] flex-shrink-0 text-right pr-2 sticky right-0"></div>
             </div>
 
-            <div className="space-y-2 mt-2">
+            <div className="space-y-4 mt-4">
               {sortedBrands.map((brand, index) => (
                 <div
                   key={`${brand.id}-${index}`}
-                  className="flex gap-3 px-4 py-4 bg-card border border-border rounded-lg hover:border-primary/50 transition-all items-center relative"
+                  className="flex gap-3 px-6 py-5 bg-card border border-border/60 rounded-xl shadow-sm hover:shadow-lg hover:border-primary/40 hover:bg-card/80 transition-all duration-300 items-center relative group backdrop-blur-sm"
                 >
                   {/* Logo with DEAL badge */}
                   <div className="w-[80px] flex-shrink-0 relative">
@@ -295,66 +299,80 @@ export function BrokerTable({
                     )}
                   </div>
 
-                  {/* Name */}
-                  <div className="w-[180px] flex-shrink-0 font-semibold text-base">{brand.name}</div>
+                      {/* Name */}
+                      <div className="w-[180px] flex-shrink-0 font-bold text-lg text-foreground group-hover:text-primary transition-colors">{brand.name}</div>
 
                   {type === "broker" ? (
                     <>
                       {/* Asset Types */}
-                      <div className="w-[140px] flex-shrink-0 flex gap-2">
-                        {brand.asset_types.map((asset, assetIndex) => {
-                          const Icon = assetIcons[asset as keyof typeof assetIcons]
-                          if (!Icon) return null
+                      <div className="w-[140px] flex-shrink-0 flex flex-wrap gap-1.5">
+                        {brand.asset_types.slice(0, 2).map((asset, assetIndex) => {
+                          const config = assetConfig[asset as keyof typeof assetConfig]
+                          if (!config) return null
+                          const Icon = config.icon
                           return (
                             <div
                               key={`${brand.id}-${asset}-${assetIndex}`}
-                              className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center"
+                              className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium border transition-colors ${config.color} group-hover:shadow-sm`}
                               title={asset}
                             >
-                              <Icon className="w-4 h-4 text-primary" />
+                              <Icon className="w-3 h-3" />
+                              <span className="hidden sm:inline">{config.label}</span>
                             </div>
                           )
                         })}
+                        {brand.asset_types.length > 2 && (
+                          <div className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-muted text-muted-foreground border border-border" title={`+${brand.asset_types.length - 2} more`}>
+                            +{brand.asset_types.length - 2}
+                          </div>
+                        )}
                       </div>
 
                       {/* Min Deposit */}
-                      <div className="w-[110px] flex-shrink-0 font-medium">${brand.min_deposit?.toFixed(2)}</div>
-
-                      {/* Deposit Fee */}
-                      <div
-                        className={`w-[110px] flex-shrink-0 ${brand.deposit_fee === "None" ? "text-green-600 font-medium" : ""}`}
-                      >
-                        {brand.deposit_fee}
+                      <div className="w-[110px] flex-shrink-0">
+                        <div className="font-bold text-foreground">${brand.min_deposit?.toFixed(2)}</div>
+                        <div className="text-xs text-muted-foreground">minimum</div>
                       </div>
 
-                      {/* Withdrawal Fee */}
-                      <div
-                        className={`w-[120px] flex-shrink-0 ${brand.withdrawal_fee === "None" ? "text-green-600 font-medium" : ""}`}
-                      >
-                        {brand.withdrawal_fee}
+                      {/* Leverage */}
+                      <div className="w-[120px] flex-shrink-0">
+                        <span className="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200">
+                          {brand.leverage || '1:100'}
+                        </span>
                       </div>
 
                       {/* Regulation */}
-                      <div
-                        className={`w-[120px] flex-shrink-0 ${brand.regulation === "FSCA Regulated" ? "text-green-600 font-medium" : "text-muted-foreground"}`}
-                      >
-                        {brand.regulation}
+                      <div className="w-[120px] flex-shrink-0">
+                        {brand.regulation ? (
+                          <span className={`inline-flex items-center px-2.5 py-1.5 rounded-lg text-xs font-bold border ${
+                            brand.regulation.toLowerCase().includes("regulated") 
+                              ? "bg-emerald-50 text-emerald-700 border-emerald-200" 
+                              : "bg-gray-50 text-gray-600 border-gray-200"
+                          }`}>
+                            {brand.regulation}
+                          </span>
+                        ) : (
+                          <span className="text-muted-foreground text-sm">Not specified</span>
+                        )}
                       </div>
 
                       {/* Country */}
-                      <div className="w-[160px] flex-shrink-0 flex items-center gap-2">
-                        <div className="w-6 h-4 rounded overflow-hidden border border-border/50 flex-shrink-0">
+                      <div className="w-[160px] flex-shrink-0 flex items-center gap-3">
+                        <div className="w-7 h-5 rounded-sm overflow-hidden border border-border/50 flex-shrink-0 shadow-sm">
                           <img
                             src={`https://flagcdn.com/w40/${countryFlagCodes[brand.country_established] || "un"}.png`}
                             alt={`${brand.country_established} flag`}
                             className="w-full h-full object-cover"
                           />
                         </div>
-                        <span className="text-sm truncate">{brand.country_established}</span>
+                        <span className="text-sm font-medium text-foreground truncate">{brand.country_established}</span>
                       </div>
 
                       {/* Year Established */}
-                      <div className="w-[120px] flex-shrink-0">{brand.year_established}</div>
+                      <div className="w-[120px] flex-shrink-0">
+                        <div className="font-semibold text-foreground">{brand.year_established}</div>
+                        <div className="text-xs text-muted-foreground">established</div>
+                      </div>
                     </>
                   ) : (
                     <>
@@ -410,24 +428,24 @@ export function BrokerTable({
                   )}
 
                   {/* Actions */}
-                  <div className="w-[220px] flex-shrink-0 flex gap-2 items-center justify-end sticky right-0 pl-4">
+                  <div className="w-[220px] flex-shrink-0 flex gap-3 items-center justify-end sticky right-0 pl-6">
                     <Button
                       variant="outline"
                       size="sm"
                       onClick={() => setSelectedBrand(brand)}
-                      className="whitespace-nowrap px-1.5 py-0.5 h-7 text-[10px] md:px-2 md:py-1 md:h-8 md:text-xs"
+                      className="whitespace-nowrap px-3 py-2 h-9 text-xs font-medium border-2 hover:border-primary/50 transition-all duration-200 shadow-sm"
                     >
-                      <Info className="w-2.5 h-2.5 mr-0.5 md:w-3 md:h-3 md:mr-1" />
-                      More Info
+                      <Info className="w-3.5 h-3.5 mr-1.5" />
+                      Details
                     </Button>
                     <Button
                       size="sm"
-                      className="whitespace-nowrap bg-green-600 hover:bg-green-700 text-white px-1.5 py-0.5 h-7 text-[10px] md:px-2 md:py-1 md:h-8 md:text-xs"
+                      className="whitespace-nowrap bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-4 py-2 h-9 text-xs font-semibold shadow-lg hover:shadow-xl transition-all duration-200 border-0"
                       asChild
                     >
                       <a href={brand.affiliate_link} target="_blank" rel="noopener noreferrer">
                         Get Started
-                        <ExternalLink className="w-2.5 h-2.5 ml-0.5 md:w-3 md:h-3 md:ml-1" />
+                        <ExternalLink className="w-3.5 h-3.5 ml-1.5" />
                       </a>
                     </Button>
                   </div>

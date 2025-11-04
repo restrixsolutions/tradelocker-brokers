@@ -35,7 +35,6 @@ interface PageProps {
     countries?: string | string[]
     tags?: string | string[]
     noDepositFee?: string
-    noWithdrawalFee?: string
     noInactivityFee?: string
     sortField?: string
     sortDirection?: string
@@ -66,7 +65,6 @@ export default async function BrokersPage({ searchParams }: PageProps) {
         : searchParams.tags.split(',')
       : undefined,
     noDepositFee: searchParams?.noDepositFee === 'true',
-    noWithdrawalFee: searchParams?.noWithdrawalFee === 'true',
     noInactivityFee: searchParams?.noInactivityFee === 'true',
     sortField: searchParams?.sortField as any,
     sortDirection: searchParams?.sortDirection as any,

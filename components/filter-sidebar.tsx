@@ -12,7 +12,6 @@ export interface FilterOptions {
   countries: string[]
   tags: string[]
   noDepositFee: boolean
-  noWithdrawalFee: boolean
   noInactivityFee: boolean
 }
 
@@ -75,7 +74,6 @@ export function FilterSidebar({
       countries: [],
       tags: [],
       noDepositFee: false,
-      noWithdrawalFee: false,
       noInactivityFee: false,
     })
   }
@@ -86,7 +84,6 @@ export function FilterSidebar({
     filters.countries.length > 0 ||
     filters.tags.length > 0 ||
     filters.noDepositFee ||
-    filters.noWithdrawalFee ||
     filters.noInactivityFee
 
   const FilterContent = () => (
@@ -157,16 +154,6 @@ export function FilterSidebar({
             />
             <Label htmlFor="no-deposit-fee" className="text-sm cursor-pointer">
               No Deposit Fee
-            </Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <Checkbox
-              id="no-withdrawal-fee"
-              checked={filters.noWithdrawalFee}
-              onCheckedChange={(checked) => onFilterChange({ ...filters, noWithdrawalFee: checked as boolean })}
-            />
-            <Label htmlFor="no-withdrawal-fee" className="text-sm cursor-pointer">
-              No Withdrawal Fee
             </Label>
           </div>
           <div className="flex items-center space-x-2">
