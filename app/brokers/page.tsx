@@ -94,7 +94,7 @@ export default async function BrokersPage({ searchParams }: PageProps) {
       <ItemListJsonLd items={topBrokers} type="broker" />
       <HeaderNav />
 
-      <Section className="pt-32 overflow-x-hidden">
+      <Section className="pt-40 overflow-x-hidden">
         <Container>
           <div className="max-w-3xl mb-12">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-balance">

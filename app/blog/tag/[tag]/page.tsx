@@ -62,7 +62,7 @@ export default async function TagPage({ params }: TagPageProps) {
       />
       <HeaderNav />
 
-      <Section className="pt-32">
+      <Section className="pt-40">
         <Container>
           <Link
             href="/blog"

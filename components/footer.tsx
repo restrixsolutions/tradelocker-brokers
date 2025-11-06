@@ -12,9 +12,9 @@ export function Footer() {
               <Image
                 src="/tradelocker-logo.png"
                 alt="TradeLocker"
-                width={180}
-                height={40}
-                className="h-8 md:h-10 w-auto"
+                width={480}
+                height={400}
+                className="h-16 md:h-20 w-auto"
               />
             </div>
             <p className="text-xs md:text-sm text-muted-foreground">

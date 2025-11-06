@@ -37,7 +37,7 @@ export default function PressPage() {
       />
       <HeaderNav />
 
-      <Section className="pt-32">
+      <Section className="pt-40">
         <Container>
           <div className="max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-balance">
@@ -87,7 +87,7 @@ export default function PressPage() {
                       <img
                         src="/tradelocker-logo.png"
                         alt="TradeLocker Brokers Logo"
-                        className="max-h-24 w-auto"
+                        className="max-h-32 w-auto"
                       />
                     </div>
                     <div className="flex gap-3">
@@ -109,7 +109,7 @@ export default function PressPage() {
                       <img
                         src="/tradelocker-logo.png"
                         alt="TradeLocker Brokers Logo (Dark)"
-                        className="max-h-24 w-auto"
+                        className="max-h-32 w-auto"
                       />
                     </div>
                     <p className="text-sm text-muted-foreground">

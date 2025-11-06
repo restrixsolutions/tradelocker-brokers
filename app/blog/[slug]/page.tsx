@@ -97,7 +97,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       />
       <HeaderNav />
 
-      <Section className="pt-32">
+      <Section className="pt-40">
         <Container>
           <article className="max-w-4xl mx-auto">
             {/* Article Header */}

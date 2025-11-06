@@ -33,16 +33,16 @@ export function HeaderNav() {
       }`}
     >
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-24 md:h-28">
           {/* Left side: Logo + Desktop Navigation */}
           <div className="flex items-center gap-6 md:gap-12">
             <Link href="/" className="flex items-center flex-shrink-0">
               <Image
                 src="/tradelocker-logo.png"
                 alt="TradeLocker"
-                width={180}
-                height={40}
-                className="h-7 md:h-10 w-auto"
+                width={480}
+                height={400}
+                className="h-16 md:h-20 w-auto"
                 priority
               />
             </Link>
@@ -83,9 +83,9 @@ export function HeaderNav() {
                     <Image
                       src="/tradelocker-logo.png"
                       alt="TradeLocker"
-                      width={180}
-                      height={40}
-                      className="h-8 w-auto mb-4"
+                      width={480}
+                      height={400}
+                      className="h-20 w-auto mb-4"
                     />
                   </Link>
                   <nav className="flex flex-col gap-4">

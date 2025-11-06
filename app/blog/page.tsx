@@ -52,7 +52,7 @@ export default function BlogPage() {
       />
       <HeaderNav />
 
-      <Section className="pt-32">
+      <Section className="pt-40">
         <Container>
           {/* Header */}
           <div className="max-w-3xl mb-12">

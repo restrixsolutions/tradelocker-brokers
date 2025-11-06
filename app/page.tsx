@@ -85,7 +85,7 @@ export default async function HomePage() {
       <FAQPageJsonLd faqs={homepageFAQs} />
       <HeaderNav />
 
-      <Section className="pt-32">
+      <Section className="pt-40">
         <Container>
           <div className="max-w-4xl mb-12">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-balance">
