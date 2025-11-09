@@ -28,7 +28,7 @@ export async function getFilteredBrokers(params: BrokerFilterParams = {}): Promi
     .from("brokers")
     .select(`
       id, name, logo, description, tags, asset_types, 
-      min_deposit, deposit_fee, withdrawal_fee, leverage, regulation, 
+      min_deposit, deposit_fee, withdrawal_fee, inactivity_fee, leverage, regulation, 
       country_established, country_code, year_established, 
       affiliate_link, is_featured, youtube_url
     `)

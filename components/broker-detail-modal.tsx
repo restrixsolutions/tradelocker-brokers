@@ -140,6 +140,12 @@ export function BrokerDetailModal({ brand, type, isOpen, onClose }: BrokerDetail
                   <div className="text-lg md:text-xl font-bold">${brand.min_deposit?.toFixed(2)}</div>
                 </div>
                 <div className="p-3 md:p-4 bg-muted rounded-lg">
+                  <div className="text-xs md:text-sm text-muted-foreground mb-1">Leverage</div>
+                  <div className="text-lg md:text-xl font-bold text-blue-600">
+                    {brand.leverage || '1:100'}
+                  </div>
+                </div>
+                <div className="p-3 md:p-4 bg-muted rounded-lg">
                   <div className="text-xs md:text-sm text-muted-foreground mb-1">Deposit Fee</div>
                   <div className={`text-lg md:text-xl font-bold ${brand.deposit_fee === "None" ? "text-green-600" : ""}`}>
                     {brand.deposit_fee}
@@ -149,6 +155,12 @@ export function BrokerDetailModal({ brand, type, isOpen, onClose }: BrokerDetail
                   <div className="text-xs md:text-sm text-muted-foreground mb-1">Withdrawal Fee</div>
                   <div className={`text-lg md:text-xl font-bold ${brand.withdrawal_fee === "None" ? "text-green-600" : ""}`}>
                     {brand.withdrawal_fee}
+                  </div>
+                </div>
+                <div className="p-3 md:p-4 bg-muted rounded-lg">
+                  <div className="text-xs md:text-sm text-muted-foreground mb-1">Inactivity Fee</div>
+                  <div className={`text-lg md:text-xl font-bold ${brand.inactivity_fee === "None" ? "text-green-600" : ""}`}>
+                    {brand.inactivity_fee || 'Not specified'}
                   </div>
                 </div>
                 <div className="p-3 md:p-4 bg-muted rounded-lg">

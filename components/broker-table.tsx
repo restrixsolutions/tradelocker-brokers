@@ -299,8 +299,8 @@ export function BrokerTable({
                     )}
                   </div>
 
-                      {/* Name */}
-                      <div className="w-[180px] flex-shrink-0 font-bold text-lg text-foreground group-hover:text-primary transition-colors">{brand.name}</div>
+                  {/* Name */}
+                  <div className="w-[180px] flex-shrink-0 font-bold text-sm text-foreground group-hover:text-primary transition-colors">{brand.name}</div>
 
                   {type === "broker" ? (
                     <>
