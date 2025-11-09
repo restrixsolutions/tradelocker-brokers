@@ -18,7 +18,7 @@ export async function GET() {
     home_page_url: SITE_URL,
     feed_url: `${SITE_URL}/feed.json`,
     icon: `${SITE_URL}/tradelocker-logo.png`,
-    favicon: `${SITE_URL}/icon.png`,
+    favicon: `${SITE_URL}/tradelocker-favicon.png`,
     authors: [
       {
         name: "TradeLocker Brokers Editorial",

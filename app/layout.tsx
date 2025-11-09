@@ -52,14 +52,14 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
+      { url: "/tradelocker-favicon.png", sizes: "any", type: "image/png" },
       { url: "/favicon.png", sizes: "any", type: "image/png" },
-      { url: "/icon.png", sizes: "any", type: "image/png" },
     ],
-    shortcut: "/favicon.png",
-    apple: "/icon.png",
+    shortcut: "/tradelocker-favicon.png",
+    apple: "/tradelocker-favicon.png",
     other: {
       rel: "apple-touch-icon-precomposed",
-      url: "/icon.png",
+      url: "/tradelocker-favicon.png",
     },
   },
   manifest: "/manifest.json",
