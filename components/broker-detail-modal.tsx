@@ -56,6 +56,22 @@ function getYouTubeVideoId(url: string): string | null {
   return null
 }
 
+// Helper function to get review page link based on broker/prop firm name
+function getReviewLink(name: string): string | null {
+  const nameLower = name.toLowerCase()
+  
+  // Broker review mappings
+  if (nameLower.includes("gatesfx")) return "/gatesfx-review"
+  if (nameLower.includes("herofx")) return "/herofx-review"
+  if (nameLower.includes("athens markets")) return "/athens-markets-review"
+  if (nameLower.includes("clarity") && nameLower.includes("fx")) return "/clarity-fx-review"
+  
+  // Prop firm review mappings
+  if (nameLower.includes("funderpro")) return "/funderpro-review"
+  
+  return null
+}
+
 export function BrokerDetailModal({ brand, type, isOpen, onClose }: BrokerDetailModalProps) {
   const youtubeVideoId = brand.youtube_url ? getYouTubeVideoId(brand.youtube_url) : null
 
@@ -97,6 +113,18 @@ export function BrokerDetailModal({ brand, type, isOpen, onClose }: BrokerDetail
                   className="absolute inset-0 w-full h-full"
                 />
               </div>
+              {/* View Full Review Link (dynamic for all brokers/prop firms) */}
+              {getReviewLink(brand.name) && (
+                <div className="mt-3 text-center">
+                  <a
+                    href={getReviewLink(brand.name)}
+                    className="text-sm text-primary hover:text-primary/80 hover:underline font-medium inline-flex items-center gap-1"
+                  >
+                    View Full {brand.name} Review
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              )}
             </div>
           )}
 
