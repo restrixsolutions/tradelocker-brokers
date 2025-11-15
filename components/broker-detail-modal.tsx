@@ -113,18 +113,19 @@ export function BrokerDetailModal({ brand, type, isOpen, onClose }: BrokerDetail
                   className="absolute inset-0 w-full h-full"
                 />
               </div>
-              {/* View Full Review Link (dynamic for all brokers/prop firms) */}
-              {getReviewLink(brand.name) && (
-                <div className="mt-3 text-center">
-                  <a
-                    href={getReviewLink(brand.name)}
-                    className="text-sm text-primary hover:text-primary/80 hover:underline font-medium inline-flex items-center gap-1"
-                  >
-                    View Full {brand.name} Review
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </a>
-                </div>
-              )}
+            </div>
+          )}
+
+          {/* View Full Review Link (always shown if review page exists) */}
+          {getReviewLink(brand.name) && (
+            <div className="text-center py-3 bg-accent/5 rounded-lg border border-accent/20">
+              <a
+                href={getReviewLink(brand.name)}
+                className="text-sm text-primary hover:text-primary/80 hover:underline font-medium inline-flex items-center gap-1"
+              >
+                View Full {brand.name} Review
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
             </div>
           )}
 
