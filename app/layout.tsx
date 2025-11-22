@@ -52,15 +52,25 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/tradelocker-favicon.png", sizes: "any", type: "image/png" },
-      { url: "/favicon.png", sizes: "any", type: "image/png" },
+      { url: "/tradelocker-favicon.png", sizes: "32x32", type: "image/png" },
+      { url: "/tradelocker-favicon.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
     ],
     shortcut: "/tradelocker-favicon.png",
-    apple: "/tradelocker-favicon.png",
-    other: {
-      rel: "apple-touch-icon-precomposed",
-      url: "/tradelocker-favicon.png",
-    },
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+      { url: "/tradelocker-favicon.png", sizes: "192x192", type: "image/png" },
+    ],
+    other: [
+      {
+        rel: "apple-touch-icon-precomposed",
+        url: "/apple-touch-icon.png",
+      },
+      {
+        rel: "mask-icon",
+        url: "/tradelocker-favicon.png",
+      },
+    ],
   },
   manifest: "/manifest.json",
   openGraph: {
@@ -111,7 +121,12 @@ export default function RootLayout({
         {/* <meta name="google-site-verification" content="YOUR_GOOGLE_VERIFICATION_CODE" /> */}
         {/* Additional SEO Meta Tags */}
         <meta name="theme-color" content="#6366f1" />
+        <meta name="msapplication-TileColor" content="#6366f1" />
+        <meta name="msapplication-TileImage" content="/tradelocker-favicon.png" />
         <link rel="manifest" href="/manifest.json" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/tradelocker-favicon.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/tradelocker-favicon.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
       </head>
       <body className={`${poppins.variable} font-sans antialiased`}>
         <PostHogWrapper>
