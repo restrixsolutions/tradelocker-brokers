@@ -1,0 +1,269 @@
+# TradeLocker Brokers - LLMs.txt
+
+> TradeLockerBrokers.com: A comprehensive comparison platform for forex brokers and prop firms using the TradeLocker trading platform.
+
+## Site Overview
+
+**Purpose**: Help traders find and compare the best TradeLocker brokers and prop firms through detailed data, reviews, and educational content.
+
+**URL**: https://tradelockerbrokers.com
+
+**Tech Stack**: Next.js 15, React 19, TypeScript, Supabase (PostgreSQL), TailwindCSS
+
+**Last Updated**: November 2025
+
+## Main Sections
+
+### 1. Brokers Directory (`/brokers`)
+- Compare 20+ verified TradeLocker brokers
+- Filter by spreads, regulation, minimum deposit, leverage, fees
+- View detailed broker specifications including:
+  - Minimum deposit amounts
+  - Deposit/withdrawal fees
+  - Inactivity fees
+  - Leverage options
+  - Regulatory bodies (FCA, ASIC, CySEC, etc.)
+  - Supported asset types (Forex, Indices, Commodities, Crypto)
+  - Country of establishment
+  - YouTube review links
+
+### 2. Prop Firms Directory (`/prop-firms`)
+- Compare funded trading programs
+- Key metrics:
+  - Max funding amounts (up to $200,000+)
+  - Profit splits (70-90%)
+  - Challenge types (1-step, 2-step, instant funding)
+  - Challenge fees
+  - Drawdown limits (daily and total)
+  - Trading rules (EA allowed, news trading, weekend holding)
+  - Payout frequency (on-demand, weekly, monthly)
+  - Scaling plans
+  - Consistency rules
+
+### 3. Blog & Educational Content (`/blog`)
+Available articles include:
+- How to login to TradeLocker
+- How to place a trade on TradeLocker
+- Quick guide to using TradeLocker
+- Best TradeLocker brokers for 2025
+- TradeLocker vs cTrader for scalping
+- Why TradeLocker is better than MT4/MT5
+- ECN brokers for scalping
+- Low spread brokers for beginners
+- Broker-specific reviews (GatesFX, HeroFX, Athens Markets, ClarityFX, RestroFX)
+
+### 4. Platform Information (`/platform`)
+- TradeLocker platform features and benefits
+- Browser-based trading
+- Advanced charting tools
+- Execution speed information
+
+### 5. Additional Pages
+- `/about` - About the comparison service
+- `/contact` - Contact information
+- `/how-to-use` - Complete guide to using TradeLocker
+- `/learn` - Educational resources
+- `/data` - Data sources and methodology
+
+## Data Structure
+
+### Broker Entity
+```typescript
+{
+  id: string
+  name: string
+  logo: string (URL)
+  description: string
+  tags: string[]
+  affiliate_link: string
+  min_deposit: number (in USD)
+  deposit_fee: string
+  withdrawal_fee: string
+  inactivity_fee: string
+  leverage: string (e.g., "1:500")
+  regulation: string
+  country_established: string
+  country_code: string (ISO)
+  year_established: number
+  asset_types: string[] (Forex, Indices, Commodities, Crypto, etc.)
+  is_featured: boolean
+  youtube_url?: string
+}
+```
+
+### Prop Firm Entity
+```typescript
+{
+  id: string
+  name: string
+  logo: string (URL)
+  description: string
+  
+  // Funding Details
+  max_funding_amount: number (USD)
+  profit_split: number (percentage)
+  profit_split_scaled?: number (percentage after scaling)
+  scaling_plan: boolean
+  payout_frequency: string (On-Demand, Weekly, Monthly)
+  
+  // Challenge Structure
+  challenge_type: string (1-Step, 2-Step, Instant)
+  challenge_fee: number (USD)
+  refundable_fee: boolean
+  phase_1_profit_target?: number (percentage)
+  phase_2_profit_target?: number (percentage)
+  
+  // Risk Rules
+  max_daily_loss?: number (percentage)
+  max_total_drawdown?: number (percentage)
+  drawdown_type?: string (Trailing, Static)
+  min_trading_days?: number
+  max_trading_days?: number
+  
+  // Trading Rules
+  news_trading_allowed: boolean
+  weekend_holding_allowed: boolean
+  ea_allowed: boolean (Expert Advisors/automated trading)
+  consistency_rule: boolean
+  copy_trading_allowed: boolean
+  leverage?: string
+}
+```
+
+## Key Concepts
+
+### TradeLocker Platform
+- Modern, browser-based forex trading platform
+- No downloads required
+- Known for fast execution (sub-50ms)
+- Alternative to MetaTrader 4/5 and cTrader
+- Supports advanced charting with 100+ technical indicators
+- Mobile-friendly and tablet-compatible
+
+### Broker vs Prop Firm
+- **Brokers**: Traders use their own capital, brokers provide the trading platform and market access
+- **Prop Firms**: Firms provide capital to traders, traders share profits, must pass evaluation challenges
+
+### Important Trading Metrics
+
+#### For Brokers:
+- **Spreads**: Difference between bid/ask price (tighter is better)
+- **ECN**: Electronic Communication Network - direct market access with raw spreads
+- **Leverage**: Borrowing power (e.g., 1:500 means $1 controls $500)
+- **Regulation**: Oversight by financial authorities (FCA, ASIC, CySEC)
+- **Slippage**: Difference between expected and actual execution price
+
+#### For Prop Firms:
+- **Profit Split**: Percentage of profits trader keeps (70-90%)
+- **Challenge Fee**: Cost to attempt funded account evaluation
+- **Drawdown**: Maximum allowed loss (daily and total)
+- **Challenge Types**:
+  - 1-Step: One evaluation phase
+  - 2-Step: Two evaluation phases
+  - Instant: No evaluation needed
+- **Scaling**: Ability to increase account size based on performance
+
+## Navigation Structure
+
+```
+Homepage (/)
+├── Brokers (/brokers)
+│   └── Individual Reviews (/brokers/review/[slug])
+├── Prop Firms (/prop-firms)
+├── Blog (/blog)
+│   ├── Categories (/blog/category/[category])
+│   ├── Tags (/blog/tag/[tag])
+│   └── Articles (/blog/[slug])
+├── Platform (/platform)
+├── How to Use (/how-to-use)
+├── Learn (/learn)
+├── About (/about)
+├── Contact (/contact)
+└── Data (/data)
+```
+
+## SEO & Discovery
+
+- **Sitemap**: https://tradelockerbrokers.com/sitemap.xml
+- **Robots.txt**: https://tradelockerbrokers.com/robots.txt
+- **RSS Feed (JSON)**: https://tradelockerbrokers.com/feed.json
+- **RSS Feed (XML)**: https://tradelockerbrokers.com/feed.xml
+
+## Featured Brokers
+
+The site highlights featured brokers prominently, including GatesFX with dedicated banner placements.
+
+## Filtering & Search Capabilities
+
+### Broker Filters:
+- Minimum deposit range
+- Regulation type
+- Asset types
+- Leverage levels
+- Fee structures
+- Country/region
+
+### Prop Firm Filters:
+- Funding amount
+- Profit split percentage
+- Challenge type
+- Challenge fee range
+- Trading rules (EA allowed, news trading, etc.)
+- Drawdown limits
+
+## Content Categories
+
+### Blog Categories:
+- Broker Reviews
+- Platform Guides
+- Trading Education
+- Comparison Articles
+- How-to Tutorials
+
+## API Endpoints
+
+- `/api/llm` - LLM analytics endpoint for tracking AI-generated queries
+- `/api/debug-brokers` - Debug endpoint for broker data
+
+## Analytics
+
+The site uses:
+- PostHog for product analytics and AI query tracking
+- Vercel Analytics for performance monitoring
+- Custom LLM analytics to understand AI-driven user queries
+
+## Important Notes for AI Assistants
+
+1. **Broker Data**: All broker information is stored in Supabase PostgreSQL database and dynamically fetched
+2. **Prop Firm Data**: Separate table with prop firm-specific fields (different from broker schema)
+3. **Affiliate Links**: Most broker/prop firm listings include affiliate links
+4. **Regulatory Focus**: The site emphasizes regulated brokers for user safety
+5. **Modern Platform**: TradeLocker is positioned as a modern alternative to older platforms (MT4/MT5)
+6. **Target Audience**: Forex traders, prop firm traders, scalpers, day traders
+7. **Geographic Scope**: Global, but focuses on internationally regulated brokers
+
+## Quick Reference Links
+
+- Homepage: https://tradelockerbrokers.com
+- All Brokers: https://tradelockerbrokers.com/brokers
+- All Prop Firms: https://tradelockerbrokers.com/prop-firms
+- Blog Home: https://tradelockerbrokers.com/blog
+- Platform Info: https://tradelockerbrokers.com/platform
+- Getting Started: https://tradelockerbrokers.com/how-to-use
+
+## Contact
+
+For inquiries: https://tradelockerbrokers.com/contact
+
+## Updates
+
+This is a living document. The site is actively maintained with:
+- Regular broker/prop firm additions
+- Updated reviews and comparisons
+- New educational content
+- Current 2025 data and recommendations
+
+---
+
+*This llms.txt file follows the LLMs.txt standard to help AI assistants better understand and assist users with questions about TradeLocker brokers and prop firms.*
+
