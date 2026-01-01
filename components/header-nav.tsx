@@ -62,6 +62,7 @@ export function HeaderNav() {
 
           {/* Right side: CTA Button + Mobile Menu */}
           <div className="flex items-center gap-2 md:gap-4">
+            {/* HIDDEN: Prop Firm Ready Reader button - uncomment to re-enable
             <Button asChild className="relative overflow-hidden bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 text-white hover:shadow-lg hover:scale-105 transition-all duration-300 font-semibold px-3 md:px-6 text-xs md:text-sm before:absolute before:inset-0 before:bg-gradient-to-r before:from-purple-600 before:via-blue-500 before:to-cyan-500 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500 animate-gradient bg-[length:200%_200%]">
               <a href="https://www.forexproprank.com/prop-firm-ready" target="_blank" rel="noopener noreferrer">
                 <span className="relative z-10 hidden sm:inline">PROP FIRM READY READER</span>
@@ -69,6 +70,7 @@ export function HeaderNav() {
                 <ArrowRight className="relative z-10 ml-1 md:ml-2 h-3 w-3 md:h-4 md:w-4" />
               </a>
             </Button>
+            */}
 
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild className="lg:hidden">
@@ -100,6 +102,7 @@ export function HeaderNav() {
                       </Link>
                     ))}
                   </nav>
+                  {/* HIDDEN: Prop Firm Ready Reader button - uncomment to re-enable
                   <Button
                     asChild
                     className="relative overflow-hidden bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 text-white hover:shadow-lg transition-all duration-300 font-semibold w-full mt-4 before:absolute before:inset-0 before:bg-gradient-to-r before:from-purple-600 before:via-blue-500 before:to-cyan-500 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500 animate-gradient bg-[length:200%_200%]"
@@ -114,6 +117,7 @@ export function HeaderNav() {
                       <ArrowRight className="relative z-10 ml-2 h-4 w-4" />
                     </a>
                   </Button>
+                  */}
                 </div>
               </SheetContent>
             </Sheet>

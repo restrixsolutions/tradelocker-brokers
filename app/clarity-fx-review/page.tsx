@@ -12,7 +12,7 @@ import { getSupabaseServerClient } from "@/lib/supabase/server"
 import Image from "next/image"
 
 export const metadata: Metadata = {
-  title: "Clarity FX Review 2025: Is Clarity FX Legit? Complete Broker Analysis",
+  title: "Clarity FX Review 2026: Is Clarity FX Legit? Complete Broker Analysis",
   description:
     "Clarity FX broker review 2025: Analyze spreads, execution, TradeLocker integration & regulation. Is Clarity FX a good broker? Read our complete review.",
   keywords: [
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     "is clarity fx legit",
   ],
   openGraph: {
-    title: "Clarity FX Review 2025 - Complete Broker Analysis",
+    title: "Clarity FX Review 2026 - Complete Broker Analysis",
     description: "Is Clarity FX legit? Complete review of spreads and TradeLocker integration.",
     type: "article",
     url: "https://tradelockerbrokers.com/clarity-fx-review",
@@ -123,7 +123,7 @@ export default async function ClarityFXReviewPage() {
               </div>
 
               <div className="flex-1">
-                <h1 className="text-4xl md:text-5xl font-bold mb-4">Clarity FX Review 2025</h1>
+                <h1 className="text-4xl md:text-5xl font-bold mb-4">Clarity FX Review 2026</h1>
                 <p className="text-xl text-muted-foreground mb-6">
                   Is Clarity FX legit? Complete analysis of this new TradeLocker broker's features and trading conditions.
                 </p>

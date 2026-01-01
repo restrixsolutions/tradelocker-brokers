@@ -12,7 +12,7 @@ import { getSupabaseServerClient } from "@/lib/supabase/server"
 import Image from "next/image"
 
 export const metadata: Metadata = {
-  title: "HeroFX Review 2025: Is HeroFX Legit? Complete Broker Analysis",
+  title: "HeroFX Review 2026: Is HeroFX Legit? Complete Broker Analysis",
   description:
     "HeroFX broker review 2025: Is HeroFX regulated? Discover spreads, execution speed, TradeLocker integration & legitimacy. Is HeroFX a good broker? Read our review.",
   keywords: [
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     "herofx trustpilot",
   ],
   openGraph: {
-    title: "HeroFX Review 2025 - Complete Broker Analysis",
+    title: "HeroFX Review 2026 - Complete Broker Analysis",
     description: "Is HeroFX legit? Complete review of regulation, spreads, and TradeLocker integration.",
     type: "article",
     url: "https://tradelockerbrokers.com/herofx-review",
@@ -137,7 +137,7 @@ export default async function HeroFXReviewPage() {
 
               {/* Title & Quick Info */}
               <div className="flex-1">
-                <h1 className="text-4xl md:text-5xl font-bold mb-4">HeroFX Review 2025</h1>
+                <h1 className="text-4xl md:text-5xl font-bold mb-4">HeroFX Review 2026</h1>
                 <p className="text-xl text-muted-foreground mb-6">
                   Is HeroFX a good broker? Complete analysis of features, spreads, and TradeLocker platform integration.
                 </p>

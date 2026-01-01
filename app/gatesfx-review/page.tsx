@@ -12,7 +12,7 @@ import { getSupabaseServerClient } from "@/lib/supabase/server"
 import Image from "next/image"
 
 export const metadata: Metadata = {
-  title: "GatesFX Review 2025: Is GatesFX Legit? Spreads, Regulation & Platform",
+  title: "GatesFX Review 2026: Is GatesFX Legit? Spreads, Regulation & Platform",
   description:
     "GatesFX broker review 2025: Is GatesFX regulated? Analyze 0.0 pip spreads, FSCA oversight, TradeLocker integration & real trader feedback. Is GatesFX a good broker?",
   keywords: [
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     "gatesfx minimum deposit",
   ],
   openGraph: {
-    title: "GatesFX Review 2025 - Complete Broker Analysis",
+    title: "GatesFX Review 2026 - Complete Broker Analysis",
     description: "Is GatesFX legit? In-depth review of regulation, spreads, and TradeLocker integration.",
     type: "article",
     url: "https://tradelockerbrokers.com/gatesfx-review",
@@ -137,7 +137,7 @@ export default async function GatesFXReviewPage() {
 
               {/* Title & Quick Info */}
               <div className="flex-1">
-                <h1 className="text-4xl md:text-5xl font-bold mb-4">GatesFX Review 2025</h1>
+                <h1 className="text-4xl md:text-5xl font-bold mb-4">GatesFX Review 2026</h1>
                 <p className="text-xl text-muted-foreground mb-6">
                   Is GatesFX legit? Complete analysis of regulation, spreads, and TradeLocker integration.
                 </p>

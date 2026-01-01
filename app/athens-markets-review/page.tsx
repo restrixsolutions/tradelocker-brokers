@@ -12,7 +12,7 @@ import { getSupabaseServerClient } from "@/lib/supabase/server"
 import Image from "next/image"
 
 export const metadata: Metadata = {
-  title: "Athens Markets Review 2025: Is Athens Markets Legit? Complete Broker Analysis",
+  title: "Athens Markets Review 2026: Is Athens Markets Legit? Complete Broker Analysis",
   description:
     "Athens Markets broker review 2025: Is Athens Markets regulated? Analyze spreads, execution, TradeLocker integration & legitimacy. Read our complete review.",
   keywords: [
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     "athens markets trustpilot",
   ],
   openGraph: {
-    title: "Athens Markets Review 2025 - Complete Broker Analysis",
+    title: "Athens Markets Review 2026 - Complete Broker Analysis",
     description: "Is Athens Markets legit? Full review of regulation, spreads, and TradeLocker integration.",
     type: "article",
     url: "https://tradelockerbrokers.com/athens-markets-review",
@@ -125,7 +125,7 @@ export default async function AthensMarketsReviewPage() {
               </div>
 
               <div className="flex-1">
-                <h1 className="text-4xl md:text-5xl font-bold mb-4">Athens Markets Review 2025</h1>
+                <h1 className="text-4xl md:text-5xl font-bold mb-4">Athens Markets Review 2026</h1>
                 <p className="text-xl text-muted-foreground mb-6">
                   Is Athens Markets legit? Complete analysis of regulation, trading conditions, and TradeLocker platform integration.
                 </p>

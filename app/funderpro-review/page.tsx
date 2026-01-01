@@ -12,7 +12,7 @@ import { getSupabaseServerClient } from "@/lib/supabase/server"
 import Image from "next/image"
 
 export const metadata: Metadata = {
-  title: "FunderPro Review 2025: Is FunderPro Legit? Complete Prop Firm Analysis",
+  title: "FunderPro Review 2026: Is FunderPro Legit? Complete Prop Firm Analysis",
   description:
     "FunderPro prop firm review 2025: Analyze profit splits, challenge rules, payout speed & legitimacy. Is FunderPro a good prop firm? Read our review.",
   keywords: [
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     "funderpro payout",
   ],
   openGraph: {
-    title: "FunderPro Review 2025 - Complete Prop Firm Analysis",
+    title: "FunderPro Review 2026 - Complete Prop Firm Analysis",
     description: "Is FunderPro legit? Full review of profit splits, challenges, and payout conditions.",
     type: "article",
     url: "https://tradelockerbrokers.com/funderpro-review",
@@ -124,7 +124,7 @@ export default async function FunderProReviewPage() {
               </div>
 
               <div className="flex-1">
-                <h1 className="text-4xl md:text-5xl font-bold mb-4">FunderPro Review 2025</h1>
+                <h1 className="text-4xl md:text-5xl font-bold mb-4">FunderPro Review 2026</h1>
                 <p className="text-xl text-muted-foreground mb-6">
                   Is FunderPro legit? Complete analysis of profit splits, challenge rules, and funding conditions.
                 </p>
