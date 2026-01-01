@@ -192,6 +192,7 @@ export default async function GatesFXReviewPage() {
                       <li>✓ FSCA regulated broker</li>
                       <li>✓ Excellent TradeLocker integration</li>
                       <li>✓ 24/7 customer support</li>
+                      <li>✓ <strong>NEW:</strong> Instant card deposits (Visa/Mastercard)</li>
                     </ul>
                   </div>
                   <div>
@@ -351,12 +352,29 @@ export default async function GatesFXReviewPage() {
                     </div>
                   </div>
 
-                  <div className="bg-muted/50 rounded-lg p-4">
+                  <div className="bg-muted/50 rounded-lg p-4 mb-4">
                     <h4 className="font-semibold mb-2">Additional Fees:</h4>
                     <ul className="space-y-1 text-sm text-muted-foreground">
                       <li>• Deposit Fees: Free (most methods)</li>
                       <li>• Withdrawal Fees: Free for bank transfer, varies for e-wallets</li>
                       <li>• Inactivity Fee: $10/month after 6 months</li>
+                    </ul>
+                  </div>
+
+                  {/* Card Deposits Announcement */}
+                  <div className="bg-accent/10 border border-accent/30 rounded-lg p-4">
+                    <h4 className="font-semibold mb-2 flex items-center gap-2">
+                      <Zap className="w-4 h-4 text-accent" />
+                      NEW: Instant Card Deposits
+                    </h4>
+                    <p className="text-sm text-muted-foreground mb-2">
+                      GatesFX now accepts Visa and Mastercard deposits! Fund your account in under 60 seconds.
+                    </p>
+                    <ul className="space-y-1 text-sm text-muted-foreground">
+                      <li>• Minimum deposit: $25</li>
+                      <li>• Maximum deposit: $5,000</li>
+                      <li>• Processing time: Under 60 seconds</li>
+                      <li>• Supported cards: Visa, Mastercard (Credit & Debit)</li>
                     </ul>
                   </div>
                 </CardContent>
