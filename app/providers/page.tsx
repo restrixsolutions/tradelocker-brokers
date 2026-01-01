@@ -10,6 +10,10 @@ import Link from "next/link"
 import { getSupabaseServerClient } from "@/lib/supabase/server"
 import Image from "next/image"
 
+// Force dynamic rendering to ensure randomization works on every page load
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 export const metadata: Metadata = {
   title: "TradeLocker Providers - Financial Services Offering TradeLocker Platform",
   description:
@@ -36,11 +40,24 @@ export default async function ProvidersPage() {
   // Fetch providers from database
   const { data: providers } = await supabase
     .from("brokers")
-    .select("id, name, logo, country_established, year_established, description")
-    .order("name", { ascending: true })
+    .select("id, name, logo, country_established, year_established, description, is_featured")
     .limit(12)
 
-  const providersData = providers || []
+  // Randomize providers (GatesFX stays at top as featured)
+  const allProviders = providers || []
+  
+  // Separate featured (GatesFX) and non-featured providers
+  const featured = allProviders.filter(p => p.name === "GatesFX")
+  const nonFeatured = allProviders.filter(p => p.name !== "GatesFX")
+  
+  // Shuffle non-featured providers using Fisher-Yates algorithm
+  for (let i = nonFeatured.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [nonFeatured[i], nonFeatured[j]] = [nonFeatured[j], nonFeatured[i]]
+  }
+  
+  // Return featured first, then randomized non-featured
+  const providersData = [...featured, ...nonFeatured]
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -76,12 +93,15 @@ export default async function ProvidersPage() {
           </h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-8">
-            {providersData.map((provider) => (
-              <Link key={provider.id} href="/brokers" className="block group">
+            {providersData.map((provider) => {
+              // Generate review page URL from provider name
+              const reviewSlug = provider.name.toLowerCase().replace(/\s+/g, '-') + '-review'
+              return (
+              <Link key={provider.id} href={`/${reviewSlug}`} className="block group">
                 <Card className="h-full hover:shadow-xl hover:border-accent/50 transition-all duration-300 cursor-pointer">
                   <CardContent className="pt-6 h-full flex flex-col">
-                    {/* Logo */}
-                    <div className="w-full h-20 mb-4 flex items-center justify-center bg-background rounded-lg border border-border group-hover:border-accent/30 transition-colors">
+                    {/* Logo with DEAL badge */}
+                    <div className="w-full h-20 mb-4 flex items-center justify-center bg-background rounded-lg border border-border group-hover:border-accent/30 transition-colors relative">
                       <Image
                         src={provider.logo || "/placeholder.svg"}
                         alt={`${provider.name} logo`}
@@ -89,6 +109,11 @@ export default async function ProvidersPage() {
                         height={50}
                         className="object-contain"
                       />
+                      {provider.name === "GatesFX" && (
+                        <div className="absolute -top-2 -right-2 bg-primary text-primary-foreground text-xs font-bold px-2 py-0.5 rounded">
+                          DEAL
+                        </div>
+                      )}
                     </div>
                     
                     {/* Provider Name */}
@@ -139,7 +164,7 @@ export default async function ProvidersPage() {
                   </CardContent>
                 </Card>
               </Link>
-            ))}
+            )})}
           </div>
 
           {/* CTA to Full Comparison */}
