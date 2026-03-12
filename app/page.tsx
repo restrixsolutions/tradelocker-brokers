@@ -14,12 +14,12 @@ import Link from "next/link"
 import { FAQPageJsonLd } from "@/components/json-ld"
 
 export const metadata: Metadata = {
-  title: "TradeLocker Brokers (2025) – Compare Best Forex Brokers Using TradeLocker",
+  title: "TradeLocker Brokers (2026) – Compare Best Forex Brokers Using TradeLocker",
   description:
-    "Find the best TradeLocker brokers for 2025. Compare 20+ verified brokers by spreads, execution, regulation & features. Start trading with confidence today.",
+    "Find the best TradeLocker brokers for 2026. Compare 20+ verified brokers by spreads, execution, regulation & features. Start trading with confidence today.",
   keywords: ["TradeLocker brokers", "best tradelocker brokers", "tradelocker brokers to use", "forex brokers", "ECN", "raw spreads", "fast execution", "trading platform"],
   openGraph: {
-    title: "TradeLocker Brokers (2025) – Compare Best Forex Brokers",
+    title: "TradeLocker Brokers (2026) – Compare Best Forex Brokers",
     description: "Find the best TradeLocker brokers. Compare 20+ verified brokers by spreads, execution & features.",
     type: "website",
     url: "https://tradelockerbrokers.com",
@@ -89,7 +89,7 @@ export default async function HomePage() {
         <Container>
           <div className="max-w-4xl mb-12">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-balance">
-              Best TradeLocker Brokers (2025)
+              Best TradeLocker Brokers (2026)
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground text-pretty mb-4">
               Compare the best TradeLocker brokers for forex, indices, and commodities trading. Our comprehensive directory features 20+ verified brokers with detailed comparisons of spreads, execution speed, regulation, and features. Find the perfect TradeLocker broker for your trading style.
@@ -111,7 +111,7 @@ export default async function HomePage() {
               <Link href="/blog/how-to-place-trade-tradelocker" className="text-accent hover:underline font-medium">
                 trading tutorial
               </Link>
-              . Updated for 2025.
+              . Updated for 2026.
             </p>
           </div>
 
