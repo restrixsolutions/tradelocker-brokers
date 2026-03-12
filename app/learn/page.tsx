@@ -220,6 +220,22 @@ export default function LearnPage() {
                 </Button>
               </CardContent>
             </Card>
+
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardContent className="pt-6">
+                <h3 className="text-lg font-semibold mb-3">Prop Challenge Risk Planner</h3>
+                <p className="text-muted-foreground mb-4">
+                  Calculate safer risk per trade and lot size around daily and max drawdown rules before placing
+                  positions in TradeLocker.
+                </p>
+                <Button variant="outline" size="sm" asChild>
+                  <Link href="/tradelocker-prop-challenge-calculator">
+                    Open Free Tool
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
           </div>
         </Container>
       </Section>
