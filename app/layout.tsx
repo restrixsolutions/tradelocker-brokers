@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Poppins } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
+import Script from "next/script"
 import { WebsiteJsonLd, OrganizationJsonLd } from "@/components/json-ld"
 import PostHogWrapper from "./posthog-wrapper"
 import GoogleAnalytics from "@/components/google-analytics"
@@ -117,6 +118,13 @@ export default function RootLayout({
         <WebsiteJsonLd />
         <OrganizationJsonLd />
         <GoogleAnalytics />
+        <Script
+          {...({ nowprocket: true, "nitro-exclude": true } as any)}
+          id="sa-dynamic-optimization"
+          strategy="afterInteractive"
+          data-uuid="b0300dfc-4f0e-44b7-9c09-9dfa0d605a24"
+          src="data:text/javascript;base64,dmFyIHNjcmlwdCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoInNjcmlwdCIpO3NjcmlwdC5zZXRBdHRyaWJ1dGUoIm5vd3Byb2NrZXQiLCAiIik7c2NyaXB0LnNldEF0dHJpYnV0ZSgibml0cm8tZXhjbHVkZSIsICIiKTtzY3JpcHQuc3JjID0gImh0dHBzOi8vZGFzaGJvYXJkLnNlYXJjaGF0bGFzLmNvbS9zY3JpcHRzL2R5bmFtaWNfb3B0aW1pemF0aW9uLmpzIjtzY3JpcHQuZGF0YXNldC51dWlkID0gImIwMzAwZGZjLTRmMGUtNDRiNy05YzA5LTlkZmEwZDYwNWEyNCI7c2NyaXB0LmlkID0gInNhLWR5bmFtaWMtb3B0aW1pemF0aW9uLWxvYWRlciI7ZG9jdW1lbnQuaGVhZC5hcHBlbmRDaGlsZChzY3JpcHQpOw=="
+        />
         
         {/* Critical SEO Meta Tags - Explicit for crawler detection */}
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
