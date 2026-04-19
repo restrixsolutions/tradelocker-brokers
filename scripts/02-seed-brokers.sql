@@ -38,7 +38,7 @@ VALUES
   (
     'RestroFX',
     '/images/logos/restrofx.svg',
-    'TradeLocker broker with ECN/Standard from $25, leverage 1:500 up to 1:1000, VIP wider markups, and RAW $18 RT from $500.',
+    'TradeLocker broker with ECN/Standard from $25, leverage 1:500 up to 1:1000, and RAW $18 RT from $500.',
     ARRAY['Prop Firms', 'TradeLocker', 'ECN', 'RAW'],
     'https://portal.restrofx.com/r/0Osaul1w',
     25.00,

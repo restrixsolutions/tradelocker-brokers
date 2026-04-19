@@ -11,7 +11,7 @@ SET
   year_established = 2024,
   leverage = '1:500 up to 1:1000',
   regulation = 'Unregulated',
-  description = 'TradeLocker broker with ECN/Standard from $25, leverage 1:500 up to 1:1000, VIP wider markups, and RAW $18 RT from $500.',
+  description = 'TradeLocker broker with ECN/Standard from $25, leverage 1:500 up to 1:1000, and RAW $18 RT from $500.',
   tags = ARRAY['Prop Firms', 'TradeLocker', 'ECN', 'RAW'],
   asset_types = ARRAY['forex', 'stocks', 'crypto', 'commodities', 'indices']
 WHERE LOWER(name) = 'restrofx';

@@ -64,13 +64,13 @@
     "supports": "TradeLocker",
     "type": "Broker",
     "execution": "ECN / RAW",
-    "spread": "LP feed + markup (ECN majors +2.0 / VIP +3.5 pips; RAW from +0.1 pip majors)",
+    "spread": "LP feed + markup (ECN majors +2.0 pips; RAW from +0.1 pip majors)",
     "min_deposit": 25,
     "regulation": "Unregulated",
     "year_established": 2024,
     "country": "Saint Lucia",
-    "description": "Three account paths: ECN/Standard Default from $25 ($4 RT, majors +2.0 pips on feed), ECN VIP (+3.5 pips majors), and RAW ($18 RT, $500 min). Indices, gold, oil use proprietary engine markups.",
-    "features": ["Leverage 1:500 up to 1:1000", "RAW Account", "ECN Default & VIP", "TradeLocker"],
+    "description": "Two account paths: ECN/Standard from $25 ($4 RT, majors +2.0 pips on feed) and RAW ($18 RT, $500 min). Indices, gold, oil use proprietary engine markups.",
+    "features": ["Leverage 1:500 up to 1:1000", "RAW Account", "ECN/Standard Account", "TradeLocker"],
     "asset_types": ["forex", "stocks", "crypto", "commodities", "indices"],
     "url": "https://portal.restrofx.com/r/0Osaul1w"
   }

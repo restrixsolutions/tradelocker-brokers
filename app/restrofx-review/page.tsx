@@ -132,9 +132,8 @@ export default async function RestroFXReviewPage() {
               <div className="flex-1">
                 <h1 className="text-4xl md:text-5xl font-bold mb-4">RestroFX Review 2026</h1>
                 <p className="text-xl text-muted-foreground mb-6">
-                  TradeLocker broker with three public account configurations (RAW, ECN/Standard Default, ECN/Standard
-                  VIP). Below reflects RestroFX&apos;s internal pricing structure: LP feed plus fixed markups and
-                  separate round-turn commissions.
+                  TradeLocker broker with two public account configurations (RAW and ECN/Standard). Below reflects
+                  RestroFX&apos;s internal pricing structure: LP feed plus fixed markups and separate round-turn commissions.
                 </p>
 
                 <div className="flex flex-wrap gap-2 mb-6">
@@ -186,7 +185,7 @@ export default async function RestroFXReviewPage() {
                       <li>✓ ECN/Standard retail entry from ${broker.min_deposit} with $4 RT commission ($2/side)</li>
                       <li>✓ RAW tier: $18 RT ($9/side), transparent LP-based execution</li>
                       <li>✓ Transparent model: client price = live B2B LP + fixed markup (dynamic with feed)</li>
-                      <li>✓ Separate Default vs VIP ECN markups (majors +2.0 vs +3.5 pips on feed)</li>
+                      <li>✓ ECN/Standard account with transparent LP feed + fixed markup pricing</li>
                       <li>✓ TradeLocker-first workflow for prop-style and active CFD traders</li>
                     </ul>
                   </div>
@@ -198,7 +197,7 @@ export default async function RestroFXReviewPage() {
                     <ul className="space-y-2 text-sm text-muted-foreground">
                       <li>✗ RAW recommended minimum $500 — higher than ECN&apos;s ${broker.min_deposit} entry</li>
                       <li>✗ Execution quality can vary by symbol/session — test your exact setup before scaling</li>
-                      <li>✗ VIP ECN uses wider markups to fund higher affiliate tiers — compare total cost</li>
+                      <li>✗ Confirm current spread/commission structure on the official RestroFX site before funding</li>
                       <li>✗ Regulation profile may differ from Tier-1 FCA/ASIC-only brokers — verify disclosures</li>
                     </ul>
                   </div>
@@ -272,13 +271,6 @@ export default async function RestroFXReviewPage() {
                           <td className="p-3">Majors +2.0 pips on feed; minors +3.0; tiered exotics/crypto</td>
                           <td className="p-3">$25</td>
                           <td className="p-3">Hybrid routing by order profile</td>
-                        </tr>
-                        <tr>
-                          <td className="p-3 font-medium text-foreground">ECN / Standard — VIP</td>
-                          <td className="p-3">$4 RT (same as Default)</td>
-                          <td className="p-3">Majors +3.5 pips on feed; wider tiers on minors, metals, indices, crypto</td>
-                          <td className="p-3">$25</td>
-                          <td className="p-3">Same hybrid rule as Default</td>
                         </tr>
                       </tbody>
                     </table>
@@ -355,18 +347,9 @@ export default async function RestroFXReviewPage() {
                       <li>BTC/USD: +$50.00 · ETH/USD: +$4.00 (altcoins tiered)</li>
                     </ul>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-3">ECN / Standard — VIP ($4 RT, wider markups)</h3>
-                    <ul className="text-sm text-muted-foreground space-y-1 list-disc pl-5">
-                      <li>Majors: +3.5 pips on feed · Minors: +4.5 pips</li>
-                      <li>Exotics: +4× feed · High-vol exotics: +3× feed</li>
-                      <li>Gold: +$0.45/oz · US30: +3.5 points · US500: +0.7 · NAS100: +2.2 · GER40/UK100: +2.8</li>
-                      <li>BTC/USD: +$80.00 · ETH/USD: +$6.00</li>
-                    </ul>
-                  </div>
                   <div className="bg-muted/50 rounded-lg p-4 text-sm text-muted-foreground">
                     <strong className="text-foreground">Before you fund:</strong> add your expected symbol, session,
-                    and hold time, then compare total cost (markup + commission + swap) on Default vs VIP vs RAW on a
+                    and hold time, then compare total cost (markup + commission + swap) on ECN vs RAW on a
                     demo account.
                   </div>
                 </CardContent>
@@ -596,7 +579,7 @@ const faqs = [
   {
     question: "What is the RestroFX minimum deposit?",
     answer:
-      "ECN/Standard (Default and VIP) uses a $25 accessible retail entry in RestroFX's pricing reference. RAW accounts recommend a $500 minimum. Always confirm the current requirement on the official RestroFX website before funding.",
+      "ECN/Standard uses a $25 accessible retail entry. RAW accounts recommend a $500 minimum. Always confirm the current requirement on the official RestroFX website before funding.",
   },
   {
     question: "Is RestroFX good for prop firms?",
