@@ -74,11 +74,16 @@ export default async function HomePage() {
 
   const brokersData: Broker[] = withRestroFXFirst(brokers || [])
 
-  const { data: restrofxBanner } = await supabase
+  const { data: restrofxBannerRaw } = await supabase
     .from("brokers")
     .select("name, logo, affiliate_link")
     .ilike("name", "%RestroFX%")
     .maybeSingle()
+
+  // Apply canonical overrides so banner always shows correct logo + link
+  const restrofxBanner = restrofxBannerRaw
+    ? { ...restrofxBannerRaw, logo: "/images/logos/restrofx.svg", affiliate_link: "https://portal.restrofx.com/r/0Osaul1w" }
+    : null
 
   return (
     <div className="min-h-screen bg-background text-foreground">

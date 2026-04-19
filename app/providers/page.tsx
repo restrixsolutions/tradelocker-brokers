@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, MapPin, Calendar, Monitor } from "lucide-react"
 import Link from "next/link"
 import { getSupabaseServerClient } from "@/lib/supabase/server"
+import { normalizeRestroFXBrokers } from "@/lib/broker-sort"
 import Image from "next/image"
 
 // Force dynamic rendering to ensure randomization works on every page load
@@ -45,7 +46,7 @@ export default async function ProvidersPage() {
     .order("name", { ascending: true })
     .limit(12)
 
-  const allProviders = providers || []
+  const allProviders = normalizeRestroFXBrokers(providers || [])
 
   const featured = allProviders.filter((p) => p.name === "RestroFX")
   const nonFeatured = allProviders.filter((p) => p.name !== "RestroFX")
