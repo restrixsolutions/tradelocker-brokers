@@ -63,6 +63,7 @@ function getReviewLink(name: string): string | null {
   // Broker review mappings
   if (nameLower.includes("gatesfx")) return "/gatesfx-review"
   if (nameLower.includes("herofx")) return "/herofx-review"
+  if (nameLower.includes("restrofx")) return "/restrofx-review"
   if (nameLower.includes("athens markets")) return "/athens-markets-review"
   if (nameLower.includes("clarity") && nameLower.includes("fx")) return "/clarity-fx-review"
   

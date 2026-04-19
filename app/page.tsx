@@ -3,7 +3,8 @@ import { HeaderNav } from "@/components/header-nav"
 import { Container } from "@/components/container"
 import { Section } from "@/components/section"
 import { BrokerTable } from "@/components/broker-table"
-import { GatesFXBanner } from "@/components/gatesfx-banner"
+import { RestroFXBanner } from "@/components/restrofx-banner"
+import { withRestroFXFirst } from "@/lib/broker-sort"
 import { getSupabaseServerClient } from "@/lib/supabase/server"
 import type { Broker } from "@/lib/types"
 import { Footer } from "@/components/footer"
@@ -71,14 +72,13 @@ export default async function HomePage() {
     // Handle error silently
   }
 
-  const brokersData: Broker[] = brokers || []
+  const brokersData: Broker[] = withRestroFXFirst(brokers || [])
 
-  // Get GatesFX data for the banner
-  const { data: gatesfxData } = await supabase
+  const { data: restrofxBanner } = await supabase
     .from("brokers")
     .select("name, logo, affiliate_link")
-    .eq("name", "GatesFX")
-    .single()
+    .ilike("name", "%RestroFX%")
+    .maybeSingle()
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -115,7 +115,7 @@ export default async function HomePage() {
             </p>
           </div>
 
-          {gatesfxData && <GatesFXBanner gatesfx={gatesfxData} />}
+          {restrofxBanner && <RestroFXBanner broker={restrofxBanner} />}
 
           <BrokerTable brands={brokersData} type="broker" />
           

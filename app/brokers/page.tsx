@@ -6,6 +6,7 @@ import { BrokerTable } from "@/components/broker-table"
 import { BreadcrumbJsonLd, ItemListJsonLd } from "@/components/json-ld"
 import { getFilteredBrokers, getFilterOptions, type BrokerFilterParams } from "@/app/actions"
 import { Footer } from "@/components/footer"
+import { RestroFXBanner } from "@/components/restrofx-banner"
 import Link from "next/link"
 
 // Force dynamic rendering to ensure randomization works on every page load
@@ -75,6 +76,7 @@ export default async function BrokersPage({ searchParams }: PageProps) {
     getFilteredBrokers(filterParams),
     getFilterOptions('broker')
   ])
+  const restrofxBanner = brokersData.find((broker) => broker.name.toLowerCase().includes("restrofx"))
 
   // Create ItemList for top 10 brokers (for SEO schema)
   const topBrokers = brokersData.slice(0, 10).map((broker, index) => ({
@@ -116,6 +118,16 @@ export default async function BrokersPage({ searchParams }: PageProps) {
               .
             </p>
           </div>
+
+          {restrofxBanner && (
+            <RestroFXBanner
+              broker={{
+                name: restrofxBanner.name,
+                logo: restrofxBanner.logo,
+                affiliate_link: restrofxBanner.affiliate_link,
+              }}
+            />
+          )}
 
           <BrokerTable 
             brands={brokersData} 

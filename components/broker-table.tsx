@@ -6,6 +6,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ExternalLink, Info, Bitcoin, TrendingUp, BarChart3, Wheat, ChevronUp, ChevronDown } from "lucide-react"
 import type { Broker, PropFirm } from "@/lib/types"
+import { withRestroFXFirst } from "@/lib/broker-sort"
 import { BrokerDetailModal } from "./broker-detail-modal"
 import { FilterSidebar, type FilterOptions } from "./filter-sidebar"
 
@@ -204,6 +205,8 @@ export function BrokerTable({
     return sortDirection === "asc" ? comparison : -comparison
   })
 
+  const displayBrands = type === "broker" ? withRestroFXFirst(sortedBrands) : sortedBrands
+
   const SortIcon = ({ field }: { field: SortField }) => {
     if (sortField !== field) return null
     return sortDirection === "asc" ? (
@@ -276,7 +279,7 @@ export function BrokerTable({
             </div>
 
             <div className="space-y-4 mt-4">
-              {sortedBrands.map((brand, index) => (
+              {displayBrands.map((brand, index) => (
                 <div
                   key={`${brand.id}-${index}`}
                   className="flex gap-3 px-6 py-5 bg-card border border-border/60 rounded-xl shadow-sm hover:shadow-lg hover:border-primary/40 hover:bg-card/80 transition-all duration-300 items-center relative group backdrop-blur-sm"
@@ -459,7 +462,7 @@ export function BrokerTable({
                 More {type === "broker" ? "brokers" : "prop firms"} on the way
               </div>
               <div>
-                1–{sortedBrands.length} of {filteredBrands.length}
+                1–{displayBrands.length} of {filteredBrands.length}
               </div>
             </div>
           </div>

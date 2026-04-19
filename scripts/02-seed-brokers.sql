@@ -33,6 +33,23 @@ VALUES
     'lc',
     2021,
     ARRAY['forex', 'crypto', 'stocks', 'commodities'],
+    false
+  ),
+  (
+    'RestroFX',
+    '/images/logos/restrofx.svg',
+    'TradeLocker broker with ECN/Standard from $25, leverage 1:500 up to 1:1000, VIP wider markups, and RAW $18 RT from $500.',
+    ARRAY['Prop Firms', 'TradeLocker', 'ECN', 'RAW'],
+    'https://portal.restrofx.com/r/0Osaul1w',
+    25.00,
+    'None',
+    'None',
+    'None',
+    'Unregulated',
+    'Saint Lucia',
+    'lc',
+    2022,
+    ARRAY['forex', 'stocks', 'crypto', 'commodities', 'indices'],
     true
   )
 ON CONFLICT DO NOTHING;

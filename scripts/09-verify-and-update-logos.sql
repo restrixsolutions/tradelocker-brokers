@@ -9,6 +9,7 @@ UPDATE brokers
 SET logo = CASE 
   WHEN LOWER(name) = 'gatesfx' THEN '/images/logos/gatesfx.png'
   WHEN LOWER(name) = 'herofx' THEN '/images/logos/herofx.png'
+  WHEN LOWER(name) = 'restrofx' THEN '/images/logos/restrofx.svg'
   ELSE '/placeholder.svg'
 END
 WHERE logo IS NULL OR logo = '' OR logo NOT LIKE '/images/logos/%';

@@ -2,6 +2,7 @@
 
 import { getSupabaseServerClient } from "@/lib/supabase/server"
 import type { Broker, PropFirm } from "@/lib/types"
+import { withRestroFXFirst } from "@/lib/broker-sort"
 
 export interface BrokerFilterParams {
   assetTypes?: string[]
@@ -103,11 +104,10 @@ export async function getFilteredBrokers(params: BrokerFilterParams = {}): Promi
       const j = Math.floor(Math.random() * (i + 1));
       [nonFeatured[i], nonFeatured[j]] = [nonFeatured[j], nonFeatured[i]]
     }
-    
-    // Return featured first, then randomized non-featured
-    return [...featured, ...nonFeatured]
+
+    return withRestroFXFirst([...featured, ...nonFeatured])
   }
-  
+
   // Apply specific sorting
   if (sortField === 'name') {
     query = query.order('name', { ascending: sortDirection === 'asc' })
@@ -123,8 +123,8 @@ export async function getFilteredBrokers(params: BrokerFilterParams = {}): Promi
     console.error('Error fetching filtered brokers:', error)
     return []
   }
-  
-  return data || []
+
+  return withRestroFXFirst(data || [])
 }
 
 export async function getFilteredPropFirms(params: PropFirmFilterParams = {}): Promise<PropFirm[]> {

@@ -41,14 +41,14 @@ export default async function ProvidersPage() {
   const { data: providers } = await supabase
     .from("brokers")
     .select("id, name, logo, country_established, year_established, description, is_featured")
+    .order("is_featured", { ascending: false })
+    .order("name", { ascending: true })
     .limit(12)
 
-  // Randomize providers (GatesFX stays at top as featured)
   const allProviders = providers || []
-  
-  // Separate featured (GatesFX) and non-featured providers
-  const featured = allProviders.filter(p => p.name === "GatesFX")
-  const nonFeatured = allProviders.filter(p => p.name !== "GatesFX")
+
+  const featured = allProviders.filter((p) => p.name === "RestroFX")
+  const nonFeatured = allProviders.filter((p) => p.name !== "RestroFX")
   
   // Shuffle non-featured providers using Fisher-Yates algorithm
   for (let i = nonFeatured.length - 1; i > 0; i--) {
@@ -109,7 +109,7 @@ export default async function ProvidersPage() {
                         height={50}
                         className="object-contain"
                       />
-                      {provider.name === "GatesFX" && (
+                      {provider.name === "RestroFX" && (
                         <div className="absolute -top-2 -right-2 bg-primary text-primary-foreground text-xs font-bold px-2 py-0.5 rounded">
                           DEAL
                         </div>
