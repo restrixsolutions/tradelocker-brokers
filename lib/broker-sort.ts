@@ -2,7 +2,7 @@ import type { Broker } from "@/lib/types"
 
 const RESTROFX_AFFILIATE_LINK = "https://portal.restrofx.com/r/0Osaul1w"
 
-function withRestroFXOverrides<T extends { name: string }>(brand: T): T {
+export function withRestroFXOverrides<T extends { name: string }>(brand: T): T {
   if (brand.name !== "RestroFX") return brand
 
   const next: Record<string, unknown> = { ...brand }
@@ -17,9 +17,13 @@ function withRestroFXOverrides<T extends { name: string }>(brand: T): T {
   return next as T
 }
 
+export function normalizeRestroFXBrokers<T extends { name: string }>(brands: T[]): T[] {
+  return brands.map(withRestroFXOverrides)
+}
+
 /** Keeps RestroFX as the first row whenever it appears in a broker list. */
 export function withRestroFXFirst<T extends { name: string }>(brands: T[]): T[] {
-  const normalized = brands.map(withRestroFXOverrides)
+  const normalized = normalizeRestroFXBrokers(brands)
   const idx = normalized.findIndex((b) => b.name === "RestroFX")
   if (idx <= 0) return normalized
   const next = [...normalized]

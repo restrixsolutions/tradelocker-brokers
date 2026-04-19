@@ -2,7 +2,7 @@
 
 import { getSupabaseServerClient } from "@/lib/supabase/server"
 import type { Broker, PropFirm } from "@/lib/types"
-import { withRestroFXFirst } from "@/lib/broker-sort"
+import { normalizeRestroFXBrokers, withRestroFXFirst } from "@/lib/broker-sort"
 
 export interface BrokerFilterParams {
   assetTypes?: string[]
@@ -24,8 +24,8 @@ export interface PropFirmFilterParams extends BrokerFilterParams {
 
 export async function getFilteredBrokers(params: BrokerFilterParams = {}): Promise<Broker[]> {
   const supabase = await getSupabaseServerClient()
-  
-  let query = supabase
+
+  const { data, error } = await supabase
     .from("brokers")
     .select(`
       id, name, logo, description, tags, asset_types, 
@@ -33,98 +33,76 @@ export async function getFilteredBrokers(params: BrokerFilterParams = {}): Promi
       country_established, country_code, year_established, 
       affiliate_link, is_featured, youtube_url
     `)
-    
-  // Apply filters
-  if (params.assetTypes && params.assetTypes.length > 0) {
-    query = query.or(params.assetTypes.map(asset => `asset_types.cs.{${asset}}`).join(','))
-  }
-  
-  if (params.minDepositRanges && params.minDepositRanges.length > 0) {
-    const rangeConditions = params.minDepositRanges.map(range => {
-      switch (range) {
-        case "0-50":
-          return "min_deposit.gte.0,min_deposit.lte.50"
-        case "50-100":
-          return "min_deposit.gt.50,min_deposit.lte.100"
-        case "100-500":
-          return "min_deposit.gt.100,min_deposit.lte.500"
-        case "500+":
-          return "min_deposit.gt.500"
-        default:
-          return null
-      }
-    }).filter(Boolean)
-    
-    if (rangeConditions.length > 0) {
-      query = query.or(rangeConditions.join(','))
-    }
-  }
-  
-  if (params.countries && params.countries.length > 0) {
-    query = query.in('country_established', params.countries)
-  }
-  
-  if (params.tags && params.tags.length > 0) {
-    query = query.or(params.tags.map(tag => `tags.cs.{${tag}}`).join(','))
-  }
-  
-  if (params.noDepositFee) {
-    query = query.eq('deposit_fee', 'None')
-  }
-  
-  
-  // Note: Removed inactivity fee filter as we replaced it with regulation
-  
-  // Apply sorting
-  const sortField = params.sortField
-  const sortDirection = params.sortDirection || 'asc'
-  
-  // Always order featured first
-  query = query.order('is_featured', { ascending: false })
-  
-  // If no sort field specified, randomize the order (but featured stays on top)
-  if (!sortField) {
-    // Note: We can't use random() directly in Supabase JS client ordering
-    // So we'll fetch all data and randomize non-featured items in JavaScript
-    const { data, error } = await query
-    
-    if (error) {
-      console.error('Error fetching filtered brokers:', error)
-      return []
-    }
-    
-    if (!data) return []
-    
-    // Separate featured and non-featured brokers
-    const featured = data.filter(b => b.is_featured)
-    const nonFeatured = data.filter(b => !b.is_featured)
-    
-    // Shuffle non-featured brokers using Fisher-Yates algorithm
-    for (let i = nonFeatured.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [nonFeatured[i], nonFeatured[j]] = [nonFeatured[j], nonFeatured[i]]
-    }
 
-    return withRestroFXFirst([...featured, ...nonFeatured])
-  }
-
-  // Apply specific sorting
-  if (sortField === 'name') {
-    query = query.order('name', { ascending: sortDirection === 'asc' })
-  } else if (sortField === 'minDeposit') {
-    query = query.order('min_deposit', { ascending: sortDirection === 'asc' })
-  } else if (sortField === 'yearEstablished') {
-    query = query.order('year_established', { ascending: sortDirection === 'asc' })
-  }
-  
-  const { data, error } = await query
-  
   if (error) {
     console.error('Error fetching filtered brokers:', error)
     return []
   }
 
-  return withRestroFXFirst(data || [])
+  const allBrokers = normalizeRestroFXBrokers((data || []) as Broker[])
+
+  const filtered = allBrokers.filter((broker) => {
+    if (params.assetTypes && params.assetTypes.length > 0) {
+      const hasMatchingAsset = params.assetTypes.some((assetType) => broker.asset_types.includes(assetType))
+      if (!hasMatchingAsset) return false
+    }
+
+    if (params.minDepositRanges && params.minDepositRanges.length > 0) {
+      const matchesRange = params.minDepositRanges.some((range) => {
+        if (range === "0-50") return broker.min_deposit >= 0 && broker.min_deposit <= 50
+        if (range === "50-100") return broker.min_deposit > 50 && broker.min_deposit <= 100
+        if (range === "100-500") return broker.min_deposit > 100 && broker.min_deposit <= 500
+        if (range === "500+") return broker.min_deposit > 500
+        return false
+      })
+      if (!matchesRange) return false
+    }
+
+    if (params.countries && params.countries.length > 0 && !params.countries.includes(broker.country_established)) {
+      return false
+    }
+
+    if (params.tags && params.tags.length > 0) {
+      const hasMatchingTag = params.tags.some((tag) => broker.tags.includes(tag))
+      if (!hasMatchingTag) return false
+    }
+
+    if (params.noDepositFee && broker.deposit_fee !== "None") return false
+    if (params.noInactivityFee && broker.inactivity_fee !== "None") return false
+
+    return true
+  })
+
+  const sortField = params.sortField
+  const sortDirection = params.sortDirection || "asc"
+
+  // If no sort field specified, randomize non-featured rows.
+  if (!sortField) {
+    const featured = filtered.filter((b) => b.is_featured)
+    const nonFeatured = filtered.filter((b) => !b.is_featured)
+
+    for (let i = nonFeatured.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[nonFeatured[i], nonFeatured[j]] = [nonFeatured[j], nonFeatured[i]]
+    }
+
+    return withRestroFXFirst([...featured, ...nonFeatured])
+  }
+
+  const sorted = [...filtered].sort((a, b) => {
+    // Keep featured first, then sort.
+    if (a.is_featured !== b.is_featured) {
+      return b.is_featured ? 1 : -1
+    }
+
+    let comparison = 0
+    if (sortField === "name") comparison = a.name.localeCompare(b.name)
+    if (sortField === "minDeposit") comparison = a.min_deposit - b.min_deposit
+    if (sortField === "yearEstablished") comparison = a.year_established - b.year_established
+    return sortDirection === "asc" ? comparison : -comparison
+  })
+
+  return withRestroFXFirst(sorted)
 }
 
 export async function getFilteredPropFirms(params: PropFirmFilterParams = {}): Promise<PropFirm[]> {
@@ -231,13 +209,14 @@ export async function getFilterOptions(type: 'broker' | 'prop-firm') {
   if (type === 'broker') {
     const { data } = await supabase
       .from('brokers')
-      .select('asset_types, country_established, tags')
+      .select('name, asset_types, country_established, tags')
       
     if (!data) return { assetTypes: [], countries: [], tags: [] }
-    
-    const assetTypes = Array.from(new Set(data.flatMap(b => b.asset_types))).sort()
-    const countries = Array.from(new Set(data.map(b => b.country_established))).sort()
-    const tags = Array.from(new Set(data.flatMap(b => b.tags))).sort()
+
+    const normalized = normalizeRestroFXBrokers(data)
+    const assetTypes = Array.from(new Set(normalized.flatMap(b => b.asset_types))).sort()
+    const countries = Array.from(new Set(normalized.map(b => b.country_established))).sort()
+    const tags = Array.from(new Set(normalized.flatMap(b => b.tags))).sort()
     
     return { assetTypes, countries, tags }
   } else {
