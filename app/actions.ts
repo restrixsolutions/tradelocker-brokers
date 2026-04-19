@@ -7,6 +7,7 @@ import { normalizeRestroFXBrokers, withRestroFXFirst } from "@/lib/broker-sort"
 export interface BrokerFilterParams {
   assetTypes?: string[]
   minDepositRanges?: string[]
+  leverageOptions?: string[]
   countries?: string[]
   tags?: string[]
   noDepositFee?: boolean
@@ -65,6 +66,13 @@ export async function getFilteredBrokers(params: BrokerFilterParams = {}): Promi
     if (params.tags && params.tags.length > 0) {
       const hasMatchingTag = params.tags.some((tag) => broker.tags.includes(tag))
       if (!hasMatchingTag) return false
+    }
+
+    // Leverage filter — match if broker's leverage string contains the selected ratio
+    if (params.leverageOptions && params.leverageOptions.length > 0) {
+      const lev = (broker.leverage || "").toLowerCase()
+      const matches = params.leverageOptions.some((opt) => lev.includes(opt.toLowerCase()))
+      if (!matches) return false
     }
 
     if (params.noDepositFee && broker.deposit_fee !== "None") return false

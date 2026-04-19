@@ -33,6 +33,7 @@ interface PageProps {
   searchParams?: {
     assetTypes?: string | string[]
     minDepositRanges?: string | string[]
+    leverageOptions?: string | string[]
     countries?: string | string[]
     tags?: string | string[]
     noDepositFee?: string
@@ -42,29 +43,19 @@ interface PageProps {
   }
 }
 
+function parseParam(value: string | string[] | undefined): string[] | undefined {
+  if (!value) return undefined
+  return Array.isArray(value) ? value : value.split(',')
+}
+
 export default async function BrokersPage({ searchParams }: PageProps) {
   // Parse search params
   const filterParams: BrokerFilterParams = {
-    assetTypes: searchParams?.assetTypes 
-      ? Array.isArray(searchParams.assetTypes) 
-        ? searchParams.assetTypes 
-        : searchParams.assetTypes.split(',')
-      : undefined,
-    minDepositRanges: searchParams?.minDepositRanges
-      ? Array.isArray(searchParams.minDepositRanges)
-        ? searchParams.minDepositRanges
-        : searchParams.minDepositRanges.split(',')
-      : undefined,
-    countries: searchParams?.countries
-      ? Array.isArray(searchParams.countries)
-        ? searchParams.countries
-        : searchParams.countries.split(',')
-      : undefined,
-    tags: searchParams?.tags
-      ? Array.isArray(searchParams.tags)
-        ? searchParams.tags
-        : searchParams.tags.split(',')
-      : undefined,
+    assetTypes: parseParam(searchParams?.assetTypes),
+    minDepositRanges: parseParam(searchParams?.minDepositRanges),
+    leverageOptions: parseParam(searchParams?.leverageOptions),
+    countries: parseParam(searchParams?.countries),
+    tags: parseParam(searchParams?.tags),
     noDepositFee: searchParams?.noDepositFee === 'true',
     noInactivityFee: searchParams?.noInactivityFee === 'true',
     sortField: searchParams?.sortField as any,

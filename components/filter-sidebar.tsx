@@ -9,6 +9,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/co
 export interface FilterOptions {
   assetTypes: string[]
   minDepositRanges: string[]
+  leverageOptions: string[]
   countries: string[]
   tags: string[]
   noDepositFee: boolean
@@ -30,6 +31,12 @@ const depositRanges = [
   { label: "$50 - $100", value: "50-100" },
   { label: "$100 - $500", value: "100-500" },
   { label: "$500+", value: "500+" },
+]
+
+const leverageOptions = [
+  { label: "Up to 1:100", value: "1:100" },
+  { label: "Up to 1:500", value: "1:500" },
+  { label: "Up to 1:1000", value: "1:1000" },
 ]
 
 export function FilterSidebar({
@@ -55,6 +62,13 @@ export function FilterSidebar({
     onFilterChange({ ...filters, minDepositRanges: newRanges })
   }
 
+  const handleLeverageToggle = (value: string) => {
+    const newOptions = filters.leverageOptions.includes(value)
+      ? filters.leverageOptions.filter((l) => l !== value)
+      : [...filters.leverageOptions, value]
+    onFilterChange({ ...filters, leverageOptions: newOptions })
+  }
+
   const handleCountryToggle = (country: string) => {
     const newCountries = filters.countries.includes(country)
       ? filters.countries.filter((c) => c !== country)
@@ -71,6 +85,7 @@ export function FilterSidebar({
     onFilterChange({
       assetTypes: [],
       minDepositRanges: [],
+      leverageOptions: [],
       countries: [],
       tags: [],
       noDepositFee: false,
@@ -81,6 +96,7 @@ export function FilterSidebar({
   const hasActiveFilters =
     filters.assetTypes.length > 0 ||
     filters.minDepositRanges.length > 0 ||
+    filters.leverageOptions.length > 0 ||
     filters.countries.length > 0 ||
     filters.tags.length > 0 ||
     filters.noDepositFee ||
@@ -136,6 +152,25 @@ export function FilterSidebar({
               />
               <Label htmlFor={`deposit-${range.value}`} className="text-sm cursor-pointer">
                 {range.label}
+              </Label>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Leverage */}
+      <div>
+        <h3 className="font-semibold mb-3 text-sm">Leverage</h3>
+        <div className="space-y-2">
+          {leverageOptions.map((opt) => (
+            <div key={opt.value} className="flex items-center space-x-2">
+              <Checkbox
+                id={`leverage-${opt.value}`}
+                checked={filters.leverageOptions.includes(opt.value)}
+                onCheckedChange={() => handleLeverageToggle(opt.value)}
+              />
+              <Label htmlFor={`leverage-${opt.value}`} className="text-sm cursor-pointer">
+                {opt.label}
               </Label>
             </div>
           ))}

@@ -74,6 +74,7 @@ export function BrokerTable({
   const [filters, setFilters] = useState<FilterOptions>({
     assetTypes: initialFilters?.assetTypes || [],
     minDepositRanges: initialFilters?.minDepositRanges || [],
+    leverageOptions: initialFilters?.leverageOptions || [],
     countries: initialFilters?.countries || [],
     tags: initialFilters?.tags || [],
     noDepositFee: initialFilters?.noDepositFee || false,
@@ -92,7 +93,7 @@ export function BrokerTable({
     const params = new URLSearchParams(searchParams.toString())
     
     // Handle array params
-    const arrayParams = ['assetTypes', 'minDepositRanges', 'countries', 'tags'] as const
+    const arrayParams = ['assetTypes', 'minDepositRanges', 'leverageOptions', 'countries', 'tags'] as const
     arrayParams.forEach(param => {
       params.delete(param)
       const value = newFilters[param]
@@ -154,6 +155,13 @@ export function BrokerTable({
     // Country filter
     if (filters.countries.length > 0 && !filters.countries.includes(brand.country_established)) {
       return false
+    }
+
+    // Leverage filter — match if broker's leverage string contains the selected ratio
+    if (filters.leverageOptions.length > 0) {
+      const lev = (brand.leverage || "").toLowerCase()
+      const matches = filters.leverageOptions.some((opt) => lev.includes(opt.toLowerCase()))
+      if (!matches) return false
     }
 
     // Tags filter
