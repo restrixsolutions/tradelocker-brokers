@@ -13,6 +13,7 @@ export function withRestroFXOverrides<T extends { name: string }>(brand: T): T {
   if ("leverage" in next) next.leverage = "1:500 up to 1:1000"
   if ("regulation" in next) next.regulation = "Unregulated"
   if ("asset_types" in next) next.asset_types = ["forex", "crypto", "stocks", "commodities", "indices"]
+  if ("year_established" in next) next.year_established = 2024
 
   return next as T
 }

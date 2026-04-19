@@ -48,7 +48,7 @@ VALUES
     'Unregulated',
     'Saint Lucia',
     'lc',
-    2022,
+    2024,
     ARRAY['forex', 'stocks', 'crypto', 'commodities', 'indices'],
     true
   )

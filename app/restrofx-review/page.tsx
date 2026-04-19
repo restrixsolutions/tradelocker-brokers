@@ -63,7 +63,7 @@ export default async function RestroFXReviewPage() {
     leverage: "1:500 up to 1:1000",
     regulation: "Unregulated",
     country_established: restrofx?.country_established || "Saint Lucia",
-    year_established: restrofx?.year_established || 2022,
+    year_established: 2024,
   }
 
   const competitorBrokers = competitors || []
@@ -184,7 +184,7 @@ export default async function RestroFXReviewPage() {
                     </h3>
                     <ul className="space-y-2 text-sm text-muted-foreground">
                       <li>✓ ECN/Standard retail entry from ${broker.min_deposit} with $4 RT commission ($2/side)</li>
-                      <li>✓ RAW tier: $18 RT ($9/side), LP feed + small buffer with transparent execution</li>
+                      <li>✓ RAW tier: $18 RT ($9/side), transparent LP-based execution</li>
                       <li>✓ Transparent model: client price = live B2B LP + fixed markup (dynamic with feed)</li>
                       <li>✓ Separate Default vs VIP ECN markups (majors +2.0 vs +3.5 pips on feed)</li>
                       <li>✓ TradeLocker-first workflow for prop-style and active CFD traders</li>
@@ -262,7 +262,7 @@ export default async function RestroFXReviewPage() {
                         <tr className="border-b border-border">
                           <td className="p-3 font-medium text-foreground">RAW</td>
                           <td className="p-3">$18 RT ($9 per side), open + close</td>
-                          <td className="p-3">LP + buffer only (e.g. majors +0.1 pip on feed)</td>
+                          <td className="p-3">LP-based pricing (e.g. majors +0.1 pip on feed)</td>
                           <td className="p-3">$500 recommended</td>
                           <td className="p-3">Market execution</td>
                         </tr>

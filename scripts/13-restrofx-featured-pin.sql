@@ -8,6 +8,7 @@ UPDATE brokers
 SET
   affiliate_link = 'https://portal.restrofx.com/r/0Osaul1w',
   min_deposit = 25.00,
+  year_established = 2024,
   leverage = '1:500 up to 1:1000',
   regulation = 'Unregulated',
   description = 'TradeLocker broker with ECN/Standard from $25, leverage 1:500 up to 1:1000, VIP wider markups, and RAW $18 RT from $500.',

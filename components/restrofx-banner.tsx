@@ -40,8 +40,8 @@ export function RestroFXBanner({ broker }: RestroFXBannerProps) {
                 ECN from $25 · Leverage 1:500 up to 1:1000
               </h3>
               <p className="text-white text-xs md:text-sm lg:text-base opacity-90 leading-snug md:leading-relaxed">
-                Three RestroFX account paths: ECN/Standard (Default & VIP markups on majors + $4 RT) and RAW (LP feed +
-                tiny buffer, $18 RT, $500 min). Dynamic LP pricing — you always see feed + markup.
+                Three RestroFX account paths: ECN/Standard (Default & VIP markups on majors + $4 RT) and RAW ($18 RT,
+                $500 min). Dynamic LP pricing — you always see feed + markup.
               </p>
             </div>
           </div>
