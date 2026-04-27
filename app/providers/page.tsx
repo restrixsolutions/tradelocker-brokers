@@ -101,7 +101,7 @@ export default async function ProvidersPage() {
               <Link key={provider.id} href={`/${reviewSlug}`} className="block group">
                 <Card className="h-full hover:shadow-xl hover:border-accent/50 transition-all duration-300 cursor-pointer">
                   <CardContent className="pt-6 h-full flex flex-col">
-                    {/* Logo with DEAL badge */}
+                    {/* Logo with DEAL/HOT badge */}
                     <div className="w-full h-20 mb-4 flex items-center justify-center bg-background rounded-lg border border-border group-hover:border-accent/30 transition-colors relative">
                       <Image
                         src={provider.logo || "/placeholder.svg"}
@@ -113,6 +113,11 @@ export default async function ProvidersPage() {
                       {provider.name === "RestroFX" && (
                         <div className="absolute -top-2 -right-2 bg-primary text-primary-foreground text-xs font-bold px-2 py-0.5 rounded">
                           DEAL
+                        </div>
+                      )}
+                      {provider.name === "GatesFX" && (
+                        <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded">
+                          HOT
                         </div>
                       )}
                     </div>

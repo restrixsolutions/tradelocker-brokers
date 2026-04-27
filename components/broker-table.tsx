@@ -292,7 +292,7 @@ export function BrokerTable({
                   key={`${brand.id}-${index}`}
                   className="flex gap-3 px-6 py-5 bg-card border border-border/60 rounded-xl shadow-sm hover:shadow-lg hover:border-primary/40 hover:bg-card/80 transition-all duration-300 items-center relative group backdrop-blur-sm"
                 >
-                  {/* Logo with DEAL badge */}
+                  {/* Logo with DEAL/HOT badge */}
                   <div className="w-[80px] flex-shrink-0 relative">
                     <div className="w-16 h-16 rounded-lg overflow-hidden bg-background border border-border flex items-center justify-center">
                       <Image
@@ -303,11 +303,15 @@ export function BrokerTable({
                         className="object-contain p-2"
                       />
                     </div>
-                    {brand.is_featured && (
+                    {brand.name === "GatesFX" ? (
+                      <div className="absolute -top-2 -left-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded">
+                        HOT
+                      </div>
+                    ) : brand.is_featured ? (
                       <div className="absolute -top-2 -left-2 bg-primary text-primary-foreground text-xs font-bold px-2 py-0.5 rounded">
                         DEAL
                       </div>
-                    )}
+                    ) : null}
                   </div>
 
                   {/* Name */}
