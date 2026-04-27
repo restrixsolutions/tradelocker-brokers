@@ -1,3 +1,5 @@
+import { BrokerCtaBanner } from "@/components/broker-cta-banner"
+
 // Simple markdown parser for blog content
 export function parseMarkdown(content: string): JSX.Element {
   const lines = content.split('\n')
@@ -6,10 +8,35 @@ export function parseMarkdown(content: string): JSX.Element {
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i]
-    
+
     // Skip empty lines
     if (line.trim() === '') {
       continue
+    }
+
+    // Inline component: <BrokerCtaBanner brokerName="..." affiliateLink="..." highlight="..." />
+    // Supports the tag spanning multiple lines until the self-closing "/>"
+    const trimmed = line.trim()
+    if (trimmed.startsWith('<BrokerCtaBanner')) {
+      let buffer = trimmed
+      let j = i
+      while (!buffer.includes('/>') && j + 1 < lines.length) {
+        j += 1
+        buffer += ' ' + lines[j].trim()
+      }
+      const attrs = parseJsxAttrs(buffer)
+      if (attrs.brokerName && attrs.affiliateLink) {
+        elements.push(
+          <BrokerCtaBanner
+            key={currentIndex++}
+            brokerName={attrs.brokerName}
+            affiliateLink={attrs.affiliateLink}
+            highlight={attrs.highlight}
+          />
+        )
+        i = j
+        continue
+      }
     }
 
     // Headers
@@ -133,4 +160,16 @@ function parseInlineMarkdown(text: string): JSX.Element {
   })
   
   return <>{finalParts}</>
+}
+
+// Parses JSX-like attributes from a string such as:
+// '<BrokerCtaBanner brokerName="RestroFX" affiliateLink="https://..." highlight="..." />'
+function parseJsxAttrs(input: string): Record<string, string> {
+  const attrs: Record<string, string> = {}
+  const regex = /(\w+)\s*=\s*"([^"]*)"/g
+  let m
+  while ((m = regex.exec(input)) !== null) {
+    attrs[m[1]] = m[2]
+  }
+  return attrs
 }

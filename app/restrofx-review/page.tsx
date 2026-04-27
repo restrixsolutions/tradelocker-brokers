@@ -132,8 +132,9 @@ export default async function RestroFXReviewPage() {
               <div className="flex-1">
                 <h1 className="text-4xl md:text-5xl font-bold mb-4">RestroFX Review 2026</h1>
                 <p className="text-xl text-muted-foreground mb-6">
-                  TradeLocker broker with two public account configurations (RAW and ECN/Standard). Below reflects
-                  RestroFX&apos;s internal pricing structure: LP feed plus fixed markups and separate round-turn commissions.
+                  TradeLocker broker with three public account configurations (RAW, ECN/Standard, and the new PowerUp
+                  Account with a 125% buying-power bonus). Below reflects RestroFX&apos;s internal pricing structure:
+                  LP feed plus fixed markups and separate round-turn commissions.
                 </p>
 
                 <div className="flex flex-wrap gap-2 mb-6">
@@ -182,10 +183,10 @@ export default async function RestroFXReviewPage() {
                       Pros
                     </h3>
                     <ul className="space-y-2 text-sm text-muted-foreground">
+                      <li>✓ <strong>New PowerUp Account:</strong> 125% buying-power bonus on every deposit ($250 min, $5,000 max per cycle, up to $6,250 bonus) — no challenge, no evaluation</li>
                       <li>✓ ECN/Standard retail entry from ${broker.min_deposit} with $4 RT commission ($2/side)</li>
                       <li>✓ RAW tier: $18 RT ($9/side), transparent LP-based execution</li>
                       <li>✓ Transparent model: client price = live B2B LP + fixed markup (dynamic with feed)</li>
-                      <li>✓ ECN/Standard account with transparent LP feed + fixed markup pricing</li>
                       <li>✓ TradeLocker-first workflow for prop-style and active CFD traders</li>
                     </ul>
                   </div>
@@ -244,7 +245,8 @@ export default async function RestroFXReviewPage() {
                 <CardContent className="pt-6 space-y-6">
                   <p className="text-sm text-muted-foreground">
                     RestroFX operates three configurations. All forex/crypto CFD markups stack on the live B2B LP feed;
-                    indices, gold, and oil use a proprietary engine with markups on that output.
+                    indices, gold, and oil use a proprietary engine with markups on that output. The new PowerUp Account
+                    layers a 125% buying-power bonus on top of its own pricing structure.
                   </p>
                   <div className="overflow-x-auto rounded-lg border border-border">
                     <table className="w-full text-sm">
@@ -258,6 +260,15 @@ export default async function RestroFXReviewPage() {
                         </tr>
                       </thead>
                       <tbody className="text-muted-foreground">
+                        <tr className="border-b border-border bg-emerald-500/5">
+                          <td className="p-3 font-medium text-foreground">
+                            PowerUp <Badge variant="secondary" className="ml-1 align-middle text-[10px]">New</Badge>
+                          </td>
+                          <td className="p-3">$6 RT ($3 per side), open + close</td>
+                          <td className="p-3">Majors +4.5 pips on feed; minors +5.5; exotics 4–5× feed</td>
+                          <td className="p-3">$250 (max $5,000 per cycle for bonus)</td>
+                          <td className="p-3">125% buying-power bonus · MC 100% / SO 70%</td>
+                        </tr>
                         <tr className="border-b border-border">
                           <td className="p-3 font-medium text-foreground">RAW</td>
                           <td className="p-3">$18 RT ($9 per side), open + close</td>
@@ -274,6 +285,21 @@ export default async function RestroFXReviewPage() {
                         </tr>
                       </tbody>
                     </table>
+                  </div>
+                  <div className="rounded-lg border border-emerald-500/30 bg-emerald-500/5 p-4">
+                    <h4 className="font-semibold text-foreground mb-2">PowerUp Account — how the bonus works</h4>
+                    <ul className="text-sm text-muted-foreground space-y-1 list-disc pl-5">
+                      <li>Every qualifying deposit ($250–$5,000) is credited with a <strong>125% buying-power bonus</strong> — e.g. deposit $1,000, get $1,250 in bonus credit, $2,250 total trading balance.</li>
+                      <li>Maximum bonus is <strong>$6,250 per deposit</strong> (on a $5,000 deposit). Multiple deposits stack — fresh 125% bonus on each new deposit.</li>
+                      <li>Bonus is <strong>buying power only</strong> — never withdrawable, never converts to cash. <strong>Withdrawing cash removes the bonus</strong> until you re-deposit.</li>
+                      <li>Tighter leverage than RAW/ECN: <strong>1:100 on majors</strong>, 1:50 on gold/US indices, 1:3 on BTC. Margin call 100%, stop-out 70%, negative balance protection always on.</li>
+                      <li><strong>No challenge, no evaluation, no monthly fee, no turnover requirement.</strong> All trading profits are 100% yours.</li>
+                    </ul>
+                    <p className="mt-3 text-sm">
+                      <Link href="/blog/restrofx-powerup-account-explained" className="text-emerald-500 hover:underline font-medium">
+                        Full PowerUp breakdown — bonus rules, costs & catches →
+                      </Link>
+                    </p>
                   </div>
                   <p className="text-xs text-muted-foreground">
                     Figures are from RestroFX&apos;s internal pricing reference (v1.0). Live quotes move with the LP;
@@ -324,6 +350,28 @@ export default async function RestroFXReviewPage() {
               <h2 className="text-3xl font-bold mb-6">Markups & commissions (detail)</h2>
               <Card>
                 <CardContent className="pt-6 space-y-8">
+                  <div className="rounded-lg border border-emerald-500/30 bg-emerald-500/5 p-4">
+                    <h3 className="text-xl font-semibold mb-3 flex items-center gap-2">
+                      PowerUp — bonus account ($6 RT)
+                      <Badge variant="secondary" className="text-[10px]">New</Badge>
+                    </h3>
+                    <p className="text-sm text-muted-foreground mb-3">
+                      Wider markups than RAW or ECN, but every deposit is boosted by 125% in pure buying power.
+                      Examples from the pricing grid:
+                    </p>
+                    <ul className="text-sm text-muted-foreground space-y-1 list-disc pl-5">
+                      <li>Forex majors: +4.5 pips on feed · Minors: +5.5 pips</li>
+                      <li>Exotics: 5× current feed spread · High-vol exotics (TRY/ZAR/HUF): 4× feed</li>
+                      <li>Gold: +$0.55/oz · Silver: +$0.14/oz · Platinum: +$1.80/oz</li>
+                      <li>WTI: +$0.08/bbl · Brent: +$0.10/bbl · Natural Gas: +$0.04/MMBtu</li>
+                      <li>US30: +4.0 points · US500: +0.8 · NAS100: +2.5 · GER40/UK100: +3.5 · Nikkei: +35</li>
+                      <li>BTC/USD: +$100 · ETH/USD: +$8.00 · BNB: +$1.50 (altcoins tiered from $0.02)</li>
+                    </ul>
+                    <p className="text-xs text-muted-foreground mt-3">
+                      Trade-off: wider markups + tighter leverage in exchange for 125% buying-power credit on every
+                      qualifying deposit. Bonus is buying-power only — never withdrawable, removed when you withdraw cash.
+                    </p>
+                  </div>
                   <div>
                     <h3 className="text-xl font-semibold mb-3">RAW — add above B2B feed</h3>
                     <p className="text-sm text-muted-foreground mb-3">
@@ -579,7 +627,12 @@ const faqs = [
   {
     question: "What is the RestroFX minimum deposit?",
     answer:
-      "ECN/Standard uses a $25 accessible retail entry. RAW accounts recommend a $500 minimum. Always confirm the current requirement on the official RestroFX website before funding.",
+      "ECN/Standard uses a $25 accessible retail entry. RAW accounts recommend a $500 minimum. The new PowerUp Account requires $250 minimum (with a $5,000 max per cycle to receive the full 125% bonus). Always confirm the current requirement on the official RestroFX website before funding.",
+  },
+  {
+    question: "What is the RestroFX PowerUp Account?",
+    answer:
+      "PowerUp is RestroFX's bonus-account configuration. Every qualifying deposit between $250 and $5,000 is credited with a 125% buying-power bonus (capped at $6,250 per deposit). The bonus is buying power only — it never converts to cash and is removed if you withdraw. There is no challenge, no evaluation, no monthly fee, and no turnover requirement, but commissions ($6 RT) and spreads are wider than RAW/ECN, and leverage is tighter (1:100 on majors).",
   },
   {
     question: "Is RestroFX good for prop firms?",

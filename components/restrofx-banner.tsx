@@ -37,11 +37,11 @@ export function RestroFXBanner({ broker }: RestroFXBannerProps) {
 
             <div className="flex-1 min-w-0">
               <h3 className="text-lg md:text-2xl lg:text-3xl font-bold text-white mb-1 md:mb-2 leading-tight">
-                ECN from $25 · Leverage 1:500 up to 1:1000
+                125% Buying-Power Bonus · No Challenge · No Evaluation
               </h3>
               <p className="text-white text-xs md:text-sm lg:text-base opacity-90 leading-snug md:leading-relaxed">
-                Two RestroFX account paths: ECN/Standard ($4 RT commission, markups on majors) and RAW ($18 RT,
-                $500 min). Dynamic LP pricing — you always see feed + markup.
+                New PowerUp Account from RestroFX: deposit $250+ and trade with up to 2.25× your capital. Bonus
+                is buying power only (not withdrawable). ECN and RAW accounts also available from $25.
               </p>
             </div>
           </div>
