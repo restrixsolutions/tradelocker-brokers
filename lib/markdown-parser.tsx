@@ -39,6 +39,71 @@ export function parseMarkdown(content: string): JSX.Element {
       }
     }
 
+    // Markdown table: header row, separator row (|---|---|), then body rows
+    if (line.trim().startsWith('|') && i + 1 < lines.length && /^\s*\|?\s*:?-{2,}/.test(lines[i + 1].replace(/\|/g, ' '))) {
+      const headerCells = splitTableRow(line)
+      const bodyRows: string[][] = []
+      let j = i + 2
+      while (j < lines.length && lines[j].trim().startsWith('|')) {
+        bodyRows.push(splitTableRow(lines[j]))
+        j++
+      }
+      elements.push(
+        <div key={currentIndex++} className="my-6 overflow-x-auto rounded-lg border border-border">
+          <table className="w-full text-sm">
+            <thead className="bg-muted/40">
+              <tr>
+                {headerCells.map((cell, idx) => (
+                  <th key={idx} className="px-4 py-3 text-left font-semibold text-foreground border-b border-border">
+                    {parseInlineMarkdown(cell)}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {bodyRows.map((row, rIdx) => (
+                <tr key={rIdx} className={rIdx % 2 === 0 ? 'bg-background' : 'bg-muted/20'}>
+                  {row.map((cell, cIdx) => (
+                    <td key={cIdx} className="px-4 py-3 text-muted-foreground border-b border-border/50 align-top">
+                      {parseInlineMarkdown(cell)}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )
+      i = j - 1
+      continue
+    }
+
+    // Blockquote: one or more consecutive lines starting with "> "
+    if (line.trim().startsWith('>')) {
+      const quoteLines: string[] = [line.replace(/^\s*>\s?/, '')]
+      let j = i + 1
+      while (j < lines.length && lines[j].trim().startsWith('>')) {
+        quoteLines.push(lines[j].replace(/^\s*>\s?/, ''))
+        j++
+      }
+      elements.push(
+        <blockquote
+          key={currentIndex++}
+          className="my-6 border-l-4 border-accent bg-accent/5 px-5 py-4 rounded-r-lg"
+        >
+          {quoteLines
+            .filter((l) => l.trim() !== '')
+            .map((l, idx) => (
+              <p key={idx} className="text-base text-foreground/90 leading-relaxed mb-2 last:mb-0">
+                {parseInlineMarkdown(l)}
+              </p>
+            ))}
+        </blockquote>
+      )
+      i = j - 1
+      continue
+    }
+
     // Headers
     if (line.startsWith('### ')) {
       elements.push(
@@ -160,6 +225,12 @@ function parseInlineMarkdown(text: string): JSX.Element {
   })
   
   return <>{finalParts}</>
+}
+
+// Splits a markdown table row like "| a | b | c |" into ["a", "b", "c"]
+function splitTableRow(line: string): string[] {
+  const trimmed = line.trim().replace(/^\|/, '').replace(/\|$/, '')
+  return trimmed.split('|').map((cell) => cell.trim())
 }
 
 // Parses JSX-like attributes from a string such as:

@@ -19,6 +19,7 @@ export interface BlogPost {
   ctaBrokerName?: string
   ctaAffiliateLink?: string
   ctaHighlight?: string
+  faqs?: Array<{ question: string; answer: string }>
 }
 
 const blogDirectory = path.join(process.cwd(), 'content/blog')
@@ -51,6 +52,7 @@ export function getAllBlogPosts(): BlogPost[] {
           ctaBrokerName: data.ctaBrokerName,
           ctaAffiliateLink: data.ctaAffiliateLink,
           ctaHighlight: data.ctaHighlight,
+          faqs: data.faqs,
         } as BlogPost
       })
 
@@ -87,6 +89,7 @@ export function getBlogPostBySlug(slug: string): BlogPost | null {
       ctaBrokerName: data.ctaBrokerName,
       ctaAffiliateLink: data.ctaAffiliateLink,
       ctaHighlight: data.ctaHighlight,
+      faqs: data.faqs,
     }
   } catch (error) {
     return null

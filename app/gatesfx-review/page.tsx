@@ -12,9 +12,9 @@ import { getSupabaseServerClient } from "@/lib/supabase/server"
 import Image from "next/image"
 
 export const metadata: Metadata = {
-  title: "GatesFX Broker Review: Is GatesFX Legit in 2026?",
+  title: "GatesFX Review 2026: Legit Broker or Risk? Spreads, Withdrawals & Regulation",
   description:
-    "Independent GatesFX broker review for 2026. See regulation, spreads, commissions, TradeLocker performance, deposits, withdrawals, and whether GatesFX is a legit broker.",
+    "Honest GatesFX review for 2026. We cover regulation facts, account types, TradeLocker spreads, withdrawal speed, and real trader experiences — everything before you deposit.",
   keywords: [
     "gatesfx review",
     "gatesfx reviews",
@@ -23,10 +23,13 @@ export const metadata: Metadata = {
     "gatesfx broker review",
     "is gatesfx legit",
     "is gatesfx a good broker",
+    "gatesfx 2026",
+    "gatesfx regulation",
   ],
   openGraph: {
-    title: "GatesFX Broker Review: Is GatesFX Legit in 2026?",
-    description: "A clear breakdown of GatesFX safety, costs, platform quality, and who it fits best.",
+    title: "GatesFX Review 2026: Legit Broker or Risk? Spreads, Withdrawals & Regulation",
+    description:
+      "Honest GatesFX review for 2026 — regulation facts, account types, TradeLocker spreads, withdrawal speed, and real trader experiences before you deposit.",
     type: "article",
     url: "https://tradelockerbrokers.com/gatesfx-review",
   },
@@ -135,10 +138,12 @@ export default async function GatesFXReviewPage() {
 
               {/* Title & Quick Info */}
               <div className="flex-1">
-                <h1 className="text-4xl md:text-5xl font-bold mb-4">GatesFX Broker Review: Is GatesFX Legit in 2026?</h1>
+                <h1 className="text-4xl md:text-5xl font-bold mb-4">
+                  GatesFX Review 2026: Legit Broker or Risk? Spreads, Withdrawals & Regulation
+                </h1>
                 <p className="text-xl text-muted-foreground mb-6">
-                  A practical, trader-first review of GatesFX covering regulation, spreads, account costs, execution
-                  quality, and withdrawal reliability.
+                  Honest GatesFX review for 2026. We cover regulation facts, account types, TradeLocker spreads,
+                  withdrawal speed, and real trader experiences — everything before you deposit.
                 </p>
 
                 {/* Quick Stats */}
@@ -180,9 +185,10 @@ export default async function GatesFXReviewPage() {
               <CardContent className="pt-6">
                 <h2 className="text-2xl font-bold mb-4">Quick Verdict</h2>
                 <p className="text-sm text-muted-foreground mb-6">
-                  GatesFX is a legitimate broker with FSCA oversight and strong TradeLocker performance. It is most
-                  suitable for active traders who value low spreads and fast execution, but beginners should compare
-                  fees and test withdrawals early.
+                  GatesFX is a real, operating broker with a verifiable FSCA registration and a fast funding /
+                  withdrawal track record. It is <strong>not</strong> a tier-1 regulated firm — and the way some pages
+                  describe its &quot;St. Lucia license&quot; is misleading. Read the regulation section in full before
+                  you deposit beyond test capital.
                 </p>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
@@ -191,12 +197,13 @@ export default async function GatesFXReviewPage() {
                       Pros
                     </h3>
                     <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li>✓ Ultra-low spreads from 0.0 pips</li>
-                      <li>✓ Fast execution under 50ms</li>
-                      <li>✓ FSCA regulated broker</li>
-                      <li>✓ Excellent TradeLocker integration</li>
-                      <li>✓ 24/7 customer support</li>
-                      <li>✓ Instant card deposits (Visa/Mastercard)</li>
+                      <li>✓ Three platforms: MT5, TradeLocker, Match-Trader</li>
+                      <li>✓ Account entry from $10 (Deposit Bonus account)</li>
+                      <li>✓ Spreads from 0.0 pips on ECN Raw</li>
+                      <li>✓ Leverage up to 1:1000</li>
+                      <li>✓ 2-hour withdrawal guarantee, 24/7</li>
+                      <li>✓ Crypto and card funding both supported</li>
+                      <li>✓ US clients accepted (rare for offshore brokers)</li>
                     </ul>
                   </div>
                   <div>
@@ -205,17 +212,19 @@ export default async function GatesFXReviewPage() {
                       Cons
                     </h3>
                     <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li>✗ Limited educational resources</li>
-                      <li>✗ Withdrawal fees on some methods</li>
-                      <li>✗ Higher minimum than some competitors</li>
-                      <li>✗ Spreads can widen during volatility</li>
+                      <li>✗ No tier-1 license (no FCA, ASIC, CySEC, NFA)</li>
+                      <li>✗ St. Lucia IBC is a company registration, not a forex license</li>
+                      <li>✗ FSCA scope is real but limited to South African conduct rules</li>
+                      <li>✗ Some traders report KYC / withdrawal-volume disputes online</li>
+                      <li>✗ Education depth is thin for true beginners</li>
+                      <li>✗ US traders are accepted but unprotected by US regulators</li>
                     </ul>
                   </div>
                 </div>
                 <div className="mt-6 pt-6 border-t border-border">
                   <p className="text-sm text-muted-foreground">
-                    <strong>Best For:</strong> Scalpers, day traders, and experienced traders seeking low spreads and
-                    fast execution with TradeLocker.
+                    <strong>Best For:</strong> Active traders, scalpers, and prop-challenge preppers who need
+                    TradeLocker, Match-Trader, or MT5 with fast crypto withdrawals.
                   </p>
                 </div>
               </CardContent>
@@ -251,30 +260,91 @@ export default async function GatesFXReviewPage() {
               </Card>
             </div>
 
-            {/* Is GatesFX Regulated? */}
+            {/* GatesFX Regulation — The Full Truth */}
             <div id="regulation">
-              <h2 className="text-3xl font-bold mb-6">Is GatesFX Regulated?</h2>
+              <h2 className="text-3xl font-bold mb-6">GatesFX Regulation — The Full Truth</h2>
               <Card>
-                <CardContent className="pt-6">
-                  <p className="mb-4">
-                    <strong>Yes. GatesFX is regulated by the FSCA</strong> (Financial Sector Conduct Authority) in
-                    South Africa. Founded in {broker.year_established} and headquartered in {broker.country_established}
-                    , the broker operates under financial supervision and discloses core client-protection policies.
+                <CardContent className="pt-6 space-y-6">
+                  <p>
+                    This is where most reviews go soft. We will not. GatesFX advertises two things on the regulation
+                    front: an <strong>FSCA registration in South Africa</strong> and a <strong>St. Lucia IBC</strong>.
+                    Both are real. Neither is what most traders assume.
                   </p>
-                  <div className="bg-muted/50 rounded-lg p-4 mb-4">
-                    <h3 className="font-semibold mb-2">Regulatory Protection:</h3>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li>• Segregated client accounts</li>
-                      <li>• Negative balance protection</li>
-                      <li>• Regular regulatory audits</li>
-                      <li>• Transparent fee structure</li>
+
+                  <div>
+                    <h3 className="font-semibold mb-2">1. The St. Lucia IBC is not a forex license</h3>
+                    <p className="text-sm text-muted-foreground mb-2">
+                      GatesFX is incorporated as an International Business Company (IBC) in St. Lucia. An IBC is a
+                      corporate structure — it gives the company legal existence and tax treatment, the same way a
+                      Delaware LLC does in the US.
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      <strong>It is not a forex broker license.</strong> The St. Lucia International Financial Centre
+                      (IFC) has stated publicly, in its own FAQ, that it does <strong>not</strong> license or regulate
+                      forex brokers. Marketing that frames the St. Lucia presence as &quot;regulation&quot; or
+                      &quot;licensed in St. Lucia&quot; is at best misleading.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="font-semibold mb-2">2. The FSCA registration is real — but limited in scope</h3>
+                    <p className="text-sm text-muted-foreground mb-2">
+                      GatesFX is registered with South Africa&apos;s Financial Sector Conduct Authority (FSCA) under{" "}
+                      <strong>FSP No. 46087</strong>. This is verifiable on the FSCA&apos;s public register and is the
+                      real regulatory anchor for the firm.
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      FSCA enforces conduct standards and fund segregation, but its scope is{" "}
+                      <strong>conduct of business and consumer protection within South Africa</strong>. Enforcement
+                      reach over offshore services delivered to clients in other countries is materially weaker than
+                      tier-1 regimes like FCA, ASIC, or CySEC. FSCA is not considered a tier-1 forex regulator.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="font-semibold mb-2">3. What is not there: tier-1 oversight</h3>
+                    <p className="text-sm text-muted-foreground mb-2">GatesFX does <strong>not</strong> hold:</p>
+                    <ul className="space-y-1 text-sm text-muted-foreground ml-4">
+                      <li>• FCA (UK) authorization</li>
+                      <li>• ASIC (Australia) license</li>
+                      <li>• CySEC (EU) license</li>
+                      <li>• NFA / CFTC registration (US)</li>
                     </ul>
                   </div>
-                  <p className="text-sm text-muted-foreground">
-                    <strong>Important context:</strong> FSCA is respected, but many traders still compare it with
-                    Tier-1 frameworks (FCA, ASIC). If regulatory strength is your top priority, compare alternatives
-                    before funding.
+
+                  <div className="p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
+                    <p className="text-sm">
+                      <strong>Bottom line:</strong> GatesFX is more transparent than a fully offshore
+                      &quot;license&quot; broker, less protective than an FCA/ASIC broker. Size your account
+                      accordingly.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* ForexPropRank CTA */}
+            <div id="propfirm-ready">
+              <Card className="border-accent/30 bg-accent/5">
+                <CardContent className="pt-6">
+                  <h3 className="text-xl font-bold mb-2">Using GatesFX to prep for a prop challenge?</h3>
+                  <p className="text-muted-foreground mb-4">
+                    Before you commit to a challenge, find out which prop firms you actually have the highest pass-rate
+                    fit with. <strong>Get your Prop Firm Ready Score</strong> at ForexPropRank — it scores your style
+                    (scalping, swing, news) against each firm&apos;s drawdown rules, profit targets, and consistency
+                    requirements so you know which challenges are worth your $50–$300 entry. Practicing on GatesFX with
+                    the wrong target firm in mind wastes more capital than the challenge itself.
                   </p>
+                  <Button
+                    size="lg"
+                    className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold"
+                    asChild
+                  >
+                    <a href="https://forexproprank.com/" target="_blank" rel="noopener noreferrer">
+                      Check Your Prop Firm Ready Score
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </a>
+                  </Button>
                 </CardContent>
               </Card>
             </div>
@@ -320,59 +390,54 @@ export default async function GatesFXReviewPage() {
 
             {/* Trading Costs */}
             <div id="costs">
-              <h2 className="text-3xl font-bold mb-6">Trading Costs & Spreads</h2>
+              <h2 className="text-3xl font-bold mb-6">Account Types & Trading Costs (Updated 2026)</h2>
               <Card>
                 <CardContent className="pt-6">
                   <p className="mb-6">
-                    GatesFX uses a tiered pricing model. Standard is simpler for beginners, while ECN and VIP are better
-                    for traders focused on tight spread conditions.
+                    GatesFX runs four account tiers in 2026. The cheapest entry point is now just $10. Here is the
+                    current, verified breakdown:
                   </p>
 
                   {/* Account Types Comparison */}
-                  <div className="grid md:grid-cols-3 gap-4 mb-6">
+                  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
                     <div className="border border-border rounded-lg p-4">
-                      <h3 className="font-semibold mb-2">Standard Account</h3>
+                      <h3 className="font-semibold mb-2">Deposit Bonus</h3>
                       <div className="space-y-2 text-sm">
-                        <p>
-                          <strong>Min Deposit:</strong> $100
-                        </p>
-                        <p>
-                          <strong>Spreads:</strong> From 1.2 pips
-                        </p>
-                        <p>
-                          <strong>Commission:</strong> $0
-                        </p>
+                        <p><strong>Min Deposit:</strong> $10</p>
+                        <p><strong>Spreads:</strong> From 0.0 pips</p>
+                        <p><strong>Commission:</strong> $12/round-turn</p>
+                        <p><strong>Leverage:</strong> Up to 1:500</p>
+                        <p className="text-muted-foreground">Best for testing GatesFX live</p>
+                      </div>
+                    </div>
+                    <div className="border border-border rounded-lg p-4">
+                      <h3 className="font-semibold mb-2">STP Standard</h3>
+                      <div className="space-y-2 text-sm">
+                        <p><strong>Min Deposit:</strong> $25</p>
+                        <p><strong>Spreads:</strong> From 1.0 pips</p>
+                        <p><strong>Commission:</strong> $0</p>
+                        <p><strong>Leverage:</strong> Up to 1:500</p>
                         <p className="text-muted-foreground">Best for beginners</p>
                       </div>
                     </div>
                     <div className="border-2 border-accent rounded-lg p-4 relative">
                       <Badge className="absolute -top-3 left-4">Popular</Badge>
-                      <h3 className="font-semibold mb-2">ECN Account</h3>
+                      <h3 className="font-semibold mb-2">ECN Raw</h3>
                       <div className="space-y-2 text-sm">
-                        <p>
-                          <strong>Min Deposit:</strong> $500
-                        </p>
-                        <p>
-                          <strong>Spreads:</strong> From 0.0 pips
-                        </p>
-                        <p>
-                          <strong>Commission:</strong> $7/lot
-                        </p>
-                        <p className="text-muted-foreground">Best for scalpers</p>
+                        <p><strong>Min Deposit:</strong> $500</p>
+                        <p><strong>Spreads:</strong> From 0.0 pips</p>
+                        <p><strong>Commission:</strong> $7/round-turn</p>
+                        <p><strong>Leverage:</strong> Up to 1:1000</p>
+                        <p className="text-muted-foreground">Best for scalpers / prop prep</p>
                       </div>
                     </div>
                     <div className="border border-border rounded-lg p-4">
-                      <h3 className="font-semibold mb-2">VIP Account</h3>
+                      <h3 className="font-semibold mb-2">VIP</h3>
                       <div className="space-y-2 text-sm">
-                        <p>
-                          <strong>Min Deposit:</strong> $2,500
-                        </p>
-                        <p>
-                          <strong>Spreads:</strong> From 0.0 pips
-                        </p>
-                        <p>
-                          <strong>Commission:</strong> $5/lot
-                        </p>
+                        <p><strong>Min Deposit:</strong> $2,500</p>
+                        <p><strong>Spreads:</strong> From 0.0 pips</p>
+                        <p><strong>Commission:</strong> ~$5/round-turn</p>
+                        <p><strong>Leverage:</strong> Up to 1:500</p>
                         <p className="text-muted-foreground">Best pricing + support</p>
                       </div>
                     </div>
@@ -381,59 +446,140 @@ export default async function GatesFXReviewPage() {
                   <div className="bg-muted/50 rounded-lg p-4 mb-4">
                     <h4 className="font-semibold mb-2">Additional Fees:</h4>
                     <ul className="space-y-1 text-sm text-muted-foreground">
-                      <li>• Deposit Fees: Free (most methods)</li>
-                      <li>• Withdrawal Fees: Free for bank transfer, varies for e-wallets</li>
-                      <li>• Inactivity Fee: $10/month after 6 months</li>
+                      <li>• Deposit Fees: Generally none on crypto, card, and bank</li>
+                      <li>• Withdrawal Fees: Method-dependent — crypto and most card withdrawals are fee-free</li>
+                      <li>• Inactivity Fee: ~$10/month after a long dormant period (confirm current terms)</li>
                     </ul>
                   </div>
 
-                  {/* Card Deposits Announcement */}
+                  {/* Funding & Withdrawals */}
                   <div className="bg-accent/10 border border-accent/30 rounded-lg p-4">
                     <h4 className="font-semibold mb-2 flex items-center gap-2">
                       <Zap className="w-4 h-4 text-accent" />
-                      Card Deposits Supported
+                      Funding & Withdrawals
                     </h4>
                     <p className="text-sm text-muted-foreground mb-2">
-                      GatesFX now accepts Visa and Mastercard deposits! Fund your account in under 60 seconds.
+                      GatesFX advertises a <strong>2-hour withdrawal guarantee</strong> processed 24/7, including
+                      weekends.
                     </p>
                     <ul className="space-y-1 text-sm text-muted-foreground">
-                      <li>• Minimum deposit: $25</li>
-                      <li>• Maximum deposit: $5,000</li>
-                      <li>• Processing time: Under 60 seconds (typical)</li>
-                      <li>• Supported cards: Visa, Mastercard (Credit & Debit)</li>
+                      <li>• Crypto withdrawals (USDT TRC20/ERC20): typically under 3 hours</li>
+                      <li>• Card deposits: Visa and Mastercard, near-instant</li>
+                      <li>• Bank transfers: timing varies by region and rail</li>
+                      <li>• Practical tip: request a small test withdrawal in your first 7 days</li>
                     </ul>
                   </div>
                 </CardContent>
               </Card>
             </div>
 
-            {/* TradeLocker Integration */}
+            {/* GatesFX for Prop Traders */}
+            <div id="prop-traders">
+              <h2 className="text-3xl font-bold mb-6">GatesFX for Prop Traders</h2>
+              <Card>
+                <CardContent className="pt-6 space-y-6">
+                  <div>
+                    <h3 className="font-semibold mb-2">Can you use GatesFX to practice before a prop challenge?</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Yes — and this is one of the strongest practical use cases for GatesFX. Because the broker
+                      supports <strong>TradeLocker</strong> and <strong>Match-Trader</strong> alongside MT5, you can
+                      practice on the exact same platform your target prop firm uses. Running a $10 or $25 live account
+                      on the real platform with real spreads is meaningfully better preparation than a demo account on
+                      a different platform.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="font-semibold mb-3">How GatesFX compares to prop firm sim accounts</h3>
+                    <div className="overflow-x-auto rounded-lg border border-border">
+                      <table className="w-full text-sm">
+                        <thead className="bg-muted/40">
+                          <tr>
+                            <th className="px-4 py-3 text-left font-semibold">Factor</th>
+                            <th className="px-4 py-3 text-left font-semibold">GatesFX live (ECN Raw)</th>
+                            <th className="px-4 py-3 text-left font-semibold">Typical prop firm sim</th>
+                          </tr>
+                        </thead>
+                        <tbody className="text-muted-foreground">
+                          <tr className="border-t border-border/50">
+                            <td className="px-4 py-3 align-top">Spreads</td>
+                            <td className="px-4 py-3 align-top">From 0.0 pips, raw market</td>
+                            <td className="px-4 py-3 align-top">Often widened by 0.5–1.5 pips</td>
+                          </tr>
+                          <tr className="border-t border-border/50 bg-muted/20">
+                            <td className="px-4 py-3 align-top">Execution</td>
+                            <td className="px-4 py-3 align-top">Real market routing</td>
+                            <td className="px-4 py-3 align-top">Synthetic; can differ at news</td>
+                          </tr>
+                          <tr className="border-t border-border/50">
+                            <td className="px-4 py-3 align-top">Slippage</td>
+                            <td className="px-4 py-3 align-top">Real</td>
+                            <td className="px-4 py-3 align-top">Often more forgiving (or unrealistically punishing)</td>
+                          </tr>
+                          <tr className="border-t border-border/50 bg-muted/20">
+                            <td className="px-4 py-3 align-top">Leverage</td>
+                            <td className="px-4 py-3 align-top">Up to 1:1000</td>
+                            <td className="px-4 py-3 align-top">Usually 1:30 to 1:100</td>
+                          </tr>
+                          <tr className="border-t border-border/50">
+                            <td className="px-4 py-3 align-top">Psychology</td>
+                            <td className="px-4 py-3 align-top">Real money on the line</td>
+                            <td className="px-4 py-3 align-top">No real loss aversion</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="font-semibold mb-2">Style fit</h3>
+                    <ul className="space-y-2 text-sm text-muted-foreground">
+                      <li>
+                        <strong>Scalpers:</strong> Strong fit. ECN Raw with $7 round-turn and 0.0-pip spreads is
+                        comparable to challenge cost structure.
+                      </li>
+                      <li>
+                        <strong>Intraday traders:</strong> Strong fit. STP Standard is fine for trades held minutes to
+                        hours; ECN Raw is better past 5 trades per day.
+                      </li>
+                      <li>
+                        <strong>Swing traders:</strong> Adequate fit. Confirm current overnight swap rates if you hold
+                        positions over weekends.
+                      </li>
+                    </ul>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Platforms */}
             <div id="platform">
-              <h2 className="text-3xl font-bold mb-6">TradeLocker Integration Quality</h2>
+              <h2 className="text-3xl font-bold mb-6">Platforms: MT5, TradeLocker, and Match-Trader</h2>
               <Card>
                 <CardContent className="pt-6">
                   <p className="mb-4">
-                    GatesFX offers strong TradeLocker coverage for web and mobile, with execution speed suitable for
-                    active intraday traders.
+                    GatesFX is one of the few brokers offering all three serious retail platforms. If you are prepping
+                    on a prop firm that uses TradeLocker or Match-Trader, you can practice on the exact same platform
+                    at GatesFX before paying the challenge fee.
                   </p>
-                  <div className="grid md:grid-cols-2 gap-4">
+                  <div className="grid md:grid-cols-3 gap-4">
                     <div className="bg-muted/30 rounded-lg p-4">
-                      <h4 className="font-semibold mb-2">Performance Metrics:</h4>
-                      <ul className="space-y-1 text-sm text-muted-foreground">
-                        <li>• Execution Speed: Under 50ms average (reported)</li>
-                        <li>• Uptime: 99.9% reliability</li>
-                        <li>• Slippage: Minimal on major pairs</li>
-                        <li>• Mobile Support: iOS & Android</li>
-                      </ul>
+                      <h4 className="font-semibold mb-2">MetaTrader 5</h4>
+                      <p className="text-sm text-muted-foreground">
+                        For traders running EAs, custom indicators, or migrating from MT4.
+                      </p>
                     </div>
                     <div className="bg-muted/30 rounded-lg p-4">
-                      <h4 className="font-semibold mb-2">Available Features:</h4>
-                      <ul className="space-y-1 text-sm text-muted-foreground">
-                        <li>• 100+ technical indicators</li>
-                        <li>• One-click trading</li>
-                        <li>• Advanced order types</li>
-                        <li>• Multi-device sync</li>
-                      </ul>
+                      <h4 className="font-semibold mb-2">TradeLocker</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Modern broker-agnostic web/mobile platform with clean charts and one-click execution.
+                      </p>
+                    </div>
+                    <div className="bg-muted/30 rounded-lg p-4">
+                      <h4 className="font-semibold mb-2">Match-Trader</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Fast web terminal increasingly used by prop firms and TradeLocker-adjacent brokers.
+                      </p>
                     </div>
                   </div>
                 </CardContent>
@@ -666,57 +812,32 @@ export default async function GatesFXReviewPage() {
   )
 }
 
-// FAQ Data
+// FAQ Data — mirrors the FAQ schema for People Also Ask placements
 const faqs = [
-  {
-    question: "What is GatesFX broker?",
-    answer:
-      "GatesFX is a forex and CFD broker that offers TradeLocker-focused trading with multiple account types, including Standard, ECN, and VIP.",
-  },
   {
     question: "Is GatesFX regulated?",
     answer:
-      "Yes. GatesFX is regulated by the FSCA (Financial Sector Conduct Authority) in South Africa and discloses core client-protection measures such as segregated funds and negative balance protection.",
+      "GatesFX holds FSCA registration in South Africa (FSP No. 46087) and is registered as an IBC in St. Lucia. However, the St. Lucia IFC has publicly stated it does not license forex brokers, meaning GatesFX does not hold a tier-1 forex license. Traders should factor this into their risk assessment.",
   },
   {
-    question: "Is GatesFX legit?",
+    question: "Is GatesFX a scam?",
     answer:
-      "Based on available data, GatesFX appears to be a legitimate broker and is not broadly flagged as a scam. As with any broker, verify current terms and test withdrawals before scaling capital.",
+      "GatesFX has mixed reviews. Many traders report fast withdrawals and responsive support, while others have flagged account issues and regulatory concerns. The absence of a tier-1 regulatory license is the primary risk factor to evaluate before depositing.",
   },
   {
-    question: "What is GatesFX minimum deposit?",
+    question: "What platforms does GatesFX support?",
     answer:
-      "GatesFX minimum deposit is $100 for Standard accounts, $500 for ECN accounts, and $2,500 for VIP accounts offering the best pricing and dedicated support.",
+      "GatesFX supports MetaTrader 5 (MT5), TradeLocker, and the Match-Trader web terminal across desktop and mobile devices.",
   },
   {
-    question: "Is GatesFX a good broker?",
+    question: "Can US traders use GatesFX?",
     answer:
-      "GatesFX is a strong fit for active traders and scalpers due to low-spread account options, fast execution, and solid TradeLocker performance. It is less ideal for traders who prioritize Tier-1 regulation or educational depth.",
+      "GatesFX accepts clients from the United States, making it one of the few offshore brokers currently open to US traders. However, US traders should be aware that GatesFX is not regulated by the CFTC or NFA.",
   },
   {
-    question: "What spreads and commissions does GatesFX offer?",
+    question: "How fast are GatesFX withdrawals?",
     answer:
-      "Standard accounts start around 1.2 pips. ECN and VIP accounts can start from 0.0 pips with commissions of about $7 and $5 per lot respectively.",
-  },
-  {
-    question: "What trading platforms does GatesFX offer?",
-    answer:
-      "GatesFX offers TradeLocker, MetaTrader 4 (MT4), and MetaTrader 5 (MT5) platforms. All platforms are available on web, desktop, and mobile devices for flexible trading across different devices.",
-  },
-  {
-    question: "How fast are GatesFX deposits and withdrawals?",
-    answer:
-      "Card deposits are typically instant (often under 60 seconds). Withdrawals are commonly processed in 24-48 hours, with final timing depending on your method and bank rails.",
-  },
-  {
-    question: "Does GatesFX work with prop firms?",
-    answer:
-      "Yes, GatesFX is compatible with several proprietary trading firms that use TradeLocker platform. The broker offers reliable execution and low latency suitable for prop firm challenges.",
-  },
-  {
-    question: "Are GatesFX reviews generally positive?",
-    answer:
-      "Most public GatesFX reviews focus on spreads, execution speed, and platform experience. Feedback is mixed, so it is best to look for repeated patterns and verify with your own small-scale testing.",
+      "GatesFX advertises a 2-hour withdrawal guarantee processed 24/7. Trader reviews largely confirm same-day or sub-3-hour crypto withdrawals, though some users report delays.",
   },
 ]
 

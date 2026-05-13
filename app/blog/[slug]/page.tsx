@@ -5,7 +5,7 @@ import { Container } from "@/components/container"
 import { Section } from "@/components/section"
 import { Footer } from "@/components/footer"
 import { getAllBlogPosts, getBlogPostBySlug, formatDate } from "@/lib/blog-utils"
-import { BreadcrumbJsonLd, BlogPostingJsonLd } from "@/components/json-ld"
+import { BreadcrumbJsonLd, BlogPostingJsonLd, FAQPageJsonLd } from "@/components/json-ld"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Calendar, AlertCircle } from "lucide-react"
 // import { MDXRemote } from "next-mdx-remote/rsc"
@@ -95,6 +95,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         category={post.category}
         tags={post.tags}
       />
+      {post.faqs && post.faqs.length > 0 && <FAQPageJsonLd faqs={post.faqs} />}
       <HeaderNav />
 
       <Section className="pt-40">
