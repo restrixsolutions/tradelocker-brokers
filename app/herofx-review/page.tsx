@@ -9,6 +9,10 @@ import { Badge } from "@/components/ui/badge"
 import { ArrowRight, CheckCircle2, XCircle, Shield, Zap, DollarSign, Star } from "lucide-react"
 import Link from "next/link"
 import { getSupabaseServerClient } from "@/lib/supabase/server"
+import { randomizedComparisonBrokers } from "@/lib/broker-sort"
+
+export const dynamic = "force-dynamic"
+export const revalidate = 0
 import Image from "next/image"
 
 export const metadata: Metadata = {
@@ -55,8 +59,6 @@ export default async function HeroFXReviewPage() {
   const { data: competitors } = await supabase
     .from("brokers")
     .select("id, name, logo, min_deposit, tags, affiliate_link")
-    .neq("name", "HeroFX")
-    .limit(2)
 
   const broker = herofx || {
     name: "HeroFX",
@@ -68,7 +70,7 @@ export default async function HeroFXReviewPage() {
     year_established: 2021,
   }
 
-  const competitorBrokers = competitors || []
+  const competitorBrokers = randomizedComparisonBrokers(competitors || [], "HeroFX", 2)
 
   return (
     <div className="min-h-screen bg-background text-foreground">

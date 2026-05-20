@@ -37,3 +37,33 @@ export function withRestroFXFirst<T extends { name: string }>(brands: T[]): T[] 
   const [row] = next.splice(idx, 1)
   return [row, ...next]
 }
+
+/**
+ * Returns a randomized list of competitor brokers for a review-page comparison
+ * section. RestroFX is always pinned as the first competitor when present.
+ *
+ * - Filters out the current broker (by name, case-insensitive)
+ * - Fisher-Yates shuffles the rest
+ * - Pins RestroFX first
+ * - Trims to `limit` entries
+ */
+export function randomizedComparisonBrokers<T extends { name: string }>(
+  brands: T[],
+  excludeName: string,
+  limit = 2,
+): T[] {
+  const normalized = normalizeRestroFXBrokers(brands).filter(
+    (b) => b.name.toLowerCase() !== excludeName.toLowerCase(),
+  )
+
+  const restro = normalized.find((b) => b.name === "RestroFX")
+  const rest = normalized.filter((b) => b.name !== "RestroFX")
+
+  for (let i = rest.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[rest[i], rest[j]] = [rest[j], rest[i]]
+  }
+
+  const combined = restro ? [restro, ...rest] : rest
+  return combined.slice(0, limit)
+}

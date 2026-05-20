@@ -9,7 +9,11 @@ import { Badge } from "@/components/ui/badge"
 import { ArrowRight, CheckCircle2, XCircle, Shield, Zap, DollarSign, Star } from "lucide-react"
 import Link from "next/link"
 import { getSupabaseServerClient } from "@/lib/supabase/server"
+import { randomizedComparisonBrokers } from "@/lib/broker-sort"
 import Image from "next/image"
+
+export const dynamic = "force-dynamic"
+export const revalidate = 0
 
 export const metadata: Metadata = {
   title: "Clarity FX Review 2026: Is Clarity FX Legit? Complete Broker Analysis",
@@ -50,8 +54,6 @@ export default async function ClarityFXReviewPage() {
   const { data: competitors } = await supabase
     .from("brokers")
     .select("id, name, logo, min_deposit, tags, affiliate_link")
-    .neq("name", "Clarity FX")
-    .limit(2)
 
   const broker = clarityFx || {
     name: "Clarity FX",
@@ -63,7 +65,7 @@ export default async function ClarityFXReviewPage() {
     year_established: 2024,
   }
 
-  const competitorBrokers = competitors || []
+  const competitorBrokers = randomizedComparisonBrokers(competitors || [], "Clarity FX", 2)
 
   return (
     <div className="min-h-screen bg-background text-foreground">
