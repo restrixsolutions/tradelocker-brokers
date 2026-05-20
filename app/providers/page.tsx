@@ -120,6 +120,11 @@ export default async function ProvidersPage() {
                           HOT
                         </div>
                       )}
+                      {provider.name === "Risen" && (
+                        <div className="absolute -top-2 -right-2 bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded">
+                          NEW
+                        </div>
+                      )}
                     </div>
                     
                     {/* Provider Name */}

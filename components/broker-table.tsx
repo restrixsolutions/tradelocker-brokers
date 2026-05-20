@@ -307,6 +307,10 @@ export function BrokerTable({
                       <div className="absolute -top-2 -left-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded">
                         HOT
                       </div>
+                    ) : brand.name === "Risen" ? (
+                      <div className="absolute -top-2 -left-2 bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded">
+                        NEW
+                      </div>
                     ) : brand.is_featured ? (
                       <div className="absolute -top-2 -left-2 bg-primary text-primary-foreground text-xs font-bold px-2 py-0.5 rounded">
                         DEAL
