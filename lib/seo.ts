@@ -7,7 +7,7 @@ export const SITE_URL = 'https://tradelockerbrokers.com'
 // descriptive reference to the third-party platform our listed brokers support.
 export const BRAND = 'TL Brokers'
 export const LOGO_PATH = '/tradelocker-logo.png'
-export const FAVICON_PATH = '/tl-brokers-favicon.png'
+export const FAVICON_PATH = '/favicon-logo.png'
 export const DEFAULT_DESC = 'Independent comparison of forex brokers and prop firms that support the TradeLocker trading platform.'
 
 // Independence / non-affiliation notice. Surface this anywhere the site could be
