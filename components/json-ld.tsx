@@ -1,4 +1,4 @@
-import { SITE_URL, BRAND, SOCIAL, SCHEMA_CONFIG } from "@/lib/seo"
+import { SITE_URL, BRAND, SOCIAL, SCHEMA_CONFIG, LOGO_PATH } from "@/lib/seo"
 
 export function WebsiteJsonLd() {
   // Filter out empty social URLs
@@ -79,7 +79,7 @@ export function ArticleJsonLd({
   description,
   datePublished,
   dateModified,
-  authorName = "TradeLockerBrokers.com",
+  authorName = BRAND,
 }: {
   title: string
   description: string
@@ -100,10 +100,10 @@ export function ArticleJsonLd({
     },
     publisher: {
       "@type": "Organization",
-      name: "TradeLockerBrokers.com",
+      name: BRAND,
       logo: {
         "@type": "ImageObject",
-        url: "https://tradelockerbrokers.com/tradelocker-logo.png",
+        url: `${SITE_URL}${LOGO_PATH}`,
       },
     },
   }
@@ -177,7 +177,7 @@ export function BlogPostingJsonLd({
   description,
   publishDate,
   lastUpdated,
-  author = "TradeLockerBrokers.com",
+  author = BRAND,
   image,
   url,
   category,
@@ -204,14 +204,14 @@ export function BlogPostingJsonLd({
     "author": {
       "@type": "Organization",
       "name": author,
-      "url": "https://tradelockerbrokers.com",
+      "url": SITE_URL,
     },
     "publisher": {
       "@type": "Organization",
-      "name": "TradeLockerBrokers.com",
+      "name": BRAND,
       "logo": {
         "@type": "ImageObject",
-        "url": "https://tradelockerbrokers.com/tradelocker-logo.png",
+        "url": `${SITE_URL}${LOGO_PATH}`,
       },
     },
     "mainEntityOfPage": {
@@ -235,8 +235,8 @@ export function AboutPageJsonLd() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "AboutPage",
-    "name": "About TradeLocker Brokers",
-    "description": "Learn about TradeLocker Brokers, the definitive directory for brokers and prop firms using the TradeLocker platform.",
+    "name": `About ${BRAND}`,
+    "description": "Learn about TL Brokers, an independent comparison site for brokers and prop firms that support the TradeLocker platform.",
     "url": `${SITE_URL}/about`,
     "mainEntity": {
       "@type": "Organization",
@@ -255,7 +255,7 @@ export function AboutPageJsonLd() {
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "customer service",
-        "email": "forexproprank@gmail.com",
+        "email": "tradelockerbroker@gmail.com",
         "areaServed": "Worldwide",
         "availableLanguage": "English"
       }

@@ -17,11 +17,11 @@ import { FAQPageJsonLd } from "@/components/json-ld"
 export const metadata: Metadata = {
   title: "TradeLocker Brokers (2026) – Compare Best Forex Brokers Using TradeLocker",
   description:
-    "Find the best TradeLocker brokers for 2026. Compare 20+ verified brokers by spreads, execution, regulation & features. Start trading with confidence today.",
+    "Find the best TradeLocker brokers for 2026. Compare 20+ listed brokers by spreads, execution, regulation & features. Start trading with confidence today.",
   keywords: ["TradeLocker brokers", "best tradelocker brokers", "tradelocker brokers to use", "forex brokers", "ECN", "raw spreads", "fast execution", "trading platform"],
   openGraph: {
     title: "TradeLocker Brokers (2026) – Compare Best Forex Brokers",
-    description: "Find the best TradeLocker brokers. Compare 20+ verified brokers by spreads, execution & features.",
+    description: "Find the best TradeLocker brokers. Compare 20+ listed brokers by spreads, execution & features.",
     type: "website",
     url: "https://tradelockerbrokers.com",
   },
@@ -97,7 +97,7 @@ export default async function HomePage() {
               Best TradeLocker Brokers (2026)
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground text-pretty mb-4">
-              Compare the best TradeLocker brokers for forex, indices, and commodities trading. Our comprehensive directory features 20+ verified brokers with detailed comparisons of spreads, execution speed, regulation, and features. Find the perfect TradeLocker broker for your trading style.
+              Compare the best TradeLocker brokers for forex, indices, and commodities trading. Our comprehensive directory features 20+ listed brokers with detailed comparisons of spreads, execution speed, regulation, and features. Find the perfect TradeLocker broker for your trading style.
             </p>
             <p className="text-base text-muted-foreground">
               Explore our{" "}

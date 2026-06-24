@@ -1,6 +1,6 @@
-# TradeLocker Brokers - LLMs.txt
+# TL Brokers - LLMs.txt
 
-> TradeLockerBrokers.com: A comprehensive comparison platform for forex brokers and prop firms using the TradeLocker trading platform.
+> TL Brokers (tradelockerbrokers.com): An independent comparison platform for forex brokers and prop firms that support the TradeLocker trading platform. Not affiliated with, endorsed by, or operated by TradeLocker Limited.
 
 ## Site Overview
 

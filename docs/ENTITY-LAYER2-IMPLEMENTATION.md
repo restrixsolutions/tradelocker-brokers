@@ -39,7 +39,7 @@ This document details the implementation of Layer 2 Entity Linking and Knowledge
 ##### Contact Page (`/contact`)
 - **Path**: `app/contact/page.tsx`
 - **Features**:
-  - Primary contact email: forexproprank@gmail.com
+  - Primary contact email: tradelockerbroker@gmail.com
   - Categorized inquiry types
   - Editorial guidelines
   - Response time expectations

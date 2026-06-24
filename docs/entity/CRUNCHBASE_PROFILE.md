@@ -10,7 +10,7 @@
 | **Founders** | [To be added] |
 | **Operating Status** | Active |
 | **Company Type** | Private |
-| **Contact Email** | forexproprank@gmail.com |
+| **Contact Email** | tradelockerbroker@gmail.com |
 
 ## Description
 

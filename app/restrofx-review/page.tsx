@@ -93,11 +93,11 @@ export default async function RestroFXReviewPage() {
             },
             author: {
               "@type": "Organization",
-              name: "TradeLocker Brokers",
+              name: "TL Brokers",
             },
             publisher: {
               "@type": "Organization",
-              name: "TradeLocker Brokers",
+              name: "TL Brokers",
             },
           }),
         }}

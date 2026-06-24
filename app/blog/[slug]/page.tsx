@@ -172,7 +172,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <p className="text-sm text-muted-foreground">
                   Some links on this page may be affiliate links. When you sign up through these links, we may
                   receive a commission at no additional cost to you. This helps us maintain the site and provide
-                  free content. We only recommend brokers and prop firms we've personally reviewed and verified.
+                  free content. We only recommend brokers and prop firms we've personally reviewed.
                 </p>
               </CardContent>
             </Card>

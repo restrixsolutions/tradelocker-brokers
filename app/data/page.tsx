@@ -10,12 +10,12 @@ import { Database, FileJson, Rss, GitBranch, Bot } from "lucide-react"
 import { SITE_URL, absoluteUrl } from "@/lib/seo"
 
 export const metadata: Metadata = {
-  title: "Open Data & AI Feeds – TradeLocker Brokers",
+  title: "Open Data & AI Feeds – TL Brokers",
   description: "Access our RSS feeds, JSON feeds, and open datasets. Machine-readable content for AI assistants, search engines, and research tools.",
   keywords: ["TradeLocker data", "RSS feed", "JSON feed", "AI data", "machine readable", "open data"],
   openGraph: {
     title: "Open Data & AI Feeds",
-    description: "Machine-readable feeds and datasets from TradeLocker Brokers.",
+    description: "Machine-readable feeds and datasets from TL Brokers.",
     type: "website",
     url: absoluteUrl("/data"),
   },
@@ -107,7 +107,7 @@ export default function DataPage() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <GitBranch className="h-5 w-5 text-accent" />
-                    TradeLocker Brokers Data Repository
+                    TL Brokers Data Repository
                   </CardTitle>
                 </CardHeader>
                 <CardContent>

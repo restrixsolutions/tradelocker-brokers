@@ -89,7 +89,7 @@ export default async function FunderProReviewPage() {
             },
             author: {
               "@type": "Organization",
-              name: "TradeLocker Brokers",
+              name: "TL Brokers",
             },
           }),
         }}

@@ -1,7 +1,21 @@
 // Centralized SEO configuration
+// NOTE: SITE_URL is intentionally a single constant so the production domain can be
+// swapped in one place if/when the site moves to a non-infringing domain.
 export const SITE_URL = 'https://tradelockerbrokers.com'
-export const BRAND = 'TradeLocker Brokers'
-export const DEFAULT_DESC = 'Compare brokers and prop firms that integrate with the TradeLocker trading platform.'
+// Brand identity. Kept as a single constant so the site name can be changed everywhere
+// from here. "TradeLocker" must NOT be used as our brand/identity — only as a
+// descriptive reference to the third-party platform our listed brokers support.
+export const BRAND = 'TL Brokers'
+export const LOGO_PATH = '/tl-brokers-logo.png'
+export const FAVICON_PATH = '/tl-brokers-favicon.png'
+export const DEFAULT_DESC = 'Independent comparison of forex brokers and prop firms that support the TradeLocker trading platform.'
+
+// Independence / non-affiliation notice. Surface this anywhere the site could be
+// mistaken for the official TradeLocker product.
+export const AFFILIATION_DISCLAIMER =
+  'TL Brokers is an independent comparison and affiliate website. We are not affiliated with, ' +
+  'endorsed by, sponsored by, or operated by TradeLocker Limited. "TradeLocker" and related marks ' +
+  'are trademarks of their respective owner and are used here only for descriptive, comparative purposes.'
 
 // Social media handles
 export const SOCIAL = {
@@ -63,21 +77,21 @@ export const KEYWORDS = {
 }
 
 // Author name for articles
-export const AUTHOR_NAME = 'TradeLocker Brokers Editorial'
+export const AUTHOR_NAME = 'TL Brokers Editorial'
 
 // Structured data configurations
 export const SCHEMA_CONFIG = {
   organization: {
     name: BRAND,
-    alternateName: 'Best TradeLocker-Compatible Brokers',
-    description: 'Compare the top brokers and prop firms that integrate directly with the TradeLocker trading platform.',
+    alternateName: 'TL Brokers Directory',
+    description: 'Independent comparison of brokers and prop firms that support the TradeLocker trading platform.',
     url: SITE_URL,
-    logo: `${SITE_URL}/tradelocker-logo.png`
+    logo: `${SITE_URL}${LOGO_PATH}`
   },
   website: {
     name: BRAND,
-    alternateName: 'Best TradeLocker-Compatible Brokers',
-    description: 'Compare the top brokers and prop firms that integrate directly with the TradeLocker trading platform.',
+    alternateName: 'TL Brokers Directory',
+    description: 'Independent comparison of brokers and prop firms that support the TradeLocker trading platform.',
     url: SITE_URL,
     inLanguage: 'en-US',
     keywords: KEYWORDS.main

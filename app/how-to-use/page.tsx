@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     article: {
       publishedTime: "2025-01-01",
       modifiedTime: "2025-01-19",
-      authors: ["TradeLockerBrokers.com"],
+      authors: ["TL Brokers"],
     },
   },
   alternates: {

@@ -7,17 +7,17 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { BreadcrumbJsonLd } from "@/components/json-ld"
 import Link from "next/link"
-import { Download, FileText, Image, Mail } from "lucide-react"
+import { FileText, Mail } from "lucide-react"
 import { SITE_URL, BRAND, absoluteUrl } from "@/lib/seo"
 
 export const metadata: Metadata = {
-  title: "Press & Brand Assets – TradeLocker Brokers Media Kit",
+  title: "Press & Company Info – TL Brokers",
   description:
-    "Download TradeLocker Brokers logos, brand guidelines, and press materials. Get official information for media coverage and partnership opportunities.",
-  keywords: ["TradeLocker Brokers press", "media kit", "brand assets", "logo download", "press information"],
+    "Press and company information for TL Brokers, an independent broker and prop-firm comparison site. Contact us for media coverage and partnership opportunities.",
+  keywords: ["TL Brokers press", "media kit", "company information", "press contact"],
   openGraph: {
-    title: "Press & Brand Assets – TradeLocker Brokers",
-    description: "Official media kit and brand resources for TradeLocker Brokers.",
+    title: "Press & Company Info – TL Brokers",
+    description: "Press and company information for TL Brokers.",
     type: "website",
     url: absoluteUrl("/press"),
   },
@@ -41,11 +41,11 @@ export default function PressPage() {
         <Container>
           <div className="max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-balance">
-              Press & Brand Assets
+              Press & Company Info
             </h1>
             
             <p className="text-xl text-muted-foreground mb-12">
-              Official brand resources and press information for {BRAND}. All assets are available for editorial use with proper attribution.
+              Press and company information for {BRAND}, an independent broker and prop-firm comparison site.
             </p>
 
             {/* Brand Boilerplate */}
@@ -53,74 +53,20 @@ export default function PressPage() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <FileText className="h-5 w-5" />
-                  Brand Description
+                  About TL Brokers
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div>
-                  <h3 className="font-semibold mb-2">Short Description (150 characters)</h3>
+                  <h3 className="font-semibold mb-2">Short Description</h3>
                   <p className="text-muted-foreground bg-accent/5 p-4 rounded-lg font-mono text-sm">
-                    TradeLocker Brokers is the definitive directory for finding brokers and prop firms that support the TradeLocker trading platform.
+                    TL Brokers is an independent comparison site for brokers and prop firms that support the TradeLocker trading platform.
                   </p>
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-2">Long Description (300 characters)</h3>
+                  <h3 className="font-semibold mb-2">Long Description</h3>
                   <p className="text-muted-foreground bg-accent/5 p-4 rounded-lg font-mono text-sm">
-                    TradeLocker Brokers provides comprehensive comparisons of forex brokers and prop firms using the TradeLocker platform. Our directory helps traders find the perfect match based on spreads, execution speed, funding options, and regulatory compliance, with detailed reviews and real-time data updates.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Logo Downloads */}
-            <Card className="mb-8">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Image className="h-5 w-5" />
-                  Logo Downloads
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-3">
-                    <div className="aspect-video bg-card border border-border rounded-lg flex items-center justify-center p-8">
-                      <img
-                        src="/tradelocker-logo.png"
-                        alt="TradeLocker Brokers Logo"
-                        className="max-h-32 w-auto"
-                      />
-                    </div>
-                    <div className="flex gap-3">
-                      <Button size="sm" variant="outline" asChild>
-                        <a href="/tradelocker-logo.png" download>
-                          <Download className="h-4 w-4 mr-2" />
-                          PNG
-                        </a>
-                      </Button>
-                      <Button size="sm" variant="outline" disabled>
-                        <Download className="h-4 w-4 mr-2" />
-                        SVG (Coming Soon)
-                      </Button>
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-3">
-                    <div className="aspect-video bg-foreground rounded-lg flex items-center justify-center p-8">
-                      <img
-                        src="/tradelocker-logo.png"
-                        alt="TradeLocker Brokers Logo (Dark)"
-                        className="max-h-32 w-auto"
-                      />
-                    </div>
-                    <p className="text-sm text-muted-foreground">
-                      Logo on dark background
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="mt-6 p-4 bg-accent/5 rounded-lg">
-                  <p className="text-sm text-muted-foreground">
-                    <strong>Usage Guidelines:</strong> Please maintain clear space around the logo equal to the height of the "T" in TradeLocker. Do not alter colors, proportions, or add effects. Minimum size: 120px width for digital, 1 inch for print.
+                    TL Brokers provides independent comparisons of forex brokers and prop firms that support the TradeLocker platform. We help traders compare spreads, execution speed, funding options, and regulatory compliance. TL Brokers is not affiliated with, endorsed by, or operated by TradeLocker Limited.
                   </p>
                 </div>
               </CardContent>
@@ -209,11 +155,11 @@ export default function PressPage() {
                   For press inquiries, interview requests, or additional resources, please contact:
                 </p>
                 <a
-                  href="mailto:forexproprank@gmail.com"
+                  href="mailto:tradelockerbroker@gmail.com"
                   className="inline-flex items-center gap-2 text-accent hover:underline font-medium"
                 >
                   <Mail className="h-4 w-4" />
-                  forexproprank@gmail.com
+                  tradelockerbroker@gmail.com
                 </a>
                 <p className="text-sm text-muted-foreground mt-4">
                   We typically respond to press inquiries within 24 hours.

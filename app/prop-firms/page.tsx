@@ -2,7 +2,8 @@ import type { Metadata } from "next"
 import { HeaderNav } from "@/components/header-nav"
 import { Container } from "@/components/container"
 import { Section } from "@/components/section"
-import { BrokerTable } from "@/components/broker-table"
+import { FirmList } from "@/components/firm-list"
+import { TopRatedFirms } from "@/components/top-rated-firms"
 import { BreadcrumbJsonLd, ItemListJsonLd } from "@/components/json-ld"
 import { getFilteredPropFirms, getFilterOptions, type PropFirmFilterParams } from "@/app/actions"
 import { Footer } from "@/components/footer"
@@ -115,34 +116,30 @@ export default async function PropFirmsPage({ searchParams }: PageProps) {
 
       <Section className="pt-40 overflow-x-hidden">
         <Container>
-          <div className="max-w-3xl mb-12">
+          <div className="mx-auto max-w-3xl mb-12 text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-balance">
-              TradeLocker Prop Firms
+              Best TradeLocker <span className="text-emerald-500">Prop Firms</span> 2026
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground text-pretty mb-4">
-              Compare the best prop trading firms that support the TradeLocker platform. Filter by profit split, rules,
+              Compare top-rated prop trading firms that support the TradeLocker platform. Filter by profit split, rules,
               and payout options to find your ideal funding partner.
             </p>
             <p className="text-base text-muted-foreground">
               Need a personal trading account instead?{" "}
-              <Link href="/brokers" className="text-accent hover:underline font-medium">
-                Browse TradeLocker brokers
+              <Link href="/brokers" className="text-emerald-600 hover:underline font-medium">
+                Browse brokers
               </Link>
               . New to the platform?{" "}
-              <Link href="/how-to-use" className="text-accent hover:underline font-medium">
+              <Link href="/how-to-use" className="text-emerald-600 hover:underline font-medium">
                 Learn how to use TradeLocker
               </Link>
               .
             </p>
           </div>
 
-          <BrokerTable 
-            brands={propFirmsData} 
-            type="prop-firm" 
-            filterOptions={filterOptions}
-            initialFilters={filterParams}
-            serverSideFiltering
-          />
+          <FirmList brands={propFirmsData} type="prop-firm" filterOptions={filterOptions} />
+
+          <TopRatedFirms brands={propFirmsData} type="prop-firm" heading="Firms" />
         </Container>
       </Section>
 

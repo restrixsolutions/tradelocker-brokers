@@ -17,11 +17,11 @@ export async function GET() {
     description: DEFAULT_DESC,
     home_page_url: SITE_URL,
     feed_url: `${SITE_URL}/feed.json`,
-    icon: `${SITE_URL}/tradelocker-logo.png`,
-    favicon: `${SITE_URL}/tradelocker-favicon.png`,
+    icon: `${SITE_URL}/tl-brokers-logo.png`,
+    favicon: `${SITE_URL}/tl-brokers-favicon.png`,
     authors: [
       {
-        name: "TradeLocker Brokers Editorial",
+        name: "TL Brokers Editorial",
         url: SITE_URL,
       }
     ],

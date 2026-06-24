@@ -129,7 +129,7 @@ Found an error or want to add a broker/prop firm? Please:
 
 1. Open an issue with the details
 2. Or submit a pull request with your changes
-3. Or contact us at forexproprank@gmail.com
+3. Or contact us at tradelockerbroker@gmail.com
 
 ## Related Resources
 

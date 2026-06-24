@@ -29,7 +29,7 @@ export async function GET() {
     <atom:link href="${SITE_URL}/feed.xml" rel="self" type="application/rss+xml" />
     <language>en-US</language>
     <lastBuildDate>Tue, 14 Oct 2025 00:00:00 GMT</lastBuildDate>
-    <generator>TradeLocker Brokers Feed Generator</generator>
+    <generator>TL Brokers Feed Generator</generator>
     ${sortedPosts.map(post => {
       const postUrl = `${SITE_URL}/blog/${post.slug}`
       const pubDate = new Date(post.publishDate).toUTCString()

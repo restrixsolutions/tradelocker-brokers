@@ -97,11 +97,11 @@ export default async function GatesFXReviewPage() {
             },
             author: {
               "@type": "Organization",
-              name: "TradeLocker Brokers",
+              name: "TL Brokers",
             },
             publisher: {
               "@type": "Organization",
-              name: "TradeLocker Brokers",
+              name: "TL Brokers",
             },
           }),
         }}

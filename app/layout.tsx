@@ -4,6 +4,7 @@ import { Poppins } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import Script from "next/script"
 import { WebsiteJsonLd, OrganizationJsonLd } from "@/components/json-ld"
+import { DisclaimerBanner } from "@/components/disclaimer-banner"
 import PostHogWrapper from "./posthog-wrapper"
 import GoogleAnalytics from "@/components/google-analytics"
 import "./globals.css"
@@ -18,18 +19,18 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL('https://tradelockerbrokers.com'),
   title: {
-    default: "TradeLocker Brokers & Prop Firms 2025 | Compare Trading Platforms",
-    template: "%s | TradeLocker Brokers"
+    default: "TL Brokers | Compare Brokers & Prop Firms That Support TradeLocker",
+    template: "%s | TL Brokers"
   },
   description:
-    "Discover verified brokers and prop firms using TradeLocker. Compare spreads, execution speed, funding options, and features. Your complete TradeLocker directory updated for 2025.",
+    "TL Brokers is an independent directory comparing listed brokers and prop firms that support the TradeLocker platform. Compare spreads, execution speed, funding options, and features. Updated for 2025.",
   generator: "Next.js",
-  applicationName: "TradeLocker Brokers & Prop Firms",
+  applicationName: "TL Brokers",
   referrer: "origin-when-cross-origin",
-  keywords: ["TradeLocker", "forex brokers", "prop firms", "trading platform", "ECN", "spreads", "execution", "funded trading", "proprietary trading"],
-  authors: [{ name: "TradeLockerBrokers.com" }],
-  creator: "TradeLockerBrokers.com",
-  publisher: "TradeLockerBrokers.com",
+  keywords: ["brokers that use TradeLocker", "forex brokers", "prop firms", "trading platform", "ECN", "spreads", "execution", "funded trading", "proprietary trading"],
+  authors: [{ name: "TL Brokers" }],
+  creator: "TL Brokers",
+  publisher: "TL Brokers",
   formatDetection: {
     email: false,
     address: false,
@@ -53,38 +54,38 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/tradelocker-favicon.png", sizes: "32x32", type: "image/png" },
-      { url: "/tradelocker-favicon.png", sizes: "16x16", type: "image/png" },
+      { url: "/tl-brokers-favicon.png", sizes: "32x32", type: "image/png" },
+      { url: "/tl-brokers-favicon.png", sizes: "16x16", type: "image/png" },
       { url: "/favicon.ico", sizes: "any" },
     ],
-    shortcut: "/tradelocker-favicon.png",
+    shortcut: "/tl-brokers-favicon.png",
     apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
-      { url: "/tradelocker-favicon.png", sizes: "192x192", type: "image/png" },
+      { url: "/tl-brokers-favicon.png", sizes: "180x180", type: "image/png" },
+      { url: "/tl-brokers-favicon.png", sizes: "192x192", type: "image/png" },
     ],
     other: [
       {
         rel: "apple-touch-icon-precomposed",
-        url: "/apple-touch-icon.png",
+        url: "/tl-brokers-favicon.png",
       },
       {
         rel: "mask-icon",
-        url: "/tradelocker-favicon.png",
+        url: "/tl-brokers-favicon.png",
       },
     ],
   },
   manifest: "/manifest.json",
   openGraph: {
-    title: "TradeLocker Brokers & Prop Firms 2025 | Compare Trading Platforms",
-    description: "Discover verified brokers and prop firms using TradeLocker. Compare spreads, execution, funding options. Your complete directory.",
+    title: "TL Brokers | Compare Brokers & Prop Firms That Support TradeLocker",
+    description: "Independent directory comparing listed brokers and prop firms that support the TradeLocker platform. Compare spreads, execution, funding options.",
     url: "https://tradelockerbrokers.com",
-    siteName: "TradeLocker Brokers",
+    siteName: "TL Brokers",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "TradeLocker Brokers & Prop Firms - Compare Top Trading Platforms 2025",
+        alt: "TL Brokers - Compare Brokers & Prop Firms That Support TradeLocker",
       },
     ],
     locale: "en_US",
@@ -92,16 +93,16 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "TradeLocker Brokers & Prop Firms 2025",
-    description: "Compare verified brokers and prop firms using TradeLocker. Find your perfect trading platform.",
+    title: "TL Brokers | Brokers & Prop Firms That Support TradeLocker",
+    description: "Independent comparison of listed brokers and prop firms that support the TradeLocker platform.",
     images: ["/og-image.png"],
     creator: "@forexproprank",
   },
   alternates: {
     canonical: "https://tradelockerbrokers.com",
     types: {
-      'application/rss+xml': [{ url: '/feed.xml', title: 'TradeLocker Brokers RSS Feed' }],
-      'application/feed+json': [{ url: '/feed.json', title: 'TradeLocker Brokers JSON Feed' }],
+      'application/rss+xml': [{ url: '/feed.xml', title: 'TL Brokers RSS Feed' }],
+      'application/feed+json': [{ url: '/feed.json', title: 'TL Brokers JSON Feed' }],
     },
   },
   category: "finance",
@@ -128,30 +129,30 @@ export default function RootLayout({
         
         {/* Critical SEO Meta Tags - Explicit for crawler detection */}
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="description" content="Discover verified brokers and prop firms using TradeLocker. Compare spreads, execution speed, funding options, and features. Your complete TradeLocker directory updated for 2025." />
-        <meta name="keywords" content="TradeLocker, forex brokers, prop firms, trading platform, ECN, spreads, execution, funded trading, proprietary trading" />
-        <meta name="author" content="TradeLockerBrokers.com" />
+        <meta name="description" content="TL Brokers is an independent directory comparing listed brokers and prop firms that support the TradeLocker platform. Compare spreads, execution speed, funding options, and features. Updated for 2025." />
+        <meta name="keywords" content="brokers that use TradeLocker, forex brokers, prop firms, trading platform, ECN, spreads, execution, funded trading, proprietary trading" />
+        <meta name="author" content="TL Brokers" />
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         
         {/* Open Graph Protocol - Explicit for social media crawlers */}
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="TradeLocker Brokers & Prop Firms 2025 | Compare Trading Platforms" />
-        <meta property="og:description" content="Discover verified brokers and prop firms using TradeLocker. Compare spreads, execution, funding options. Your complete directory." />
+        <meta property="og:title" content="TL Brokers | Compare Brokers & Prop Firms That Support TradeLocker" />
+        <meta property="og:description" content="Independent directory comparing listed brokers and prop firms that support the TradeLocker platform. Compare spreads, execution, funding options." />
         <meta property="og:url" content="https://tradelockerbrokers.com" />
-        <meta property="og:site_name" content="TradeLocker Brokers" />
+        <meta property="og:site_name" content="TL Brokers" />
         <meta property="og:image" content="https://tradelockerbrokers.com/og-image.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="TradeLocker Brokers & Prop Firms - Compare Top Trading Platforms 2025" />
+        <meta property="og:image:alt" content="TL Brokers - Compare Brokers & Prop Firms That Support TradeLocker" />
         
         {/* Twitter Card - Explicit for Twitter crawler */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@forexproprank" />
         <meta name="twitter:creator" content="@forexproprank" />
-        <meta name="twitter:title" content="TradeLocker Brokers & Prop Firms 2025" />
-        <meta name="twitter:description" content="Compare verified brokers and prop firms using TradeLocker. Find your perfect trading platform." />
+        <meta name="twitter:title" content="TL Brokers | Brokers & Prop Firms That Support TradeLocker" />
+        <meta name="twitter:description" content="Independent comparison of listed brokers and prop firms that support the TradeLocker platform." />
         <meta name="twitter:image" content="https://tradelockerbrokers.com/og-image.png" />
         
         {/* Canonical URL - Explicit for SEO */}
@@ -161,25 +162,26 @@ export default function RootLayout({
         {/* <meta name="google-site-verification" content="YOUR_GOOGLE_VERIFICATION_CODE" /> */}
         
         {/* Additional Meta Tags */}
-        <meta name="theme-color" content="#6366f1" />
-        <meta name="msapplication-TileColor" content="#6366f1" />
-        <meta name="msapplication-TileImage" content="/tradelocker-favicon.png" />
+        <meta name="theme-color" content="#0f766e" />
+        <meta name="msapplication-TileColor" content="#0f766e" />
+        <meta name="msapplication-TileImage" content="/tl-brokers-favicon.png" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content="TradeLocker Brokers" />
+        <meta name="apple-mobile-web-app-title" content="TL Brokers" />
         
         {/* Structured Data Feeds */}
-        <link rel="alternate" type="application/rss+xml" title="TradeLocker Brokers RSS Feed" href="/feed.xml" />
-        <link rel="alternate" type="application/feed+json" title="TradeLocker Brokers JSON Feed" href="/feed.json" />
+        <link rel="alternate" type="application/rss+xml" title="TL Brokers RSS Feed" href="/feed.xml" />
+        <link rel="alternate" type="application/feed+json" title="TL Brokers JSON Feed" href="/feed.json" />
         
         {/* Icons and Manifest */}
         <link rel="manifest" href="/manifest.json" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/tradelocker-favicon.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/tradelocker-favicon.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/tl-brokers-favicon.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/tl-brokers-favicon.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/tl-brokers-favicon.png" />
         <link rel="shortcut icon" href="/favicon.ico" />
       </head>
       <body className={`${poppins.variable} font-sans antialiased`}>
+        <DisclaimerBanner />
         <PostHogWrapper>
           {children}
         </PostHogWrapper>

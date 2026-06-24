@@ -2,7 +2,7 @@ import { LLMAnalyticsDemo } from '@/components/llm-analytics-demo'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'LLM Analytics Demo | TradeLocker Brokers',
+  title: 'LLM Analytics Demo | TL Brokers',
   description: 'Test OpenAI LLM calls with PostHog analytics tracking',
 }
 

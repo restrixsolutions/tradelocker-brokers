@@ -92,7 +92,7 @@ export default async function AthensMarketsReviewPage() {
             },
             author: {
               "@type": "Organization",
-              name: "TradeLocker Brokers",
+              name: "TL Brokers",
             },
           }),
         }}

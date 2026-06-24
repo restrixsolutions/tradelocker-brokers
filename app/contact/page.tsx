@@ -10,12 +10,12 @@ import { Mail, MessageSquare, FileEdit, Bug, Lightbulb, Handshake } from "lucide
 import { SITE_URL, absoluteUrl } from "@/lib/seo"
 
 export const metadata: Metadata = {
-  title: "Contact – Get in Touch with TradeLocker Brokers",
+  title: "Contact – Get in Touch with TL Brokers",
   description:
-    "Contact TradeLocker Brokers for editorial inquiries, data corrections, partnership opportunities, or general questions about our platform directory.",
-  keywords: ["contact TradeLocker Brokers", "trading platform support", "broker directory contact", "partnership inquiries"],
+    "Contact TL Brokers for editorial inquiries, data corrections, partnership opportunities, or general questions about our broker comparison directory.",
+  keywords: ["contact TL Brokers", "trading platform support", "broker directory contact", "partnership inquiries"],
   openGraph: {
-    title: "Contact TradeLocker Brokers",
+    title: "Contact TL Brokers",
     description: "Get in touch for inquiries, corrections, or partnership opportunities.",
     type: "website",
     url: absoluteUrl("/contact"),
@@ -60,10 +60,10 @@ export default function ContactPage() {
                   For all inquiries, please email us at:
                 </p>
                 <a
-                  href="mailto:forexproprank@gmail.com"
+                  href="mailto:tradelockerbroker@gmail.com"
                   className="inline-flex items-center gap-2 text-xl text-accent hover:underline font-medium"
                 >
-                  forexproprank@gmail.com
+                  tradelockerbroker@gmail.com
                 </a>
                 <p className="text-sm text-muted-foreground mt-4">
                   We typically respond within 24-48 hours during business days.
@@ -251,7 +251,7 @@ export default function ContactPage() {
               <Link href="/press">
                 <Card className="h-full hover:border-accent/50 transition-colors cursor-pointer">
                   <CardContent className="pt-6 text-center">
-                    <p className="font-medium">Press Kit</p>
+                    <p className="font-medium">Press</p>
                   </CardContent>
                 </Card>
               </Link>

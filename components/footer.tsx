@@ -1,6 +1,7 @@
 import { Container } from "@/components/container"
 import Image from "next/image"
 import Link from "next/link"
+import { AFFILIATION_DISCLAIMER } from "@/lib/seo"
 
 export function Footer() {
   return (
@@ -10,16 +11,16 @@ export function Footer() {
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="mb-3 md:mb-4">
               <Image
-                src="/tradelocker-logo.png"
-                alt="TradeLocker"
+                src="/tl-brokers-logo.png"
+                alt="TL Brokers"
                 width={480}
                 height={400}
                 className="h-16 md:h-20 w-auto"
               />
             </div>
             <p className="text-xs md:text-sm text-muted-foreground">
-              Your trusted source for TradeLocker-compatible brokers and prop firms. Compare, analyze, and choose the
-              best platform for your trading journey.
+              An independent comparison site for brokers and prop firms that support the TradeLocker platform. Compare,
+              analyze, and choose the best platform for your trading journey.
             </p>
           </div>
           <div>
@@ -62,7 +63,7 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/press" className="text-muted-foreground hover:text-accent transition-colors">
-                  Press Kit
+                  Press
                 </Link>
               </li>
               <li>
@@ -73,15 +74,21 @@ export function Footer() {
             </ul>
           </div>
         </div>
-        <div className="mt-6 md:mt-8 px-4">
-          <h4 className="font-semibold mb-3 md:mb-4 text-sm md:text-base">Disclaimer</h4>
-          <p className="text-xs text-muted-foreground">
-            Trading forex and CFDs involves significant risk. This website provides information for educational
-            purposes only. Always conduct your own research before trading.
-          </p>
+        <div className="mt-6 md:mt-8 px-4 space-y-3">
+          <div>
+            <h4 className="font-semibold mb-2 text-sm md:text-base">Trademark & Affiliation Notice</h4>
+            <p className="text-xs text-muted-foreground">{AFFILIATION_DISCLAIMER}</p>
+          </div>
+          <div>
+            <h4 className="font-semibold mb-2 text-sm md:text-base">Risk Disclaimer</h4>
+            <p className="text-xs text-muted-foreground">
+              Trading forex and CFDs involves significant risk. This website provides information for educational
+              purposes only and may earn affiliate commissions. Always conduct your own research before trading.
+            </p>
+          </div>
         </div>
         <div className="pt-6 md:pt-8 border-t border-border text-center text-xs md:text-sm text-muted-foreground px-4">
-          <p>&copy; 2025 TradeLockerBrokers.com. All rights reserved.</p>
+          <p>&copy; 2025 TL Brokers. All rights reserved.</p>
         </div>
       </Container>
     </footer>

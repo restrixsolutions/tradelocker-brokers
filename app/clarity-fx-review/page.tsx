@@ -90,7 +90,7 @@ export default async function ClarityFXReviewPage() {
             },
             author: {
               "@type": "Organization",
-              name: "TradeLocker Brokers",
+              name: "TL Brokers",
             },
           }),
         }}

@@ -23,7 +23,7 @@ export function SEOMeta({
   ogImage = '/og-image.png',
   ogType = 'website',
   keywords,
-  author = 'TradeLockerBrokers.com',
+  author = 'TL Brokers',
   publishedTime,
   modifiedTime,
 }: SEOMetaProps) {
@@ -48,7 +48,7 @@ export function SEOMeta({
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={fullOgImage} />
-      <meta property="og:site_name" content="TradeLocker Brokers" />
+      <meta property="og:site_name" content="TL Brokers" />
       
       {/* Article specific tags */}
       {ogType === 'article' && publishedTime && (
