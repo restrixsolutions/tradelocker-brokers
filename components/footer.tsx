@@ -11,11 +11,11 @@ export function Footer() {
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="mb-3 md:mb-4">
               <Image
-                src="/tl-brokers-logo.png"
+                src="/site-logo-mark.png"
                 alt="TL Brokers"
-                width={480}
-                height={400}
-                className="h-16 md:h-20 w-auto"
+                width={196}
+                height={196}
+                className="h-12 md:h-14 w-auto"
               />
             </div>
             <p className="text-xs md:text-sm text-muted-foreground">

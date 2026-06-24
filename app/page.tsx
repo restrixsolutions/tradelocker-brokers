@@ -2,7 +2,8 @@ import type { Metadata } from "next"
 import { HeaderNav } from "@/components/header-nav"
 import { Container } from "@/components/container"
 import { Section } from "@/components/section"
-import { BrokerTable } from "@/components/broker-table"
+import { FirmList } from "@/components/firm-list"
+import { TopRatedFirms } from "@/components/top-rated-firms"
 import { RestroFXBanner } from "@/components/restrofx-banner"
 import { withRestroFXFirst } from "@/lib/broker-sort"
 import { getSupabaseServerClient } from "@/lib/supabase/server"
@@ -92,28 +93,28 @@ export default async function HomePage() {
 
       <Section className="pt-40">
         <Container>
-          <div className="max-w-4xl mb-12">
+          <div className="mx-auto max-w-3xl mb-12 text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-balance">
-              Best TradeLocker Brokers (2026)
+              Best TradeLocker <span className="text-emerald-500">Brokers</span> 2026
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground text-pretty mb-4">
-              Compare the best TradeLocker brokers for forex, indices, and commodities trading. Our comprehensive directory features 20+ listed brokers with detailed comparisons of spreads, execution speed, regulation, and features. Find the perfect TradeLocker broker for your trading style.
+              Compare top-rated TradeLocker brokers for forex, indices, and commodities trading. Our directory features 20+ listed brokers with detailed comparisons of spreads, execution speed, regulation, and features. Find the perfect TradeLocker broker for your trading style.
             </p>
             <p className="text-base text-muted-foreground">
               Explore our{" "}
-              <Link href="/brokers" className="text-accent hover:underline font-medium">
+              <Link href="/brokers" className="text-emerald-600 hover:underline font-medium">
                 complete broker comparison
               </Link>
               {" "}for detailed reviews or discover{" "}
-              <Link href="/prop-firms" className="text-accent hover:underline font-medium">
+              <Link href="/prop-firms" className="text-emerald-600 hover:underline font-medium">
                 funded trading opportunities
               </Link>
               {" "}with prop firms. New to TradeLocker? Read our{" "}
-              <Link href="/blog/how-to-login-tradelocker" className="text-accent hover:underline font-medium">
+              <Link href="/blog/how-to-login-tradelocker" className="text-emerald-600 hover:underline font-medium">
                 login guide
               </Link>
               {" "}and{" "}
-              <Link href="/blog/how-to-place-trade-tradelocker" className="text-accent hover:underline font-medium">
+              <Link href="/blog/how-to-place-trade-tradelocker" className="text-emerald-600 hover:underline font-medium">
                 trading tutorial
               </Link>
               . Updated for 2026.
@@ -122,7 +123,9 @@ export default async function HomePage() {
 
           {restrofxBanner && <RestroFXBanner broker={restrofxBanner} />}
 
-          <BrokerTable brands={brokersData} type="broker" />
+          <FirmList brands={brokersData} type="broker" />
+
+          <TopRatedFirms brands={brokersData} type="broker" heading="Brokers" />
           
           {/* Why Choose TradeLocker Brokers Section */}
           <div className="mt-20 mb-16">

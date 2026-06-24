@@ -263,11 +263,15 @@ export function FirmList({ brands, type, filterOptions }: FirmListProps) {
                 <div className="min-w-0">
                   <div className="flex items-center gap-2">
                     <span className="truncate font-semibold group-hover:text-emerald-600">{brand.name}</span>
-                    {brand.is_featured && (
+                    {brand.name.toLowerCase().includes("gatesfx") ? (
+                      <span className="rounded bg-red-500/15 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-red-600">
+                        Hot
+                      </span>
+                    ) : brand.is_featured ? (
                       <span className="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-emerald-600">
                         Deal
                       </span>
-                    )}
+                    ) : null}
                   </div>
                   <StarRating rating={rating} showValue />
                 </div>

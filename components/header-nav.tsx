@@ -39,11 +39,11 @@ export function HeaderNav() {
           <div className="flex items-center gap-6 md:gap-12">
             <Link href="/" className="flex items-center flex-shrink-0">
               <Image
-                src="/tl-brokers-logo.png"
+                src="/site-logo-mark.png"
                 alt="TL Brokers"
-                width={480}
-                height={400}
-                className="h-16 md:h-20 w-auto"
+                width={196}
+                height={196}
+                className="h-12 md:h-14 w-auto"
                 priority
               />
             </Link>
@@ -84,11 +84,11 @@ export function HeaderNav() {
                 <div className="flex flex-col gap-6 mt-8">
                   <Link href="/" onClick={() => setIsOpen(false)}>
                     <Image
-                      src="/tl-brokers-logo.png"
+                      src="/site-logo-mark.png"
                       alt="TL Brokers"
-                      width={480}
-                      height={400}
-                      className="h-20 w-auto mb-4"
+                      width={196}
+                      height={196}
+                      className="h-14 w-auto mb-4"
                     />
                   </Link>
                   <nav className="flex flex-col gap-4">
