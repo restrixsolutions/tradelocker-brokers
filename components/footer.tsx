@@ -46,26 +46,6 @@ export function Footer() {
                   How to Use
                 </Link>
               </li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-3 md:mb-4 text-sm md:text-base">Company</h4>
-            <ul className="space-y-2 text-xs md:text-sm">
-              <li>
-                <Link href="/about" className="text-muted-foreground hover:text-accent transition-colors">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href="/data" className="text-muted-foreground hover:text-accent transition-colors">
-                  Data & Feeds
-                </Link>
-              </li>
-              <li>
-                <Link href="/press" className="text-muted-foreground hover:text-accent transition-colors">
-                  Press
-                </Link>
-              </li>
               <li>
                 <Link href="/contact" className="text-muted-foreground hover:text-accent transition-colors">
                   Contact
