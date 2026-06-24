@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Poppins } from "next/font/google"
+import { Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import Script from "next/script"
 import { WebsiteJsonLd, OrganizationJsonLd } from "@/components/json-ld"
@@ -9,10 +9,10 @@ import PostHogWrapper from "./posthog-wrapper"
 import GoogleAnalytics from "@/components/google-analytics"
 import "./globals.css"
 
-const poppins = Poppins({
+const inter = Inter({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-poppins",
+  variable: "--font-inter",
   display: "swap",
 })
 
@@ -180,7 +180,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" sizes="180x180" href="/favicon-logo.png" />
         <link rel="shortcut icon" href="/favicon.ico" />
       </head>
-      <body className={`${poppins.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} font-sans antialiased`}>
         <DisclaimerBanner />
         <PostHogWrapper>
           {children}
