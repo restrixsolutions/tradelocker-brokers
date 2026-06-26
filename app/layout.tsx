@@ -54,23 +54,23 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon-logo.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon-logo.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-mark.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-mark.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-v2.ico", sizes: "any" },
     ],
-    shortcut: "/favicon-logo.png",
+    shortcut: "/favicon-mark.png",
     apple: [
-      { url: "/favicon-logo.png", sizes: "180x180", type: "image/png" },
-      { url: "/favicon-logo.png", sizes: "192x192", type: "image/png" },
+      { url: "/favicon-mark.png", sizes: "180x180", type: "image/png" },
+      { url: "/favicon-mark.png", sizes: "192x192", type: "image/png" },
     ],
     other: [
       {
         rel: "apple-touch-icon-precomposed",
-        url: "/favicon-logo.png",
+        url: "/favicon-mark.png",
       },
       {
         rel: "mask-icon",
-        url: "/favicon-logo.png",
+        url: "/favicon-mark.png",
       },
     ],
   },
@@ -164,7 +164,7 @@ export default function RootLayout({
         {/* Additional Meta Tags */}
         <meta name="theme-color" content="#0f766e" />
         <meta name="msapplication-TileColor" content="#0f766e" />
-        <meta name="msapplication-TileImage" content="/favicon-logo.png" />
+        <meta name="msapplication-TileImage" content="/favicon-mark.png" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="TL Brokers" />
@@ -175,10 +175,10 @@ export default function RootLayout({
         
         {/* Icons and Manifest */}
         <link rel="manifest" href="/manifest.json" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-logo.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-logo.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/favicon-logo.png" />
-        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-mark.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-mark.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon-mark.png" />
+        <link rel="shortcut icon" href="/favicon-v2.ico" />
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         <DisclaimerBanner />
